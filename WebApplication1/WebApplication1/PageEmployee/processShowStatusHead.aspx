@@ -17,7 +17,7 @@
 
     <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " stle=" float: none;
+        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
             <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات الطالب </h2>
             
@@ -98,7 +98,7 @@
   <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-      <asp:TextBox ID="txtStatus" runat="server"   CssClass="form-control w3-margin-right col-12 " Height="100px"   align="right"></asp:TextBox>
+      <asp:TextBox ID="txtStatus" runat="server"   CssClass="form-control w3-margin-right col-12 bg-white" Height="100px"   align="right" Enabled="false"></asp:TextBox>
       
        
       </div>
@@ -136,7 +136,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
 
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-      <asp:TextBox ID="txtDescriptionHead" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right" Enabled="False" style="right: 0px"></asp:TextBox>
+      <asp:TextBox ID="txtDescriptionHead" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right"  style="right: 0px"></asp:TextBox>
       
        
       </div>
@@ -147,7 +147,7 @@
 
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
      
-          <asp:RadioButtonList ID="rbtAceptHead" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="true" Visible="False">
+          <asp:RadioButtonList ID="rbtAceptHead" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="true" >
                <asp:ListItem Text="موافق" Value="1" />
                <asp:ListItem Text="غير موافق" Value="2" />
           </asp:RadioButtonList>
@@ -175,12 +175,35 @@
 
           </div>
       </div> 
+    
+        <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+      <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" >
+      
+     </div>  
+          <div class="col-1">
 
-    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+          </div>
+      
+   <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.4%; " >
+
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">كلمة المرور للتوقيع:
+         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator1" ControlToValidate="txtPassSign" ErrorMessage="*"></asp:RequiredFieldValidator>
+
+      </label>
+          <asp:TextBox ID="txtPassSign"  TextMode="Password"  runat="server" CssClass="form-control w3-margin-right" style="float:right; font-family:'Amiri'; " Width="40%"></asp:TextBox>
+      
+     </div>
+        
+           <div class="col-1">
+
+          </div>
+  </div>
+    <div class=" w3-white w3-center navbar navbar-expand-lg w3-margin-bottom " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSaveHead" runat="server" Text="حفظ" class="btn btn-lg btn-primary" align="center"  />
+          <asp:Button ID="btnSaveHead" runat="server" Text="حفظ" class="btn btn-lg btn-danger" align="center" OnClick="btnSaveHead_Click"  />
       
        
       </div>

@@ -49,24 +49,6 @@ namespace WebApplication1.PageStudents {
         protected global::System.Web.UI.WebControls.Label labCollage;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
         /// ddlNameCourse1 control.
         /// </summary>
         /// <remarks>
@@ -175,15 +157,6 @@ namespace WebApplication1.PageStudents {
         protected global::System.Web.UI.WebControls.TextBox txtTimeCourse3;
         
         /// <summary>
-        /// rq4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rq4;
-        
-        /// <summary>
         /// txtReason control.
         /// </summary>
         /// <remarks>
@@ -193,15 +166,6 @@ namespace WebApplication1.PageStudents {
         protected global::System.Web.UI.WebControls.TextBox txtReason;
         
         /// <summary>
-        /// RequiredFieldValidator5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
-        
-        /// <summary>
         /// txtNmberHours control.
         /// </summary>
         /// <remarks>
@@ -209,15 +173,6 @@ namespace WebApplication1.PageStudents {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNmberHours;
-        
-        /// <summary>
-        /// RequiredFieldValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
         
         /// <summary>
         /// txtNumHourAfter control.

@@ -45,31 +45,30 @@ public class DelaySemesterClass
 
 
 
-    public void UpdateDelaySemester(int ID, int StudentID, string Year, string Semester, string Description, string Date, string RegestrationDescr, string RegestrationDate, string DeanDescription, string Decision, int ApplicationID)
+    public int UpdateDelaySemester(int ID, int StudentID, string NowYear, string NowSemester, string Year, string Semester, string Description, string Date)
 
     {
-        string Query = "Update  DelaySemester set  StudentID=@StudentID ,Year =@Year ,Semester=@Semester ,Description =@Description,Date=@Date ,RegestrationDescr =@RegestrationDescr,DeanDescription=@DeanDescription ,Decision =@Decision,ApplicationID=@ApplicationID   where ID = @ID ";
+        string Query = "Update  DelaySemester set  StudentID=@StudentID ,NowYear=@NowYear,NowSemester=@NowSemester,Year =@Year ,Semester=@Semester ,Description =@Description,Date=@Date where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
         SqlCommand Command = new SqlCommand(Query, Connection);
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
         Command.Parameters.AddWithValue("@StudentID", StudentID);//This is Parameter
+        Command.Parameters.AddWithValue("@NowYear", NowYear);
+        Command.Parameters.AddWithValue("@NowSemester", NowSemester);
         Command.Parameters.AddWithValue("@Year", Year);
         Command.Parameters.AddWithValue("@Semester", Semester);
         Command.Parameters.AddWithValue("@Description", Description);
         Command.Parameters.AddWithValue("@Date", Date);
-        Command.Parameters.AddWithValue("@RegestrationDescr", RegestrationDescr);
-        Command.Parameters.AddWithValue("@RegestrationDate", RegestrationDate);
-
-        Command.Parameters.AddWithValue("@DeanDescription", DeanDescription);
-        Command.Parameters.AddWithValue("@Decision", Decision);
-        Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+      
 
 
 
-        Command.ExecuteNonQuery();
+       int x= Command.ExecuteNonQuery();
         Connection.Close();
+        return x;
     }
     public void DeleteDelaySemester(int ID)
     {
@@ -82,7 +81,19 @@ public class DelaySemesterClass
         Command.ExecuteNonQuery();
         Connection.Close();
     }
+    public int DeleteDelaySemesterID(int ID)
+    {
+        string Query = "delete from  DelaySemester where ID = @ID and RegestrationAccept=0 ";
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        SqlCommand Command = new SqlCommand(Query, Connection);
 
+        Command.CommandType = CommandType.Text;
+        Command.Parameters.AddWithValue("@ID", ID);
+        int x=Command.ExecuteNonQuery();
+        Connection.Close();
+        return x;
+    }
 
     public DataTable dtNotAcceptDeanDelaySemesterApplication(int CollegeID)
     {
@@ -134,5 +145,101 @@ public class DelaySemesterClass
         }
         return dr;
 
+    }
+
+    public DataTable dtEditgetform(int ID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select * from DelaySemester where (RegestrationAccept =0 OR RegestrationAccept IS null) and ID=" + ID, Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+    public DataRow drEditgetform(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtEditgetform(ID);
+        if (dt.Rows.Count > 0)
+        {
+            dr = dt.Rows[0];
+
+
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+
+    public DataTable dtgetformStudents(int ID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select * from DelaySemester where StudentID=" + ID, Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+    public DataRow drgetformStudents(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtgetformStudents(ID);
+        if (dt.Rows.Count > 0)
+        {
+            dr = dt.Rows[0];
+
+
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+
+
+    public int AcceptRegDelaySemester(int ID, int RegestrationAccept,string RegestrationDescr)
+    {
+        string Query = "Update  DelaySemester set RegestrationAccept =@RegestrationAccept,RegestrationDescr =@RegestrationDescr  where ID = @ID ";
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+
+        SqlCommand Command = new SqlCommand(Query, Connection);
+
+        Command.CommandType = CommandType.Text;
+        Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@RegestrationAccept", RegestrationAccept);
+        Command.Parameters.AddWithValue("@RegestrationDescr", RegestrationDescr);
+        int x = Command.ExecuteNonQuery();
+        Connection.Close();
+        return x;
+    }
+    public int AcceptDeanDelaySemester(int ID, int DeanAccept, string DeanDescription)
+    {
+        string Query = "Update  DelaySemester set DeanAccept =@DeanAccept,DeanDescription =@DeanDescription  where ID = @ID ";
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+
+        SqlCommand Command = new SqlCommand(Query, Connection);
+
+        Command.CommandType = CommandType.Text;
+        Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@DeanAccept", DeanAccept);
+        Command.Parameters.AddWithValue("@DeanDescription", DeanDescription);
+        int x = Command.ExecuteNonQuery();
+        Connection.Close();
+        return x;
     }
 }

@@ -11,14 +11,47 @@ namespace WebApplication1
 {
     public partial class PullCourse : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 int ID = Convert.ToInt32(Session["ID"].ToString());
-
+               // hoursdrop = 0;
                 fillDataForm(ID);
                 fillddl();
+            }
+            else
+            {
+                int hoursdrop = 0;
+                if (ddlNameCourse1.SelectedIndex != 0 && ddlNameCourse1.SelectedIndex != -1)
+                {
+                    int CourseID = Convert.ToInt32(ddlNameCourse1.SelectedValue.ToString());
+
+                    Subjects Sub = new Subjects();
+                    DataRow dr = Sub.drSearchStudentSubjectTypAndHours(CourseID);
+                    hoursdrop = hoursdrop+ Convert.ToInt16(dr["Hours"].ToString());
+                }
+                if (ddlNameCourse2.SelectedIndex != 0 && ddlNameCourse2.SelectedIndex != -1)
+                {
+                    int CourseID = Convert.ToInt32(ddlNameCourse2.SelectedValue.ToString());
+
+                    Subjects Sub = new Subjects();
+                    DataRow dr = Sub.drSearchStudentSubjectTypAndHours(CourseID);
+                    hoursdrop = hoursdrop + Convert.ToInt16(dr["Hours"].ToString());
+
+                }
+                if (ddlNameCourse3.SelectedIndex != 0 && ddlNameCourse3.SelectedIndex != -1)
+                {
+                    int CourseID = Convert.ToInt32(ddlNameCourse3.SelectedValue.ToString());
+
+                    Subjects Sub = new Subjects();
+                    DataRow dr = Sub.drSearchStudentSubjectTypAndHours(CourseID);
+                    hoursdrop = hoursdrop + Convert.ToInt16(dr["Hours"].ToString());
+
+                }
+                txtNumHourAfter.Text = Convert.ToString(Convert.ToInt16(txtNmberHours.Text.ToString()) - hoursdrop) ;
+
             }
         }
 
@@ -27,7 +60,11 @@ namespace WebApplication1
 
             int ID = Convert.ToInt32(Session["ID"].ToString());
             RegistredCourses obj = new RegistredCourses();
-            DataTable tbl1 = obj.dtSearchRegisterSubject(ID);
+            NowTimeUniversity timee = new NowTimeUniversity();
+            DataRow T = timee.drSearchYearANdSemester();
+            string year = T["NowYear"].ToString();
+            string Semester = T["NowSemester"].ToString();
+            DataTable tbl1 = obj.dtSearchRegisterSubject(ID,year,Semester);
             ddlNameCourse1.DataSource = tbl1;
             ddlNameCourse1.DataTextField = "SubjectName";
             ddlNameCourse1.DataValueField = "SubjectID";
@@ -46,7 +83,18 @@ namespace WebApplication1
             ddlNameCourse1.Items.Insert(0, new ListItem("<اختر مادة>", "0"));
             ddlNameCourse2.Items.Insert(0, new ListItem("<اختر مادة>", "0"));
             ddlNameCourse3.Items.Insert(0, new ListItem("<اختر مادة>", "0"));
-            
+
+
+            int RegHours = 0;
+            for(int i=0; i<tbl1.Rows.Count;i++)
+            {
+                DataRow dr= tbl1.Rows[i];
+                RegHours = RegHours + Convert.ToInt32(dr["Hours"].ToString());
+
+            }
+
+            txtNmberHours.Text = RegHours+"";
+
         }
 
         private void fillDataForm(int ID)
@@ -63,45 +111,72 @@ namespace WebApplication1
 
             }
 
-            labDate.Text = DateTime.Today.ToString();
+            labDate.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
         }
 
         protected void ddlNameCourse1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlNameCourse1.SelectedIndex != 0 && ddlNameCourse1.SelectedIndex != -1)
+            {
                 txtNumCourse1.Text = ddlNameCourse1.SelectedValue.ToString();
 
-            RegistredCourses obj1 = new RegistredCourses();
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            int CourseID = Convert.ToInt32(ddlNameCourse1.SelectedValue.ToString());
-            DataRow dr1;
-            dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
-            if (dr1 != null)
+                RegistredCourses obj1 = new RegistredCourses();
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                int CourseID = Convert.ToInt32(ddlNameCourse1.SelectedValue.ToString());
+                DataRow dr1;
+                dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
+                if (dr1 != null)
+                {
+                    labTeacher1.Text = dr1["EmployeeName"].ToString();
+                    txtTimeCourse1.Text = dr1["Time"].ToString();
+                }
+
+               
+
+
+            }
+            else
             {
-                labTeacher1.Text = dr1["EmployeeName"].ToString();
+                txtNumCourse1.Text = "";
+                labTeacher1.Text = "";
+                txtTimeCourse1.Text = "";
+
             }
         }
 
         protected void ddlNameCourse2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlNameCourse2.SelectedIndex != 0 && ddlNameCourse2.SelectedIndex != -1)
+            {
                 txtNumCourse2.Text = ddlNameCourse2.SelectedValue.ToString();
 
-            RegistredCourses obj1 = new RegistredCourses();
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            int CourseID = Convert.ToInt32(ddlNameCourse2.SelectedValue.ToString());
-            DataRow dr1;
-            dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
-            if (dr1 != null)
+                RegistredCourses obj1 = new RegistredCourses();
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                int CourseID = Convert.ToInt32(ddlNameCourse2.SelectedValue.ToString());
+                DataRow dr1;
+                dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
+                if (dr1 != null)
+                {
+                    labTeacher2.Text = dr1["EmployeeName"].ToString();
+                    txtTimeCourse2.Text = dr1["Time"].ToString();
+                }
+
+            
+
+            }
+            else
             {
-                labTeacher2.Text = dr1["EmployeeName"].ToString();
+                txtNumCourse2.Text = "";
+                labTeacher2.Text = "";
+                txtTimeCourse2.Text = "";
+
             }
         }
 
         protected void ddlNameCourse3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlNameCourse3.SelectedIndex != 0 && ddlNameCourse3.SelectedIndex != -1)
-                txtNumCourse3.Text = ddlNameCourse3.SelectedValue.ToString();
+            {    txtNumCourse3.Text = ddlNameCourse3.SelectedValue.ToString();
             RegistredCourses obj1 = new RegistredCourses();
             int ID = Convert.ToInt32(Session["ID"].ToString());
             int CourseID = Convert.ToInt32(ddlNameCourse3.SelectedValue.ToString());
@@ -110,6 +185,17 @@ namespace WebApplication1
             if (dr1 != null)
             {
                 labTeacher3.Text = dr1["EmployeeName"].ToString();
+                txtTimeCourse3.Text = dr1["Time"].ToString();
+            }
+
+                
+            }
+            else
+            {
+                txtNumCourse3.Text = "";
+                labTeacher3.Text = "";
+                txtTimeCourse3.Text = "";
+
             }
         }
 
@@ -195,34 +281,43 @@ namespace WebApplication1
                 string semester = T["NowSemester"].ToString();
                 string Year = T["NowYear"].ToString();
                 PullCourseClass obj = new PullCourseClass();
-            if (obj.AddPullCourse(ID, Year, semester, CourseNum1,CourseNum2,CourseNum3,DateNow,Reson, Course1time, Course2time, Course3time, NumHourREG, NumHourAFpull, "","",0,"","",0,0,5)== 1)
-            {
-                txtReason.Text = "";
-                txtNumCourse1.Text = "";
-                txtNumCourse2.Text = "";
-                txtNumCourse3.Text = "";
-                ddlNameCourse1.SelectedIndex = -1;
-                ddlNameCourse2.SelectedIndex = -1;
-                ddlNameCourse3.SelectedIndex = -1;
-                labTeacher1.Text = "";
-                labTeacher2.Text = "";
-                labTeacher3.Text = "";
-                txtNmberHours.Text = "";
-                txtNumHourAfter.Text = "";
-                txtTimeCourse1.Text = "";
-                txtTimeCourse2.Text = "";
-                txtTimeCourse3.Text = "";
+                if (NumHourAFpull >= 9)
+                {
+                    if (obj.AddPullCourse(ID, Year, semester, CourseNum1, CourseNum2, CourseNum3, DateNow, Reson, Course1time, Course2time, Course3time, NumHourREG, NumHourAFpull, "", "", 0, "", "", 0, 0, 5) == 1)
+                    {
+                        txtReason.Text = "";
+                        txtNumCourse1.Text = "";
+                        txtNumCourse2.Text = "";
+                        txtNumCourse3.Text = "";
+                        ddlNameCourse1.SelectedIndex = -1;
+                        ddlNameCourse2.SelectedIndex = -1;
+                        ddlNameCourse3.SelectedIndex = -1;
+                        labTeacher1.Text = "";
+                        labTeacher2.Text = "";
+                        labTeacher3.Text = "";
+                        txtNmberHours.Text = "";
+                        txtNumHourAfter.Text = "";
+                        txtTimeCourse1.Text = "";
+                        txtTimeCourse2.Text = "";
+                        txtTimeCourse3.Text = "";
+                        labError.Visible = false;
+                        error.Style.Add("display", "none");
+                        SentMail s = new SentMail();
+                        s.sendemailHead(ID);
 
-
-                
-   
-            }
+                    }
+                }
+                else
+                {
+                    labError.Visible = true;
+                    error.Style.Add("display", "block");
+                }
                 errorLabel.Visible = false;
 
             }
             else
             {
-                errorLabel.Text = "التوقيع المدخل خاطئ";
+                errorLabel.Text = " التوقيع المدخل خاطئ أو كلمة المرور";
                 errorLabel.Visible = true;
             }
 

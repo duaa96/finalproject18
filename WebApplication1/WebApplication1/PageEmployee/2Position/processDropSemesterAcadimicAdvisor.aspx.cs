@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1.PageEmployee
 {
-    public partial class processAltiSubjectAcadimicAdvisor : System.Web.UI.Page
+    public partial class processDropSemesterAcadimicAdvisor : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,10 +20,11 @@ namespace WebApplication1.PageEmployee
                 fillData();
             }
         }
+
         private void fillData()
         {
 
-            AlternativeSub obj = new AlternativeSub();
+            DropSemester obj = new DropSemester();
             int id = Convert.ToInt32(Request.QueryString["id"]);
             DataRow dr = obj.drgetform(id);
 
@@ -34,48 +35,36 @@ namespace WebApplication1.PageEmployee
                 DataRow Stu = objStu.drSearchStudent(STUid);
                 if (Stu != null)
                 {
-                    labCollage.Text = Stu["CollageName"].ToString();
                     labNameStudent.Text = Stu["StudentName"].ToString();
                     labNumStudent.Text = Stu["UniversityID"].ToString();
                     labSection.Text = Stu["SectionName"].ToString();
-                    labMager.Text = Stu["Mager"].ToString();
+                    labCollage.Text = Stu["CollageName"].ToString();
 
                 }
-                labDateS.Text = dr["Date"].ToString();
-                labDateAcadimic.Text = DateTime.Today.ToString();
-                txtNumberCourse1.Text = dr["Subject1ID"].ToString();
-                labTypeCourse1.Text = dr["Subject2Type"].ToString();
-                txtReason.Text = dr["Description"].ToString();
-                txtAlternativeNum1C1.Text = dr["NewSubject"].ToString();
-                string Year = dr["Year"].ToString();
-                string Semester = dr["Semester"].ToString();
-                Subjects sub = new Subjects();
-                if (Convert.ToInt32(txtNumberCourse1.Text.ToString()) != 0)
-                {
-                    int Course1 = Convert.ToInt32(txtNumberCourse1.Text.ToString());
-                    DataRow Sub = sub.drSearchSubject(Course1);
-                    labHoursCourse1.Text = Sub["Hours"].ToString();
+                labDate.Text = dr["Date"].ToString();
+                txtReasons.Text = dr["Description"].ToString();
+                labDateAcadimic.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
+                txtNumHours.Text = dr["NumofHourReg"].ToString();
+                string semester = dr["Semester"].ToString();
+                string year = dr["Year"].ToString();
+                int ID = Convert.ToInt32(dr["StudentID"].ToString());
+                RegistredCourses objj = new RegistredCourses();
+                DataTable tbl1 = objj.dtSearchRegisterSubjectStu(ID, semester, year);
+                gvCourses.DataSource = tbl1;
+                gvCourses.DataBind();
+               
 
-                    ddlCourse1.Items.Insert(0, new ListItem(Sub["SubjectName"].ToString(), "0"));
 
-                }
-                if (Convert.ToInt32(txtAlternativeNum1C1.Text.ToString()) != 0)
-                {
-                    int Course1 = Convert.ToInt32(txtAlternativeNum1C1.Text.ToString());
-                    DataRow Sub = sub.drSearchSubject(Course1);
-                    labHoursAlternative.Text = Sub["Hours"].ToString();
-                    ddlAlternativeCourse1.Items.Insert(0, new ListItem(Sub["SubjectName"].ToString(), "0"));
-                }
+
             }
         }
 
-            protected void btnSaveAcadimic_Click(object sender, EventArgs e)
-            {
+        protected void btnSaveHead_Click(object sender, EventArgs e)
+        {
             bool Result = false;
             int ID = Convert.ToInt32(Session["ID"].ToString());
             string Path = "";
-            string Data = txtNumberCourse1.Text.ToString() + txtAlternativeNum1C1.Text.ToString() +
-             labHoursCourse1.Text.ToString() + labHoursAlternative.Text.ToString()+labDateAcadimic.Text.ToString()+rbtAcademic.SelectedValue.ToString();
+            string Data = DateTime.Today.ToString() + txtNumHours.Text.ToString()+labDate.Text.ToString();
             if (fuSignatureAcadimic.HasFile)
             {
                 string Private = fuSignatureAcadimic.FileName.ToString();
@@ -90,11 +79,17 @@ namespace WebApplication1.PageEmployee
 
             if (Result == true)
             {
-                AlternativeSub obj = new AlternativeSub();
+                DropSemester obj = new DropSemester();
                 int id = Convert.ToInt32(Request.QueryString["id"]);
-                int AcceptAcadimic = Convert.ToInt32(rbtAcademic.SelectedValue.ToString());
-                if (obj.AcceptAcademicAdvisorAltiSubj(id, AcceptAcadimic) == 1)
+                int AcceptAcadimic = Convert.ToInt32(rbtAcceptAcadimic.SelectedValue.ToString());
+                string AcadimicDec = txtDescriptionAcadimic.Text.ToString();
+                if (obj.AcceptAcademicAdvisorDropSemester(id, AcceptAcadimic, AcadimicDec) == 1)
                 {
+                    DataRow dr = obj.drgetform(id);
+                    int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+
+                    SentMail s = new SentMail();
+                    s.sendemailHead(STUid);
                     Response.Redirect("ProcessRequest.aspx");
                 }
 
@@ -106,7 +101,6 @@ namespace WebApplication1.PageEmployee
                 errorAcadimic.Text = "التوقيع المدخل خاطئ او كلمة المرور";
                 errorAcadimic.Visible = true;
             }
-
         }
     }
-    }
+}

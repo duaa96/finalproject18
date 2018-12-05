@@ -43,7 +43,7 @@ namespace WebApplication1.PageEmployee
 
                 }
                 labDateS.Text = dr["Date"].ToString();
-                labDateDean.Text = DateTime.Today.ToString();
+                labDateDean.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 txtNumberCourse1.Text = dr["Subject1ID"].ToString();
                 labTypeCourse1.Text = dr["Subject2Type"].ToString();
                 txtReason.Text = dr["Description"].ToString();
@@ -108,6 +108,8 @@ namespace WebApplication1.PageEmployee
                 int AcceptDean = Convert.ToInt32(rbtDeanAccept.SelectedValue.ToString());
                 if (obj.AcceptDeanAltiSubj(id, AcceptDean) == 1)
                 {
+                    SentMail s = new SentMail();
+                    s.sendemailReg();
                     Response.Redirect("ProcessRequest.aspx");
                 }
 

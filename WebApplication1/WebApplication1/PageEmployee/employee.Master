@@ -28,11 +28,16 @@
                         </span>
                    
                         <li>
-                            <a href="#" class="dropdown-btn active "><i class="fa fa-home"></i> <span class="nav-label w3-margin-right">الصفحة الرئيسية  </span></a>
+                            <a href="HomeEmployee.aspx" class="dropdown-btn active "><i class="fa fa-home"></i> <span class="nav-label w3-margin-right" style="font-size:18px; font-family:'Amiri'">الصفحة الرئيسية  </span></a>
                         </li>
 
+                        <li id="position2" style="display:block;" runat="server">
+                            
+                            <a href="ProcessRequest.aspx" class="dropdown-btn active "><i class="	fa fa-magic	"></i> <span class="nav-label w3-margin-right" style="font-size:18px;">معالجة الطلبات</span></a>
+                        </li>
+                       
                         <li>
-                                <a href="#" onclick=dwl2(); class="dropdown-btn nav-label w3-margin-right  "><i class="fa fa-caret-down"></i>التوقيع
+                                <a href="#" onclick=dwl2(); class="dropdown-btn nav-label w3-margin-right  " style="font-size:18px;"><i class="fa fa-caret-down" ></i>ادارة التوقيع الخاص بي
                                 
                                 </a>
                                       <ul id="dropdown-container3" class="dropdown-container nav nav-second-level collapse">
@@ -40,10 +45,6 @@
                                         <li><a href="NewSig.aspx">تجديد توقيع</a></li>
                                       </ul>
                         </li>
-                     <li>
-                            <a href="ProcessRequest.aspx" class="dropdown-btn active "><i class="	fa fa-magic	"></i> <span class="nav-label w3-margin-right">معالجة الطلبات</span></a>
-                        </li>
-                      
                       </ul>   
             
                  
@@ -51,7 +52,7 @@
     </div>
 
     <div  class="w3-main" style="margin-right:200px;  width:initial;">
-<div class="w3-blue" >
+<div class="w3-green" >
      <button id="open2" class="w3-button w3-xlarge w3-right w3-hide-large"  onclick="w3_close()" style="display:none;" >&#9776;</button>
   <button id="open" class="w3-button  w3-xlarge w3-right w3-hide-large" onclick="w3_open()"  >&#9776;</button>
     <div class="w3-container w3-responsive">
@@ -64,7 +65,7 @@
                
               <li class="dropdown ">
                   <a class="count-info" >
-                      <img src="img/user.png" width="70px">
+                     <img src="img/red.png" width="50">
                   </a>
                </li>
                 

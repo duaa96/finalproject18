@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"   MasterPageFile="~/PageEmployee/employee.Master" CodeBehind="processAltiSubjectAcadimicAdvisor.aspx.cs" Inherits="WebApplication1.PageEmployee.processAltiSubjectAcadimicAdvisor" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="employee2.Master" CodeBehind="processAltiSubjectHead2.aspx.cs" Inherits="WebApplication1.PageEmployee.processAltiSubjectHead2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
      <div class=" w3-cell-row ">
@@ -94,7 +94,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right  w3-responsive" style="direction:rtl; margin-right:3%;" >
  <table class=" w3-responsive float-right w3-table w3-striped w3-border" style="direction:rtl;float:right;   font-family:'Amiri';">
-    <tr class="bg-primary  w3-center w3-margin" style="font-size:x-large;">
+    <tr class="w3-green   w3-center w3-margin" style="font-size:x-large;">
       <th class="w3-center">الرقم</th>
        
       <th  class="w3-center" style=" float: none; 
@@ -111,8 +111,7 @@
     </tr>
     <tr style="font-size:large;">
 
-      <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"  ControlToValidate="txtNumberCourse1"
-  ForeColor="Red"></asp:RequiredFieldValidator>1- </td>
+      <td>1- </td>
       <td><span>
           <asp:DropDownList ID="ddlCourse1" runat="server" CssClass="form-control  w3-margin-right bg-white" width="200px"  AutoPostBack="true" Enabled="False">
           </asp:DropDownList>
@@ -148,7 +147,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right  w3-responsive" style="direction:rtl; margin-right:3%;" >
  <table class=" w3-responsive float-right w3-table w3-striped w3-border" style="direction:rtl;float:right;   font-family:'Amiri';">
-    <tr class="bg-primary  w3-center w3-margin" style="font-size:x-large;">
+    <tr class="w3-green bg-primary  w3-center w3-margin" style="font-size:x-large;">
       <th class="w3-center">الرقم</th>
        
       <th  class="w3-center" style=" float: none; 
@@ -162,8 +161,7 @@
     </tr>
     <tr style="font-size:large;">
 
-      <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*"  ControlToValidate="txtAlternativeNum1C1"
-  ForeColor="Red"></asp:RequiredFieldValidator>1- </td>
+      <td>1- </td>
       <td><span>
 
           <asp:DropDownList ID="ddlAlternativeCourse1" runat="server"  CssClass="form-control  w3-margin-right bg-white" width="250px" Enabled="False"  AutoPostBack="true">
@@ -189,7 +187,7 @@
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" >
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="rq4" ControlToValidate="txtReason" ErrorMessage="*"></asp:RequiredFieldValidator>
+         
 
       <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;">وذلك للأسباب التالية:</label>
       
@@ -236,23 +234,47 @@
           </asp:RadioButtonList>
       </div>
     </div>
+
+    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
+                                                margin: 0 auto; margin-right:7%; margin-left:3%; ">
+            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات رئيس القسم </h2>
+            
+        </div>
+       
+    </div>
+
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-      <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.5%;"  >
-      <asp:Label ID="dfDateAcadimic"  style="float:right;  font-family:'Amiri'; font-size:large;" runat="server" Text="Label">التاريخ:</asp:Label>
+         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator1" ControlToValidate="rbtAceptHead" ErrorMessage="*"></asp:RequiredFieldValidator>
+
+      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
+     
+          <asp:RadioButtonList ID="rbtAceptHead" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="true" >
+               <asp:ListItem Text="موافق" Value="1" />
+               <asp:ListItem Text="غير موافق" Value="2" />
+          </asp:RadioButtonList>
+      </div>
+    </div>
+   
+ <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+      <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" id="DateReg" >
+      <asp:Label ID="dfDateHead"  style="float:right;  font-family:'Amiri'; font-size:large;" runat="server" Text="Label">التاريخ:</asp:Label>
     
-      <asp:Label ID="labDateAcadimic"  style="float:right;  font-family:'Amiri'; font-size:x-large;" runat="server" Text="Label"></asp:Label>
+      <asp:Label ID="labDateHead"  style="float:right;  font-family:'Amiri'; font-size:x-large;" runat="server" Text="Label"></asp:Label>
      </div>  
           <div class="col-1">
 
           </div>
            <div class="form-group float-right col-5" style="direction:rtl; "  >
-       <asp:Label ID="dfinfoAcadimic" runat="server"  style="float:right;  font-family:'Amiri'; font-size:large;" >التوقيع:</asp:Label>
+       <asp:Label ID="dfinfoHead" runat="server"  style="float:right;  font-family:'Amiri'; font-size:large;" >التوقيع:</asp:Label>
 
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator11" ControlToValidate="fuSignatureAcadimic" ErrorMessage="*"></asp:RequiredFieldValidator>
+         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator6" ControlToValidate="fuSignatureHead" ErrorMessage="*"></asp:RequiredFieldValidator>
 
-      <asp:FileUpload ID="fuSignatureAcadimic" runat="server" />
-       <asp:Label ID="errorAcadimic" runat="server" style="float:right;  font-family:'Amiri'; font-size:large;" Visible="False" ForeColor="#FF3300"></asp:Label>
+      <asp:FileUpload ID="fuSignatureHead" runat="server" />
+       <asp:Label ID="errorHead" runat="server" style="float:right;  font-family:'Amiri'; font-size:large;" Visible="False" ForeColor="#FF3300"></asp:Label>
      </div>  
            <div class="col-1">
 
@@ -271,7 +293,7 @@
    <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.4%; " >
 
       <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">كلمة المرور للتوقيع:
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator1" ControlToValidate="txtPassSign" ErrorMessage="*"></asp:RequiredFieldValidator>
+         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator4" ControlToValidate="txtPassSign" ErrorMessage="*"></asp:RequiredFieldValidator>
 
       </label>
           <asp:TextBox ID="txtPassSign"  TextMode="Password"  runat="server" CssClass="form-control w3-margin-right" style="float:right; font-family:'Amiri'; " Width="40%"></asp:TextBox>
@@ -281,14 +303,42 @@
            <div class="col-1">
 
           </div>
-  </div>
-    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+  </div> 
+
+    <div class=" w3-white w3-center navbar navbar-expand-lg w3-margin-bottom  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSaveAcadimic" runat="server" Text="حفظ" class="btn btn-lg btn-primary" align="center" OnClick="btnSaveAcadimic_Click"  />
+          <asp:Button ID="btnSaveHead" runat="server" Text="حفظ" class="btn btn-lg btn-danger" align="center" OnClick="btnSaveHead_Click"  />
       
        
       </div>
     </div>
-    </asp:Content>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+</asp:Content>

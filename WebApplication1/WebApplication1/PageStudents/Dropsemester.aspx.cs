@@ -41,7 +41,7 @@ namespace WebApplication1
                 labSection.Text = Stu["SectionName"].ToString();
 
             }
-            labDate.Text = DateTime.Today.ToString();
+            labDate.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
         }
 
 
@@ -50,9 +50,22 @@ namespace WebApplication1
 
             int ID = Convert.ToInt32(Session["ID"].ToString());
             RegistredCourses obj = new RegistredCourses();
-            DataTable tbl1 = obj.dtSearchRegisterSubject(ID);
+            NowTimeUniversity timee = new NowTimeUniversity();
+            DataRow T = timee.drSearchYearANdSemester();
+            string year = T["NowYear"].ToString();
+            string Semester = T["NowSemester"].ToString();
+            DataTable tbl1 = obj.dtSearchRegisterSubject(ID, year, Semester);
             gvCourses.DataSource = tbl1;
             gvCourses.DataBind();
+            int RegHours = 0;
+            for (int i = 0; i < tbl1.Rows.Count; i++)
+            {
+                DataRow dr = tbl1.Rows[i];
+                RegHours = RegHours + Convert.ToInt32(dr["Hours"].ToString());
+
+            }
+
+            txtNumHours.Text = RegHours + "";
 
         }
 
@@ -66,7 +79,7 @@ namespace WebApplication1
             int ID = Convert.ToInt32(Session["ID"]);
             string Path = "";
 
-            string Data = DateTime.Today.ToString()+ txtNumHours.Text.ToString(); 
+            string Data = labDate.Text.ToString()+ txtNumHours.Text.ToString(); 
             if (fuSignature.HasFile)
             {
                 string Private = fuSignature.FileName.ToString();
@@ -81,7 +94,7 @@ namespace WebApplication1
             }
             if (Result == true)
             {
-                string date1 = DateTime.Today.ToString();
+                string date1 = labDate.Text.ToString();
                 string Reason = txtReasons.Text.ToString();
                 DropSemester objsem = new DropSemester();
                 int NumOFHour = Convert.ToInt32(txtNumHours.Text.ToString());
@@ -93,13 +106,14 @@ namespace WebApplication1
                 if (objsem.AddDropSemester(ID, Year, semester, Reason, NumOFHour, date1, "", 0, "", 0, "", 0, "", 0,0, "", 2) == 1)
                 {
                     txtReasons.Text = "";
-                    txtNumHours.Text = "";
+                    SentMail s = new SentMail();
+                    s.sendemailAcadimic(ID);
                 }
                 errorLabel.Visible = false;
             }
             else
             {
-                errorLabel.Text = "التوقيع المدخل خاطئ";
+                errorLabel.Text = " التوقيع المدخل خاطئ أو كلمة المرور";
                 errorLabel.Visible = true;
             }
         }

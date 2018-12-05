@@ -31,7 +31,7 @@ namespace WebApplication1.PageStudents
 
         }
 
-        protected void gvPullCourseView_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvDropSemesterView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
 
@@ -72,7 +72,7 @@ namespace WebApplication1.PageStudents
             {
                 int rowIndex = int.Parse(e.CommandArgument.ToString());
                 int val = (int)this.gvDropSemester.DataKeys[rowIndex]["ID"];
-               DropSemester obj = new DropSemester();
+                DropSemester obj = new DropSemester();
                 int del = obj.DeleteDreopSemesterSelected(val);
                 errorLabel.Text = del + "";
                 errorLabel.Visible = true;
@@ -91,9 +91,33 @@ namespace WebApplication1.PageStudents
             }
 
         }
-        public void gvPullCoursedelete_RowDeleting(Object sender, GridViewDeleteEventArgs e)
+        public void gvDropSemesterdelete_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
             fillGv();
+
+        }
+        protected void gvDropSemester_Data(Object sender, GridViewRowEventArgs e)
+        {
+            for (int i = 2; i < 7; i++)
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    if (e.Row.Cells[i].Text == "1")
+                    {
+                        e.Row.Cells[i].Text = "موافق";
+                    }
+                    else if (e.Row.Cells[i].Text == "2")
+                    {
+                        e.Row.Cells[i].Text = " غير موافق";
+                    }
+                    else if (e.Row.Cells[i].Text == "0" || e.Row.Cells[i].Text is null)
+                    {
+                        e.Row.Cells[i].Text = "لم يتم النظر فيه بعد";
+                    }
+
+                }
+            }
+
 
         }
     }

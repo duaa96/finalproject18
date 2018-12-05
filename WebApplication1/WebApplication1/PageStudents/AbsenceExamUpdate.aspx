@@ -12,8 +12,7 @@
         </div>
         
     </div>
-      
-      
+
     <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
@@ -85,7 +84,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right  w3-responsive" style="direction:rtl; margin-right:3%;" >
  <table class=" w3-responsive float-right w3-table w3-striped w3-border" style="direction:rtl;float:right;   font-family:'Amiri';">
-    <tr class="bg-primary  w3-center w3-margin" style="font-size:x-large;">
+    <tr class="w3-green  w3-center w3-margin" style="font-size:x-large;">
       <th class="w3-center">الرقم</th>
        
       <th  class="w3-center" style=" float: none; 
@@ -210,12 +209,13 @@
       <asp:FileUpload ID="fuSignatureStudent" runat="server" />
        <asp:Label ID="errorLabel" runat="server" style="float:right;  font-family:'Amiri'; font-size:large;" Visible="False" ForeColor="#FF3300"></asp:Label>
      </div>  
+        
            <div class="col-1">
 
           </div>
       </div>
-
-     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+       
+    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" >
       
@@ -238,13 +238,12 @@
 
           </div>
   </div>
-
-
+      
       <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-      <asp:Button ID="Button1" runat="server" OnClick="btnSave_Click" Text="حفظ" class="btn btn-lg btn-primary" align="center" />
+      <asp:Button ID="Button1" runat="server" OnClick="btnSave_Click" Text="حفظ" class="btn btn-lg btn-danger" align="center" />
       
        
       </div>
@@ -278,4 +277,3 @@
 
 
 </asp:Content>
-

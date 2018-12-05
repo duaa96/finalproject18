@@ -157,7 +157,33 @@ public class Application
         Connection.Close();
         return dt;
     }
+    public DataTable dtApplication()
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select * from Application", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+    }
 
+    public int UpdateApplicationtime(int ApplicationID, int Enable, string ExpireDate)
+    {
+        string Query = "Update  Application set  Enable =@Enable ,ExpireDate=@ExpireDate  where ApplicationID = @ApplicationID ";
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        SqlCommand Command = new SqlCommand(Query, Connection);
+
+        Command.CommandType = CommandType.Text;
+        Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+        Command.Parameters.AddWithValue("@Enable", Enable);//This is Parameter
+        Command.Parameters.AddWithValue("@ExpireDate", ExpireDate);//This is Parameter
+
+       int x= Command.ExecuteNonQuery();
+        Connection.Close();
+        return x;
+    }
 }
 
 

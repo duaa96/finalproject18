@@ -58,15 +58,6 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.Label labMager;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
         /// ddlCourse1 control.
         /// </summary>
         /// <remarks>
@@ -103,15 +94,6 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.Label labHoursCourse1;
         
         /// <summary>
-        /// RequiredFieldValidator5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
-        
-        /// <summary>
         /// ddlAlternativeCourse1 control.
         /// </summary>
         /// <remarks>
@@ -137,15 +119,6 @@ namespace WebApplication1.PageEmployee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labHoursAlternative;
-        
-        /// <summary>
-        /// rq4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rq4;
         
         /// <summary>
         /// txtReason control.
@@ -182,15 +155,6 @@ namespace WebApplication1.PageEmployee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbtAcademic;
-        
-        /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// rbtAceptHead control.

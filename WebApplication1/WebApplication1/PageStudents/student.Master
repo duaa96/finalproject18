@@ -27,11 +27,36 @@
                                 <img alt="image" class="img-circle rounded mx-auto d-block w3-margin w3-padding-16" src="img/logo.png" width="160 px" />
                         </span>
                         <li>
-                            <a href="#" class="dropdown-btn active "><i class="fa fa-home"></i> <span class="nav-label w3-margin-right">الصفحة الرئيسية  </span></a>
+                            <a href="HomeStudent.aspx" class="dropdown-btn active "><i class="fa fa-home"></i> <span class="nav-label w3-margin-right" style="font-size:18px">الصفحة الرئيسية  </span></a>
                         </li>
 
-                        <li>
-                                <a href="#" onclick=dwl2(); class="dropdown-btn nav-label w3-margin-right  "><i class="fa fa-caret-down"></i>التوقيع
+                        
+                       <li  >
+                            <a href="#" onclick=dwl(); class="dropdown-btn"><i class="fa fa-caret-down" ></i> <span class="nav-label w3-margin-right  " style="font-size:18px"> المعاملات الطلابية</span></a>
+                            <ul  id="dropdown-container2" class=" dropdown-container nav nav-second-level collapse ">
+                                <li><a href="PullCourse.aspx">  سحب مساق </a></li>
+                                 <li><a href="ShowStates.aspx"> عرض حال</a></li>
+                                <li><a href="DelaySemester.aspx">  تأجيل فصل</a></li>
+                                <li><a href="Dropsemester.aspx"> سحب فصل دراسي</a></li>
+                                <li><a href="AltSubject.aspx">   تسجيل مساق بديل للتخرج</a></li>
+                                <li><a href="Absenceexcuse.aspx"> عذر غياب عن الامتحان النهائي</a></li>
+
+                            </ul>
+                       </li>
+                       <li  >
+                            <a href="#" onclick=dwl3(); class="dropdown-btn"><i class="fa fa-caret-down"></i> <span class="nav-label w3-margin-right  " style="font-size:18px">معالجة المعاملات </span></a>
+                            <ul  id="dropdown-container4" class=" dropdown-container nav nav-second-level collapse">
+                                <li><a href="PullCourseDisplay.aspx">  سحب مساق </a></li>
+                                 <li><a href="ShowstatusDiaplay.aspx"> عرض حال</a></li>
+                                <li><a href="DelaySemesterDisplay.aspx">  تأجيل فصل</a></li>
+                                <li><a href="DropsemesterDisplay.aspx"> سحب فصل دراسي</a></li>
+                                <li><a href="AltSubjectDisplay.aspx">   تسجيل مساق بديل للتخرج</a></li>
+                                <li><a href="AbsenceExcuseDisplay.aspx"> عذر غياب عن الامتحان النهائي</a></li>
+
+                            </ul>
+                       </li>
+                    <li>
+                                <a href="#" onclick=dwl2(); class="dropdown-btn nav-label w3-margin-right  " style="font-size:18px"><i class="fa fa-caret-down"></i>ادارة التوقيع الخاص بي
                                 
                                 </a>
                                       <ul id="dropdown-container3" class="dropdown-container nav nav-second-level collapse">
@@ -40,28 +65,6 @@
                                       </ul>
                         </li>
                     
-                       <li  >
-                            <a href="#" onclick=dwl(); class="dropdown-btn"><i class="fa fa-caret-down"></i> <span class="nav-label w3-margin-right  "> تقديم طلب  </span></a>
-                            <ul  id="dropdown-container2" class=" dropdown-container nav nav-second-level collapse ">
-                                <li><a href="PullCourse.aspx">  سحب مساق </a></li>
-                                <li><a href="Dropsemester.aspx"> سحب فصل دراسي</a></li>
-                                <li><a href="Absenceexcuse.aspx"> عذر غياب عن الامتحان النهائي</a></li>
-                                 <li><a href="ShowStates.aspx"> عرض حال</a></li>
-                                <li><a href="DelaySemester.aspx">  تأجيل فصل</a></li>
-                                <li><a href="AltSubject.aspx">   تسجيل مساق بديل للتخرج</a></li>
-                            </ul>
-                       </li>
-                       <li  >
-                            <a href="#" onclick=dwl3(); class="dropdown-btn"><i class="fa fa-caret-down"></i> <span class="nav-label w3-margin-right  ">طلباتي</span></a>
-                            <ul  id="dropdown-container4" class=" dropdown-container nav nav-second-level collapse">
-                                <li><a href="PullCourseDisplay.aspx">  سحب مساق </a></li>
-                                <li><a href="DropsemesterDisplay.aspx"> سحب فصل دراسي</a></li>
-                                <li><a href="AbsenceExcuseDisplay.aspx"> عذر غياب عن الامتحان النهائي</a></li>
-                                 <li><a href="ShowStatesDisplay.aspx"> عرض حال</a></li>
-                                <li><a href="DelaySemesterDisplay.aspx">  تأجيل فصل</a></li>
-                                <li><a href="AltSubjectDisplay.aspx">   تسجيل مساق بديل للتخرج</a></li>
-                            </ul>
-                       </li>
                       </ul>   
             
                  
@@ -69,7 +72,7 @@
     </div>
 
     <div  class="w3-main" style="margin-right:200px;  width:initial;">
-<div class="w3-blue" >
+<div class="w3-green" >
      <button id="open2" class="w3-button w3-xlarge w3-right w3-hide-large"  onclick="w3_close()" style="display:none;" >&#9776;</button>
   <button id="open" class="w3-button  w3-xlarge w3-right w3-hide-large" onclick="w3_open()"  >&#9776;</button>
     <div class="w3-container w3-responsive">
@@ -82,7 +85,7 @@
                
               <li class="dropdown ">
                   <a class="count-info" >
-                      <img src="img/user.png" width="70px">
+                      <img src="img/red.png" width="40px">
                   </a>
                </li>
                 

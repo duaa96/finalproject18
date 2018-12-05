@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/PageStudents/student.Master" CodeBehind="DropSemesterDisplayAll.aspx.cs" Inherits="WebApplication1.PageStudents.DropSemesterDisplayAll" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class=" w3-cell-row ">
         <div class="w3-white w3-center navbar navbar-expand-lg w3-margin-top w3-margin-bottom w3-padding-24" style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
@@ -66,11 +66,10 @@
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right col-5" style="direction:rtl; margin-right:3%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">عدد الساعات المسجلة:<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*"  ControlToValidate="txtNumHours"
-  ForeColor="Red"></asp:RequiredFieldValidator>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">عدد الساعات المسجلة:
           </label>
           
-          &nbsp;<asp:TextBox ID="txtNumHours" runat="server" CssClass="form-control" style="float:right; font-family:'Amiri';" TextMode="Number" Enabled="False"></asp:TextBox>
+          &nbsp;<asp:TextBox ID="txtNumHours" runat="server" CssClass="form-control bg-white" style="float:right; font-family:'Amiri';" TextMode="Number" Enabled="False"></asp:TextBox>
             
       </div>  
 
@@ -95,36 +94,29 @@
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right row w3-responsive" style="direction:rtl; margin-right:3%;" >
-       <asp:GridView ID="gvCourses" class="w3-table w3-striped w3-border w3-center" style="direction:rtl;float:right;   font-family:'Amiri'; text-align:center;" runat="server" AutoGenerateColumns="False" DataKeyNames="SubjectID" width="1000px" CellPadding="4" ForeColor="Black" GridLines="None" Font-Names="Agency FB">
-                                    <AlternatingRowStyle BackColor="White" />
+       <asp:GridView ID="gvCourses" class="w3-table w3-border w3-center"   style=" font-family:'Amiri';"   runat="server" AutoGenerateColumns="False" DataKeyNames="SubjectID" width="900px" CellPadding="3"  BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                                     <Columns >
-                                        <asp:BoundField  DataField="SubjectName" HeaderText="اسم المساق" SortExpression="SubjectName" />
-                                        <asp:BoundField DataField="SubjectID" HeaderText="رقم المساق" SortExpression="SubjectID" />
+                                        <asp:BoundField DataField="SubjectID" ItemStyle-CssClass="w3-center"  HeaderStyle-CssClass="w3-center" HeaderText="رقم المساق" SortExpression="SubjectID" />
+
+                                        <asp:BoundField  DataField="SubjectName" ItemStyle-CssClass="w3-center"  HeaderStyle-CssClass="w3-center" HeaderText="اسم المساق" SortExpression="SubjectName" />
                                         
 
-                                        <asp:TemplateField ShowHeader="False">
-                                            <EditItemTemplate>
-                                            </EditItemTemplate>
-                                            <ItemStyle Width="24px" />
-                                           
-                                        </asp:TemplateField>
+                                        
                                            
                                     </Columns>
-                                    <EditRowStyle BackColor="#2461BF" />
                                     <EmptyDataTemplate>
                                         <asp:Label ID="lblNoUser" runat="server" Font-Bold="True" ForeColor="Red">لا يوجد مواد مسجلة للطالب  </asp:Label>
                                     </EmptyDataTemplate>
-                                    <FooterStyle BackColor="#1A7BB9" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#1A7BB9" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                    <RowStyle BackColor="#EFF3FB" />
-                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                    <HeaderStyle BackColor="#4CAF50" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                                    <RowStyle ForeColor="#000066" />
+                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#dc3545" />
+                                    <SortedAscendingHeaderStyle BackColor="#dc3545" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#dc3545" />
                                 </asp:GridView>
-      
      </div>  
         </div>
  
@@ -134,7 +126,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" >
 
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;">أرغب بسحب الفصل و ذلك للأسباب التالية:<asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="rq4" ControlToValidate="txtReasons" ErrorMessage="*"></asp:RequiredFieldValidator>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;">أرغب بسحب الفصل و ذلك للأسباب التالية:
 
           </label>
       
@@ -145,7 +137,7 @@
   <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-      <asp:TextBox ID="txtReasons" runat="server"   CssClass="form-control w3-margin-right col-12 " Height="100px"   align="right" Enabled="False"></asp:TextBox>
+      <asp:TextBox ID="txtReasons" runat="server"   CssClass="form-control w3-margin-right col-12 bg-white " Height="100px"   align="right" Enabled="False"></asp:TextBox>
       
        
       </div>
@@ -162,119 +154,123 @@
      </div>  
           <div class="col-1">
 
-          </div>
-   </div>       
-
-<div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
-                                                margin: 0 auto; margin-right:7%; margin-left:3%; ">
-            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات المرشد الأكاديمي </h2>
-            
+       </div>   
         </div>
-       
-    </div>
-    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-      <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات المرشد الأكاديمي:</label>
-      
-       
-      </div>
-    </div>
- <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-      <asp:TextBox ID="txtAcademicAdvisor" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right" Enabled="False" style="right: 0px"></asp:TextBox>
-      
-       
-      </div>
-    </div>
-     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-     
-          <asp:RadioButtonList ID="rbtAcademicAdvisorAccept" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="False">
-               <asp:ListItem Text="موافق" Value="1" />
-               <asp:ListItem Text="غير موافق" Value="2" />
-          </asp:RadioButtonList>
-       
-      </div>
-    </div>
-    
-    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
-                                                margin: 0 auto; margin-right:7%; margin-left:3%; ">
-            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات رئيس القسم </h2>
-            
-        </div>
-       
-    </div>
-    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-      <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات رئيس القسم:</label>
-      
-       
-      </div>
-    </div>
- <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-      <asp:TextBox ID="txtHeadDescription" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right" Enabled="False" style="right: 0px"></asp:TextBox>
-      
-       
-      </div>
-    </div>
-     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-     
-          <asp:RadioButtonList ID="rbtHeadAccept" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="False">
-               <asp:ListItem Text="موافق" Value="1" />
-               <asp:ListItem Text="غير موافق" Value="2" />
-          </asp:RadioButtonList>
-       
-      </div>
-    </div>
     
        <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
+                                                margin: 0 auto; margin-right:7%; margin-left:3%; ">
+            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات المرشد الأكاديمي: </h2>
+            
+        </div>
+       
+    </div>
+    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+      <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات  المرشد الأكاديمي:
+      
+       
+          </label>
+         &nbsp;</div>
+    </div>
+ <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+
+      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
+      <asp:TextBox ID="txtDescriptionAcadimic" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right"  style="right: 0px" Enabled="False"></asp:TextBox>
+      
+       
+      </div>
+    </div>
+     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+
+      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
+     
+          <asp:RadioButtonList ID="rbtAcceptAcadimic" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="False" >
+               <asp:ListItem Text="موافق" Value="1" />
+               <asp:ListItem Text="غير موافق" Value="2" />
+          </asp:RadioButtonList>
+      </div>
+    </div>
+      <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
+                                                margin: 0 auto; margin-right:7%; margin-left:3%; ">
+            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات رئيس القسم : </h2>
+            
+        </div>
+       
+    </div>
+      <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+      <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات رئيس القسم:
+      
+       
+          </label>
+         &nbsp;</div>
+    </div>
+ <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+
+      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
+      <asp:TextBox ID="txtDescriptionHead" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right"  style="right: 0px" Enabled="false"></asp:TextBox>
+      
+       
+      </div>
+    </div>
+     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+
+      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
+     
+          <asp:RadioButtonList ID="rbtAceptHead" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="false" Visible="true">
+               <asp:ListItem Text="موافق" Value="1" />
+               <asp:ListItem Text="غير موافق" Value="2" />
+          </asp:RadioButtonList>
+      </div>
+    </div>
+    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
             <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات عميد الكلية </h2>
             
         </div>
+       
     </div>
-     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات عميد الكلية:</label>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات عميد الكلية:
       
        
-      </div>
+          </label>
+         &nbsp;</div>
     </div>
  <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
+
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-      <asp:TextBox ID="txtDescriptionDean" runat="server"   CssClass="form-control w3-margin-right col-12 bg-white " Height="100px"   align="right" Enabled="False"></asp:TextBox>
+      <asp:TextBox ID="txtDescriptionDean" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right" Enabled="false" style="right: 0px"></asp:TextBox>
       
        
       </div>
-  </div>
+    </div>
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
+
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
      
-          <asp:RadioButtonList ID="rbtAcceptDean" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="False">
+          <asp:RadioButtonList ID="rbtDeanAccept" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="false" >
                <asp:ListItem Text="موافق" Value="1" />
                <asp:ListItem Text="غير موافق" Value="2" />
           </asp:RadioButtonList>
-       
       </div>
     </div>
-
     <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
@@ -287,34 +283,37 @@
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات النائب الأكاديمي:</label>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات النائب الأكاديمي:
+
       
        
-      </div>
+          </label>
+         &nbsp;</div>
     </div>
  <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
+
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
-      <asp:TextBox ID="txtDeputyAcademicDesc" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right" Enabled="False" style="right: 0px"></asp:TextBox>
+      <asp:TextBox ID="txtDescriptinDep" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right" Enabled="False" style="right: 0px"></asp:TextBox>
       
        
       </div>
     </div>
-     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
+
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
      
-          <asp:RadioButtonList ID="rbtDeputyAcademicAccept" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="False">
+          <asp:RadioButtonList ID="rbtDepAcept" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="false" >
                <asp:ListItem Text="موافق" Value="1" />
                <asp:ListItem Text="غير موافق" Value="2" />
           </asp:RadioButtonList>
-       
       </div>
     </div>
-    
-<div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+   
+ <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " stle=" float: none;
+        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
             <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات دائرة القبول و التسجيل </h2>
             
@@ -323,53 +322,40 @@
      <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> قرار دائرة القبول و التسجيل:</label>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات دائرة القبول و التسجيل:<asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator1" ControlToValidate="txtDescriptionReg" ErrorMessage="*"></asp:RequiredFieldValidator></label>
+      
+       
+      </div>
+    </div>
+    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+         
+
+      <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
+      <asp:TextBox ID="txtDescriptionReg" runat="server"   CssClass="form-control w3-margin-right col-12  bg-white " Height="100px"   align="right"  style="right: 0px" Enabled="false"></asp:TextBox>
       
        
       </div>
     </div>
 <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-bottom " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
+         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator10" ControlToValidate="rbtAcceptRegistration" ErrorMessage="*"></asp:RequiredFieldValidator>
+
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
      
-          <asp:RadioButtonList ID="rbtAcceptRegistration" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="False">
+          <asp:RadioButtonList ID="rbtAcceptRegistration" style="float:right;  font-family:'Amiri'; font-size:x-large;" RepeatLayout="Table" CssClass="RBL"  runat="server" RepeatDirection="Horizontal" Enabled="false">
                <asp:ListItem Text="موافق" Value="1" />
                <asp:ListItem Text="غير موافق" Value="2" />
           </asp:RadioButtonList>
        
       </div>
-    </div>      
-
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
-
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
-    </script>
-
-
-
-
+    </div>
+     
+   
 
 
 
 
 </asp:Content>
-
-
-
 
 

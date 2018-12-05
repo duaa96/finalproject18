@@ -36,11 +36,11 @@ public class ShowStatusClass
     }
 
 
-    public void UpdateShowStatus(int ID, int StudentID, string Year, string semester, string Date, string Description, string HeadDescription, int HeadAccept, string HeadDate, string DeanDescription, int DeanAccept, string DeanDate, int ApplicationID)
+    public int UpdateShowStatus(int ID, int StudentID, string Year, string semester, string Date, string Description, string HeadDescription, int HeadAccept, string HeadDate, string DeanDescription, int DeanAccept, string DeanDate, int ApplicationID)
     {
         string Query = "Update ShowStatus set StudentID=@StudentID, Year=@Year  ,  semester=@semester , Date=@Date ,Description=@Description,HeadDescription=@HeadDescription,  HeadAccept=@HeadAccept, HeadDate=@HeadDate , DeanDescription=@DeanDescription, DeanAccept=@DeanAccept, DeanDate=@DeanDate,ApplicationID=@ApplicationID where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
-
+        Connection.Open();
         SqlCommand Command = new SqlCommand(Query, Connection);
 
         Command.CommandType = CommandType.Text;
@@ -50,6 +50,8 @@ public class ShowStatusClass
         Command.Parameters.AddWithValue("@semester", semester);
         Command.Parameters.AddWithValue("@Date", Date);
         Command.Parameters.AddWithValue("@Description", Description);
+        Command.Parameters.AddWithValue("@HeadDescription", HeadDescription);
+
         Command.Parameters.AddWithValue("@HeadAccept", HeadAccept);
         Command.Parameters.AddWithValue("@HeadDate", HeadDate);
         Command.Parameters.AddWithValue("@DeanDescription", DeanDescription);
@@ -57,8 +59,9 @@ public class ShowStatusClass
         Command.Parameters.AddWithValue("@DeanDate", DeanDate);
         Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
 
-        Command.ExecuteNonQuery();
+        int x= Command.ExecuteNonQuery();
         Connection.Close();
+        return x;
     }
 
 
@@ -74,7 +77,20 @@ public class ShowStatusClass
         Command.ExecuteNonQuery();
         Connection.Close();
     }
+    public int  DeleteShowStatusStudents(int ID)
+    {
+        string Query = "delete from ShowStatus where (DeanAccept=0 OR DeanAccept IS NULL) AND ID = @ID  ";
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        SqlCommand Command = new SqlCommand(Query, Connection);
 
+        Command.CommandType = CommandType.Text;
+        Command.Parameters.AddWithValue("@ID", ID);
+       int x= Command.ExecuteNonQuery();
+        Connection.Close();
+        return x;
+
+    }
     // Head GetData Application
     public DataTable dtNotShowStatusHeadApplication()
     {
@@ -86,9 +102,9 @@ public class ShowStatusClass
         Connection.Close();
         return dt;
     }
-    public int AcceptHeadShowStatus(int ID)
+    public int AcceptHeadShowStatus(int ID,int HeadAccept, string HeadDescription)
     {
-        string Query = "Update  ShowStatus set HeadAccept =1 where ID = @ID ";
+        string Query = "Update  ShowStatus set HeadAccept =@HeadAccept,HeadDescription=@HeadDescription where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -96,25 +112,14 @@ public class ShowStatusClass
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@HeadAccept", HeadAccept);
+        Command.Parameters.AddWithValue("@HeadDescription", HeadDescription);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
     }
 
-    public int NotAcceptHeadShowStatus(int ID)
-    {
-        string Query = "Update  ShowStatus set HeadAccept =2 where ID = @ID ";
-        SqlConnection Connection = new SqlConnection(Connectionstring);
-        Connection.Open();
-        SqlCommand Command = new SqlCommand(Query, Connection);
-
-        Command.CommandType = CommandType.Text;
-        Command.Parameters.AddWithValue("@ID", ID);
-        int x = Command.ExecuteNonQuery();
-        Connection.Close();
-        return x;
-    }
-
+   
     //Dean GetData Application
     public DataTable dtNotAcceptDeanShowStatusApplication( int CollegeID)
     {
@@ -127,9 +132,9 @@ public class ShowStatusClass
         return dt;
     }
 
-    public int AcceptDeanShowStatus(int ID)
+    public int AcceptDeanShowStatus(int ID, int DeanAccept, string DeanDescription)
     {
-        string Query = "Update  ShowStatus set DeanAccept =1 where ID = @ID ";
+        string Query = "Update  ShowStatus set DeanAccept =@DeanAccept,DeanDescription=@DeanDescription where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -137,6 +142,8 @@ public class ShowStatusClass
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@DeanAccept", DeanAccept);
+        Command.Parameters.AddWithValue("@DeanDescription", DeanDescription);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
@@ -185,6 +192,68 @@ public class ShowStatusClass
     {
         DataRow dr;
         DataTable dt = dtgetform(ID);
+        if (dt.Rows.Count > 0)
+        {
+            dr = dt.Rows[0];
+
+
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+    public DataTable dtgetformStudents(int ID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select * from ShowStatus where StudentID=" + ID, Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+    public DataRow drgetformStudents(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtgetformStudents(ID);
+        if (dt.Rows.Count > 0)
+        {
+            dr = dt.Rows[0];
+
+
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+
+
+    public DataTable dtEditgetform(int ID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select * from ShowStatus where (HeadAccept =0 OR HeadAccept IS null) and ID=" + ID, Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+    public DataRow drEditgetform(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtEditgetform(ID);
         if (dt.Rows.Count > 0)
         {
             dr = dt.Rows[0];

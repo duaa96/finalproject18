@@ -74,7 +74,36 @@ public class Position
     {
         DataRow dr;
         DataTable dt = dtSearchEmployeePosition(ID);
-        if (dt !=null)
+        if (dt.Rows.Count>0)
+        {
+
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+    public DataTable dtSearchEmployeePositionAcadimic(int ID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select * from EmployeePosition where EmployeeID=" + ID + " and Position = 4", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+    public DataRow drSearchEmployeePositionAcadimic(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtSearchEmployeePositionAcadimic(ID);
+        if (dt.Rows.Count>0)
         {
 
             dr = dt.Rows[0];

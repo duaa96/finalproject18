@@ -13,8 +13,11 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            filldata(ID);
+            if (!IsPostBack)
+            {
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                filldata(ID);
+            }
         }
 
         private void filldata(int ID)
@@ -29,7 +32,7 @@ namespace WebApplication1
                 labSection.Text = Stu["SectionName"].ToString();
                 labMager.Text = Stu["Mager"].ToString();
             }
-            labDate.Text = DateTime.Today.ToString();
+            labDate.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
             ddlSemester.Items.Insert(0, new ListItem("<اخترالفصل>", "0"));
          
         }
@@ -74,13 +77,17 @@ namespace WebApplication1
                 if (obj.AddDelaySemester(ID, nowYear, nowsemester, year, semester, Reason, Datenow,"",0,"","",0,"",6) == 1)
                 {
                     txtStatus.Text = "";
+                    ddlSemester.SelectedIndex= 0;
+                    txtYear.Text = "";
+                    SentMail s = new SentMail();
+                    s.sendemailReg();
                 }
                 errorLabel.Visible = false;
 
             }
             else
             {
-                errorLabel.Text = "التوقيع المدخل خاطئ";
+                errorLabel.Text = " التوقيع المدخل خاطئ أو كلمة المرور";
                 errorLabel.Visible = true;
             }
 

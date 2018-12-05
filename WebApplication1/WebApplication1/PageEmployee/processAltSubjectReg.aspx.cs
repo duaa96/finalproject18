@@ -43,7 +43,7 @@ namespace WebApplication1.PageEmployee
 
                 }
                 labDateS.Text = dr["Date"].ToString();
-                labDateReg.Text = DateTime.Today.ToString();
+                labDateReg.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 txtNumberCourse1.Text = dr["Subject1ID"].ToString();
                 labTypeCourse1.Text = dr["Subject2Type"].ToString();
                 txtReason.Text = dr["Description"].ToString();

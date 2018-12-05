@@ -41,7 +41,7 @@ namespace WebApplication1.PageEmployee
 
                 }
                 labDate.Text = dr["Date"].ToString();
-                labDateDep.Text = DateTime.Today.ToString();
+                labDateDep.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 txtNumHours.Text = dr["NumofHourReg"].ToString();
                 txtReasons.Text = dr["Description"].ToString();
                 string semester = dr["Semester"].ToString();
@@ -71,6 +71,48 @@ namespace WebApplication1.PageEmployee
                 else if (DeanAcept == "2")
                     rbtDeanAccept.SelectedValue = "2";
 
+            }
+        }
+
+        protected void btnSaveDep_Click(object sender, EventArgs e)
+        {
+            bool Result = false;
+            int ID = Convert.ToInt32(Session["ID"].ToString());
+            string Path = "";
+            string Data = DateTime.Today.ToString() + txtNumHours.Text.ToString() + labDate.Text.ToString() + rbtAceptHead.SelectedValue.ToString() + rbtAcceptAcadimic.SelectedValue.ToString()
+                +rbtDeanAccept.SelectedValue.ToString()+rbtDepAcept.SelectedValue.ToString();
+            if (fuSignatureDep.HasFile)
+            {
+                string Private = fuSignatureDep.FileName.ToString();
+                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
+                string Pasword = txtPassSign.Text.ToString();
+                fuSignatureDep.SaveAs(Server.MapPath("Test") + "/" + fuSignatureDep.FileName);
+                SignatureEmployee newSig = new SignatureEmployee();
+                string strencrypt = newSig.encrypet(Data, Path, Pasword);
+                Result = newSig.Decreypt(strencrypt, ID);
+
+            }
+
+            if (Result == true)
+            {
+                DropSemester obj = new DropSemester();
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                int AcceptDep = Convert.ToInt32(rbtDepAcept.SelectedValue.ToString());
+                string DepDec = txtDescriptinDep.Text.ToString();
+                if (obj.AcceptDeputyAcademicDropSemester(id, AcceptDep, DepDec) == 1)
+                {
+                    SentMail s = new SentMail();
+                    s.sendemailReg();
+                    Response.Redirect("ProcessRequest.aspx");
+                }
+
+                errorDep.Visible = false;
+
+            }
+            else
+            {
+                errorDep.Text = "التوقيع المدخل خاطئ او كلمة المرور";
+                errorDep.Visible = true;
             }
         }
     }

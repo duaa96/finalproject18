@@ -19,7 +19,6 @@ namespace WebApplication1.PageStudents
 
                 fillDataForm(ID);
                 fillddl();
-                fillEditddl();
             }
         }
 
@@ -28,7 +27,11 @@ namespace WebApplication1.PageStudents
 
             int ID = Convert.ToInt32(Session["ID"].ToString());
             RegistredCourses obj = new RegistredCourses();
-            DataTable tbl1 = obj.dtSearchRegisterSubject(ID);
+            NowTimeUniversity timee = new NowTimeUniversity();
+            DataRow T = timee.drSearchYearANdSemester();
+            string year = T["NowYear"].ToString();
+            string Semester = T["NowSemester"].ToString();
+            DataTable tbl1 = obj.dtSearchRegisterSubject(ID, year, Semester);
             ddlNameCourse1.DataSource = tbl1;
             ddlNameCourse1.DataTextField = "SubjectName";
             ddlNameCourse1.DataValueField = "SubjectID";
@@ -53,130 +56,122 @@ namespace WebApplication1.PageStudents
         private void fillDataForm(int ID)
         {
 
-            Studnets objStu = new Studnets();
-            DataRow Stu = objStu.drSearchStudent(ID);
-            if (Stu != null)
-            {
-                labStudentName.Text = Stu["StudentName"].ToString();
-                labStudentNmuber.Text = Stu["UniversityID"].ToString();
-                labSectionStudent.Text = Stu["SectionName"].ToString();
-                labCollage.Text = Stu["CollageName"].ToString();
-
-            }
             PullCourseClass obj = new PullCourseClass();
             int id = Convert.ToInt32(Request.QueryString["id"]);
             DataRow dr = obj.drgetform(id);
-            if(dr!=null)
+
+            if (dr != null)
             {
+                int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+                Studnets objStu = new Studnets();
+                DataRow Stu = objStu.drSearchStudent(STUid);
+                if (Stu != null)
+                {
+                    labStudentName.Text = Stu["StudentName"].ToString();
+                    labStudentNmuber.Text = Stu["UniversityID"].ToString();
+                    labSectionStudent.Text = Stu["SectionName"].ToString();
+                    labCollage.Text = Stu["CollageName"].ToString();
+
+                }
+
+                labDate.Text = dr["Date"].ToString();
                 txtTimeCourse1.Text = dr["Course1time"].ToString();
                 txtTimeCourse2.Text = dr["Course2time"].ToString();
                 txtTimeCourse3.Text = dr["Course3time"].ToString();
-                txtReason.Text= dr["Description"].ToString();
+                txtReason.Text = dr["Description"].ToString();
                 txtNmberHours.Text = dr["NumHourRegester"].ToString();
                 txtNumHourAfter.Text = dr["NumAfterPull"].ToString();
+                txtNumCourse1.Text = dr["Subject1ID"].ToString();
+                txtNumCourse2.Text = dr["Subject2ID"].ToString();
+                txtNumCourse3.Text = dr["Subject3ID"].ToString();
+
+                string Year = dr["Year"].ToString();
+                string Semester = dr["Semester"].ToString();
+                RegistredCourses Subj = new RegistredCourses();
+
+                if (Convert.ToInt32(txtNumCourse1.Text.ToString()) != 0)
+                {
+                    int Course1 = Convert.ToInt32(txtNumCourse1.Text.ToString());
+                    DataRow Sub = Subj.drSearchRegisterSubjectID(Course1, Year, Semester);
+                    labTeacher1.Text = Sub["EmployeeName"].ToString();
+                    ddlNameCourse1.SelectedValue = txtNumCourse1.Text.ToString();
+                    //ddlNameCourse1.Items.Insert(0, new ListItem(Sub["SubjectName"].ToString(), "0"));
+
+                }
+                if (Convert.ToInt32(txtNumCourse2.Text.ToString()) != 0)
+                {
+                    int Course2 = Convert.ToInt32(txtNumCourse2.Text.ToString());
+                    DataRow Sub = Subj.drSearchRegisterSubjectID(Course2, Year, Semester);
+                    labTeacher2.Text = Sub["EmployeeName"].ToString();
+                    //ddlNameCourse2.Items.Insert(0, new ListItem(Sub["SubjectName"].ToString(), "0"));
+                    ddlNameCourse2.SelectedValue = txtNumCourse2.Text.ToString();
+
+                }
+                if (Convert.ToInt32(txtNumCourse3.Text.ToString()) != 0)
+                {
+                    int Course3 = Convert.ToInt32(txtNumCourse3.Text.ToString());
+                    DataRow Sub = Subj.drSearchRegisterSubjectID(Course3, Year, Semester);
+                    labTeacher3.Text = Sub["EmployeeName"].ToString();
+                    //ddlNameCourse3.Items.Insert(0, new ListItem(Sub["SubjectName"].ToString(), "0"));
+                    ddlNameCourse3.SelectedValue = txtNumCourse3.Text.ToString();
+
+                }
+
             }
-            labDate.Text = DateTime.Today.ToString();
-
-
-        }
+       }
 
         protected void ddlNameCourse1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlNameCourse1.SelectedIndex != 0 && ddlNameCourse1.SelectedIndex != -1)
+            {
                 txtNumCourse1.Text = ddlNameCourse1.SelectedValue.ToString();
 
-            RegistredCourses obj1 = new RegistredCourses();
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            int CourseID = Convert.ToInt32(ddlNameCourse1.SelectedValue.ToString());
-            DataRow dr1;
-            dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
-            if (dr1 != null)
-            {
-                labTeacher1.Text = dr1["EmployeeName"].ToString();
+                RegistredCourses obj1 = new RegistredCourses();
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                int CourseID = Convert.ToInt32(ddlNameCourse1.SelectedValue.ToString());
+                DataRow dr1;
+                dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
+                if (dr1 != null)
+                {
+                    labTeacher1.Text = dr1["EmployeeName"].ToString();
+                }
             }
         }
-        protected void fillEditddl()
-        {
-            PullCourseClass obj = new PullCourseClass();
-            int id = Convert.ToInt32(Request.QueryString["id"]);
-            DataRow dr = obj.drgetform(id);
-            RegistredCourses obj1 = new RegistredCourses();
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            int CourseID = 0;
-            DataRow dr1;
-            if (dr != null)
-            {
-                ddlNameCourse1.SelectedValue = dr["Subject1ID"].ToString();
-                ddlNameCourse2.SelectedValue = dr["Subject2ID"].ToString();
-                ddlNameCourse3.SelectedValue = dr["Subject3ID"].ToString();
-                if (ddlNameCourse1.SelectedIndex != 0 && ddlNameCourse1.SelectedIndex != -1)
-                {
-                    txtNumCourse1.Text = ddlNameCourse1.SelectedValue.ToString();
-                    CourseID = Convert.ToInt32(ddlNameCourse1.SelectedValue.ToString());
-                    dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
-                    if (dr1 != null)
-                    {
-                        labTeacher1.Text = dr1["EmployeeName"].ToString();
-                    }
-                }
-                if (ddlNameCourse3.SelectedIndex != 0 && ddlNameCourse3.SelectedIndex != -1)
-                {
-                    txtNumCourse3.Text = ddlNameCourse3.SelectedValue.ToString();
-                    CourseID = Convert.ToInt32(ddlNameCourse3.SelectedValue.ToString());
-                    dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
-                    if (dr1 != null)
-                    {
-                        labTeacher3.Text = dr1["EmployeeName"].ToString();
-                    }
-                }
-                    if (ddlNameCourse2.SelectedIndex != 0 && ddlNameCourse2.SelectedIndex != -1)
-                {
-                    txtNumCourse2.Text = ddlNameCourse2.SelectedValue.ToString();
-                     ID = Convert.ToInt32(Session["ID"].ToString());
-                    CourseID = Convert.ToInt32(ddlNameCourse2.SelectedValue.ToString());
-                  
-                    dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
-                    if (dr1 != null)
-                    {
-                        labTeacher2.Text = dr1["EmployeeName"].ToString();
-                    }
-                }
-    
-                
-
-                
-            }
-        }
+        
 
        protected void ddlNameCourse2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlNameCourse2.SelectedIndex != 0 && ddlNameCourse2.SelectedIndex != -1)
+            {
                 txtNumCourse2.Text = ddlNameCourse2.SelectedValue.ToString();
 
-            RegistredCourses obj1 = new RegistredCourses();
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            int CourseID = Convert.ToInt32(ddlNameCourse2.SelectedValue.ToString());
-            DataRow dr1;
-            dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
-            if (dr1 != null)
-            {
-                labTeacher2.Text = dr1["EmployeeName"].ToString();
+                RegistredCourses obj1 = new RegistredCourses();
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                int CourseID = Convert.ToInt32(ddlNameCourse2.SelectedValue.ToString());
+                DataRow dr1;
+                dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
+                if (dr1 != null)
+                {
+                    labTeacher2.Text = dr1["EmployeeName"].ToString();
+                }
             }
         }
 
         protected void ddlNameCourse3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlNameCourse3.SelectedIndex != 0 && ddlNameCourse3.SelectedIndex != -1)
-                txtNumCourse3.Text = ddlNameCourse3.SelectedValue.ToString();
-            RegistredCourses obj1 = new RegistredCourses();
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            int CourseID = Convert.ToInt32(ddlNameCourse3.SelectedValue.ToString());
-            DataRow dr1;
-            dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
-            if (dr1 != null)
             {
-                labTeacher3.Text = dr1["EmployeeName"].ToString();
+                txtNumCourse3.Text = ddlNameCourse3.SelectedValue.ToString();
+                RegistredCourses obj1 = new RegistredCourses();
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                int CourseID = Convert.ToInt32(ddlNameCourse3.SelectedValue.ToString());
+                DataRow dr1;
+                dr1 = obj1.drSearchRegisterSubjectTeacher(ID, CourseID);
+                if (dr1 != null)
+                {
+                    labTeacher3.Text = dr1["EmployeeName"].ToString();
 
+                }
             }
         }
 

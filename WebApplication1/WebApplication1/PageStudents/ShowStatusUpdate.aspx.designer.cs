@@ -7,28 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.PageEmployee {
+namespace WebApplication1.PageStudents {
     
     
-    public partial class processDropSemesterAcadimicAdvisor {
+    public partial class ShowStatusUpdate {
         
         /// <summary>
-        /// labNumStudent control.
+        /// labStudentNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labNumStudent;
+        protected global::System.Web.UI.WebControls.Label labStudentNumber;
         
         /// <summary>
-        /// labNameStudent control.
+        /// labStudentName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labNameStudent;
+        protected global::System.Web.UI.WebControls.Label labStudentName;
         
         /// <summary>
         /// labSection control.
@@ -49,49 +49,31 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.Label labCollage;
         
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// labMager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.Label labMager;
         
         /// <summary>
-        /// txtNumHours control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumHours;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// gvCourses control.
+        /// txtStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCourses;
-        
-        /// <summary>
-        /// rq4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rq4;
-        
-        /// <summary>
-        /// txtReasons control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReasons;
+        protected global::System.Web.UI.WebControls.TextBox txtStatus;
         
         /// <summary>
         /// labDate control.
@@ -103,51 +85,6 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.Label labDate;
         
         /// <summary>
-        /// txtDescriptionAcadimic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescriptionAcadimic;
-        
-        /// <summary>
-        /// rbtAcceptAcadimic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtAcceptAcadimic;
-        
-        /// <summary>
-        /// dfDateAcadimic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label dfDateAcadimic;
-        
-        /// <summary>
-        /// labDateAcadimic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labDateAcadimic;
-        
-        /// <summary>
-        /// dfinfoeHead control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label dfinfoeHead;
-        
-        /// <summary>
         /// RequiredFieldValidator3 control.
         /// </summary>
         /// <remarks>
@@ -157,30 +94,48 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
-        /// fuSignatureAcadimic control.
+        /// fuSignatureStudent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuSignatureAcadimic;
+        protected global::System.Web.UI.WebControls.FileUpload fuSignatureStudent;
         
         /// <summary>
-        /// errorHead control.
+        /// errorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorHead;
+        protected global::System.Web.UI.WebControls.Label errorLabel;
         
         /// <summary>
-        /// btnSaveHead control.
+        /// RequiredFieldValidator6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveHead;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        
+        /// <summary>
+        /// txtPassSign control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPassSign;
+        
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

@@ -26,7 +26,9 @@ namespace WebApplication1.PageEmployee
         {
             Position emp = new Position();
             DataRow dr = emp.drSearchEmployeePosition(ID);
-            int position = Convert.ToInt32(dr["Position"].ToString());
+            int position = 0;
+            if (dr!=null)
+               position = Convert.ToInt32(dr["Position"].ToString());
 
 
             if (position == 1)

@@ -25,7 +25,7 @@ namespace WebApplication1.PageEmployee
         private void fillData(int p)
         {
 
-            DropSemester obj = new DropSemester();
+            PullCourseClass obj = new PullCourseClass();
             int id = Convert.ToInt32(Request.QueryString["id"]);
             DataRow dr = obj.drgetform(id);
 
@@ -42,7 +42,7 @@ namespace WebApplication1.PageEmployee
                     labCollage.Text = Stu["CollageName"].ToString();
 
                 }
-
+                labDateHead.Text= DateTime.UtcNow.ToString("yyyy-MM-dd");
                 labDate.Text = dr["Date"].ToString();
                 txtTimeCourse1.Text = dr["Course1time"].ToString();
                 txtTimeCourse2.Text = dr["Course2time"].ToString();
@@ -84,16 +84,57 @@ namespace WebApplication1.PageEmployee
                 }
 
 
-                txtDescriptionHead.Text = dr["HeadDescription"].ToString();
-                string HeadAccept = dr["HeadAccept"].ToString();
-                if (HeadAccept == "1")
-                    rbtAceptHead.SelectedValue = "1";
-                else if (HeadAccept == "2")
-                    rbtAceptHead.SelectedValue = "2";
+                
                
 
 
             }
         }
+
+        protected void btnSaveHead_Click(object sender, EventArgs e)
+        {
+            bool Result = false;
+            int ID = Convert.ToInt32(Session["ID"].ToString());
+            string Path = "";
+            string Data = txtNumCourse1.Text.ToString() + txtNumCourse2.Text.ToString() + txtNumCourse3.Text.ToString() +
+             txtNmberHours.Text.ToString() + txtNumHourAfter.Text.ToString() + DateTime.Today.ToString() + rbtAceptHead.SelectedValue.ToString() ;
+            if (fuSignatureHead.HasFile)
+            {
+                string Private = fuSignatureHead.FileName.ToString();
+                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
+                string Pasword = txtPassSign.Text.ToString();
+                fuSignatureHead.SaveAs(Server.MapPath("Test") + "/" + fuSignatureHead.FileName);
+                SignatureEmployee newSig = new SignatureEmployee();
+                string strencrypt = newSig.encrypet(Data, Path, Pasword);
+                Result = newSig.Decreypt(strencrypt, ID);
+
+            }
+
+            if (Result == true)
+            {
+                PullCourseClass obj = new PullCourseClass();
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                int AcceptHead = Convert.ToInt32(rbtAceptHead.SelectedValue.ToString());
+                string HeadDec = txtDescriptionHead.Text.ToString();
+                if (obj.AcceptHeadPullCourse(id, AcceptHead, HeadDec) == 1)
+                {
+
+                    DataRow dr = obj.drgetform(id);
+                    int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+
+                    SentMail s = new SentMail();
+                    s.sendemailDean(STUid);
+                    Response.Redirect("ProcessRequest.aspx");
+                }
+
+                errorHead.Visible = false;
+
+            }
+            else
+            {
+                errorHead.Text = "التوقيع المدخل خاطئ او كلمة المرور";
+                errorHead.Visible = true;
+            }
         }
+    }
 }

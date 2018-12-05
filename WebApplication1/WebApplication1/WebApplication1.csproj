@@ -1507,7 +1507,10 @@
     <Content Include="js\plugins\validate\jquery.validate.min.js" />
     <Content Include="js\plugins\video\responsible-video.js" />
     <Content Include="js\plugins\wow\wow.min.js" />
+    <Content Include="PageEmployee\2Position\AddSig2.aspx" />
+    <Content Include="PageEmployee\Academic\AddSigAcademic.aspx" />
     <Content Include="PageEmployee\AddSig.aspx" />
+    <Content Include="PageEmployee\AddSigReg.aspx" />
     <Content Include="PageEmployee\css\Amiri.css" />
     <Content Include="PageEmployee\css\bootstrap.css" />
     <Content Include="PageEmployee\css\bootstrap.min.css" />
@@ -2506,7 +2509,10 @@
     <Content Include="PageEmployee\css\plugins\touchspin\jquery.bootstrap-touchspin.min.css" />
     <Content Include="PageEmployee\css\w3.css" />
     <Content Include="PageEmployee\css\w3pro.css" />
+    <Content Include="PageEmployee\Academic\HomeAcademic.aspx" />
     <Content Include="PageEmployee\HomeEmployee.aspx" />
+    <Content Include="PageEmployee\2Position\HomeEmployee2.aspx" />
+    <Content Include="PageEmployee\HomeReg.aspx" />
     <Content Include="PageEmployee\img\a1.jpg" />
     <Content Include="PageEmployee\img\a2.jpg" />
     <Content Include="PageEmployee\img\a3.jpg" />
@@ -3357,6 +3363,7 @@
     <Content Include="PageEmployee\img\landing\shattered.png" />
     <Content Include="PageEmployee\img\landing\word_map.png" />
     <Content Include="PageEmployee\img\logo.png" />
+    <Content Include="PageEmployee\img\logo2.png" />
     <Content Include="PageEmployee\img\low.png" />
     <Content Include="PageEmployee\img\meteor_logo.png" />
     <Content Include="PageEmployee\img\mvc_logo.png" />
@@ -3376,27 +3383,49 @@
     <Content Include="PageEmployee\img\p_big2.jpg" />
     <Content Include="PageEmployee\img\p_big3.jpg" />
     <Content Include="PageEmployee\img\rails_logo.png" />
+    <Content Include="PageEmployee\img\red.png" />
     <Content Include="PageEmployee\img\starter_logo.jpg" />
+    <Content Include="PageEmployee\img\uni.jpg" />
     <Content Include="PageEmployee\img\user.png" />
     <Content Include="PageEmployee\img\zender_logo.png" />
+    <Content Include="PageEmployee\2Position\NewSig2.aspx" />
+    <Content Include="PageEmployee\Academic\NewSigAcademic.aspx" />
+    <Content Include="PageEmployee\ManageRequest.aspx" />
     <Content Include="PageEmployee\NewSig.aspx" />
+    <Content Include="PageEmployee\NewSigReg.aspx" />
+    <Content Include="PageEmployee\2Position\processAbsenceExam2.aspx" />
     <Content Include="PageEmployee\processAbsenceExam.aspx" />
-    <Content Include="PageEmployee\processAltiSubjectAcadimicAdvisor.aspx" />
+    <Content Include="PageEmployee\Academic\processAltiSubAcadimic.aspx" />
+    <Content Include="PageEmployee\2Position\processAltiSubjectAcadimicAdvisor.aspx" />
+    <Content Include="PageEmployee\2Position\processAltiSubjectDean2.aspx" />
+    <Content Include="PageEmployee\2Position\processAltiSubjectHead2.aspx" />
     <Content Include="PageEmployee\processAltSubjectDean.aspx" />
     <Content Include="PageEmployee\processAltSubjectHead.aspx" />
     <Content Include="PageEmployee\processAltSubjectReg.aspx" />
+    <Content Include="PageEmployee\2Position\processDealySemesterDean2.aspx" />
     <Content Include="PageEmployee\processDelaySemesterDean.aspx" />
     <Content Include="PageEmployee\ProcessDelaySemesterReg.aspx" />
     <Content Include="PageEmployee\processDeopSemesterReg.aspx" />
-    <Content Include="PageEmployee\processDropSemesterAcadimicAdvisor.aspx" />
+    <Content Include="PageEmployee\Academic\processDropAcadimic.aspx" />
+    <Content Include="PageEmployee\2Position\processDropSemesterAcadimicAdvisor.aspx" />
+    <Content Include="PageEmployee\2Position\processDropSemesterDean2.aspx" />
     <Content Include="PageEmployee\processDropSemesterDean.aspx" />
     <Content Include="PageEmployee\processDropSemesterDeputyAcademic.aspx" />
+    <Content Include="PageEmployee\2Position\processDropSemesterHead2.aspx" />
     <Content Include="PageEmployee\processDropSemesterHead.aspx" />
+    <Content Include="PageEmployee\2Position\processPullCourseDean2.aspx" />
     <Content Include="PageEmployee\processPullCourseDean.aspx" />
+    <Content Include="PageEmployee\2Position\processPullCourseHead2.aspx" />
     <Content Include="PageEmployee\processPullCourseHead.aspx" />
     <Content Include="PageEmployee\processPullCourseReg.aspx" />
     <Content Include="PageEmployee\ProcessRequest.aspx" />
+    <Content Include="PageEmployee\2Position\ProcessRequest2.aspx" />
+    <Content Include="PageEmployee\2Position\ProcessRequestAcademic.aspx" />
+    <Content Include="PageEmployee\Academic\processRequestAcademic1.aspx" />
+    <Content Include="PageEmployee\ProcessRequestReg.aspx" />
+    <Content Include="PageEmployee\2Position\processShowStatusDean2.aspx" />
     <Content Include="PageEmployee\processShowStatusDean.aspx" />
+    <Content Include="PageEmployee\2Position\processShowStatusHead2.aspx" />
     <Content Include="PageEmployee\processShowStatusHead.aspx" />
     <Content Include="PageStudents\AbsenceExamAll.aspx" />
     <Content Include="PageStudents\AbsenceExamUpdate.aspx" />
@@ -4402,14 +4431,14 @@
     <Content Include="PageStudents\css\plugins\touchspin\jquery.bootstrap-touchspin.min.css" />
     <Content Include="PageStudents\css\w3.css" />
     <Content Include="PageStudents\css\w3pro.css" />
+    <Content Include="PageStudents\DealySemesterUpdate.aspx" />
     <Content Include="PageStudents\DelaySemester.aspx" />
+    <Content Include="PageStudents\DelaySemesterAll.aspx" />
+    <Content Include="PageStudents\DelaySemesterDisplay.aspx" />
     <Content Include="PageStudents\Dropsemester.aspx" />
     <Content Include="PageStudents\DropSemesterDisplay.aspx" />
     <Content Include="PageStudents\DropSemesterDisplayAll.aspx" />
     <Content Include="PageStudents\DropSemesterUpdate.aspx" />
-    <Content Include="PageStudents\font-awesome\css\font-awesome.css" />
-    <Content Include="PageStudents\font-awesome\css\font-awesome.min.css" />
-    <Content Include="PageStudents\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="PageStudents\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="PageStudents\HomeStudent.aspx" />
     <Content Include="PageStudents\img\a1.jpg" />
@@ -5262,6 +5291,7 @@
     <Content Include="PageStudents\img\landing\shattered.png" />
     <Content Include="PageStudents\img\landing\word_map.png" />
     <Content Include="PageStudents\img\logo.png" />
+    <Content Include="PageStudents\img\logo2.png" />
     <Content Include="PageStudents\img\low.png" />
     <Content Include="PageStudents\img\meteor_logo.png" />
     <Content Include="PageStudents\img\mvc_logo.png" />
@@ -5281,6 +5311,7 @@
     <Content Include="PageStudents\img\p_big2.jpg" />
     <Content Include="PageStudents\img\p_big3.jpg" />
     <Content Include="PageStudents\img\rails_logo.png" />
+    <Content Include="PageStudents\img\red.png" />
     <Content Include="PageStudents\img\starter_logo.jpg" />
     <Content Include="PageStudents\img\user.png" />
     <Content Include="PageStudents\img\zender_logo.png" />
@@ -5729,6 +5760,9 @@
     <Content Include="PageStudents\PullCourseDisplay.aspx" />
     <Content Include="PageStudents\PullCourseUpdate.aspx" />
     <Content Include="PageStudents\ShowStates.aspx" />
+    <Content Include="PageStudents\ShowstatusDiaplay.aspx" />
+    <Content Include="PageStudents\ShowStatusDispalyAll.aspx" />
+    <Content Include="PageStudents\ShowStatusUpdate.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -5737,15 +5771,44 @@
     <Compile Include="ClassDB\AbsenceExam.cs" />
     <Compile Include="ClassDB\DelaySemesterClass.cs" />
     <Compile Include="ClassDB\NowTimeUniversity.cs" />
+    <Compile Include="ClassDB\SentMail.cs" />
     <Compile Include="ClassDB\ShowStatusClass.cs" />
     <Compile Include="ClassDB\SignatureEmployee.cs" />
     <Compile Include="ClassDB\Subjects.cs" />
+    <Compile Include="PageEmployee\Academic\Acadimic.Master.cs">
+      <DependentUpon>Acadimic.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\Acadimic.Master.designer.cs">
+      <DependentUpon>Acadimic.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\AddSig2.aspx.cs">
+      <DependentUpon>AddSig2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\AddSig2.aspx.designer.cs">
+      <DependentUpon>AddSig2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\AddSigAcademic.aspx.cs">
+      <DependentUpon>AddSigAcademic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\AddSigAcademic.aspx.designer.cs">
+      <DependentUpon>AddSigAcademic.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\AddSig.aspx.cs">
       <DependentUpon>AddSig.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageEmployee\AddSig.aspx.designer.cs">
       <DependentUpon>AddSig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\AddSigReg.aspx.cs">
+      <DependentUpon>AddSigReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\AddSigReg.aspx.designer.cs">
+      <DependentUpon>AddSigReg.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\employee.Master.cs">
       <DependentUpon>employee.Master</DependentUpon>
@@ -5754,12 +5817,61 @@
     <Compile Include="PageEmployee\employee.Master.designer.cs">
       <DependentUpon>employee.Master</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\2Position\employee2.Master.cs">
+      <DependentUpon>employee2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\employee2.Master.designer.cs">
+      <DependentUpon>employee2.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\HomeAcademic.aspx.cs">
+      <DependentUpon>HomeAcademic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\HomeAcademic.aspx.designer.cs">
+      <DependentUpon>HomeAcademic.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\HomeEmployee.aspx.cs">
       <DependentUpon>HomeEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageEmployee\HomeEmployee.aspx.designer.cs">
       <DependentUpon>HomeEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\HomeEmployee2.aspx.cs">
+      <DependentUpon>HomeEmployee2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\HomeEmployee2.aspx.designer.cs">
+      <DependentUpon>HomeEmployee2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\HomeReg.aspx.cs">
+      <DependentUpon>HomeReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\HomeReg.aspx.designer.cs">
+      <DependentUpon>HomeReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\NewSig2.aspx.cs">
+      <DependentUpon>NewSig2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\NewSig2.aspx.designer.cs">
+      <DependentUpon>NewSig2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\NewSigAcademic.aspx.cs">
+      <DependentUpon>NewSigAcademic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\NewSigAcademic.aspx.designer.cs">
+      <DependentUpon>NewSigAcademic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\ManageRequest.aspx.cs">
+      <DependentUpon>ManageRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\ManageRequest.aspx.designer.cs">
+      <DependentUpon>ManageRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\NewSig.aspx.cs">
       <DependentUpon>NewSig.aspx</DependentUpon>
@@ -5768,6 +5880,20 @@
     <Compile Include="PageEmployee\NewSig.aspx.designer.cs">
       <DependentUpon>NewSig.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\NewSigReg.aspx.cs">
+      <DependentUpon>NewSigReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\NewSigReg.aspx.designer.cs">
+      <DependentUpon>NewSigReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processAbsenceExam2.aspx.cs">
+      <DependentUpon>processAbsenceExam2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processAbsenceExam2.aspx.designer.cs">
+      <DependentUpon>processAbsenceExam2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\processAbsenceExam.aspx.cs">
       <DependentUpon>processAbsenceExam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5775,12 +5901,33 @@
     <Compile Include="PageEmployee\processAbsenceExam.aspx.designer.cs">
       <DependentUpon>processAbsenceExam.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PageEmployee\processAltiSubjectAcadimicAdvisor.aspx.cs">
+    <Compile Include="PageEmployee\Academic\processAltiSubAcadimic.aspx.cs">
+      <DependentUpon>processAltiSubAcadimic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\processAltiSubAcadimic.aspx.designer.cs">
+      <DependentUpon>processAltiSubAcadimic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processAltiSubjectAcadimicAdvisor.aspx.cs">
       <DependentUpon>processAltiSubjectAcadimicAdvisor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PageEmployee\processAltiSubjectAcadimicAdvisor.aspx.designer.cs">
+    <Compile Include="PageEmployee\2Position\processAltiSubjectAcadimicAdvisor.aspx.designer.cs">
       <DependentUpon>processAltiSubjectAcadimicAdvisor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processAltiSubjectDean2.aspx.cs">
+      <DependentUpon>processAltiSubjectDean2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processAltiSubjectDean2.aspx.designer.cs">
+      <DependentUpon>processAltiSubjectDean2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processAltiSubjectHead2.aspx.cs">
+      <DependentUpon>processAltiSubjectHead2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processAltiSubjectHead2.aspx.designer.cs">
+      <DependentUpon>processAltiSubjectHead2.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\processAltSubjectDean.aspx.cs">
       <DependentUpon>processAltSubjectDean.aspx</DependentUpon>
@@ -5803,6 +5950,13 @@
     <Compile Include="PageEmployee\processAltSubjectReg.aspx.designer.cs">
       <DependentUpon>processAltSubjectReg.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\2Position\processDealySemesterDean2.aspx.cs">
+      <DependentUpon>processDealySemesterDean2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processDealySemesterDean2.aspx.designer.cs">
+      <DependentUpon>processDealySemesterDean2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\processDelaySemesterDean.aspx.cs">
       <DependentUpon>processDelaySemesterDean.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5824,12 +5978,26 @@
     <Compile Include="PageEmployee\processDeopSemesterReg.aspx.designer.cs">
       <DependentUpon>processDeopSemesterReg.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PageEmployee\processDropSemesterAcadimicAdvisor.aspx.cs">
+    <Compile Include="PageEmployee\Academic\processDropAcadimic.aspx.cs">
+      <DependentUpon>processDropAcadimic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\processDropAcadimic.aspx.designer.cs">
+      <DependentUpon>processDropAcadimic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processDropSemesterAcadimicAdvisor.aspx.cs">
       <DependentUpon>processDropSemesterAcadimicAdvisor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PageEmployee\processDropSemesterAcadimicAdvisor.aspx.designer.cs">
+    <Compile Include="PageEmployee\2Position\processDropSemesterAcadimicAdvisor.aspx.designer.cs">
       <DependentUpon>processDropSemesterAcadimicAdvisor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processDropSemesterDean2.aspx.cs">
+      <DependentUpon>processDropSemesterDean2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processDropSemesterDean2.aspx.designer.cs">
+      <DependentUpon>processDropSemesterDean2.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\processDropSemesterDean.aspx.cs">
       <DependentUpon>processDropSemesterDean.aspx</DependentUpon>
@@ -5845,6 +6013,13 @@
     <Compile Include="PageEmployee\processDropSemesterDeputyAcademic.aspx.designer.cs">
       <DependentUpon>processDropSemesterDeputyAcademic.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\2Position\processDropSemesterHead2.aspx.cs">
+      <DependentUpon>processDropSemesterHead2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processDropSemesterHead2.aspx.designer.cs">
+      <DependentUpon>processDropSemesterHead2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\processDropSemesterHead.aspx.cs">
       <DependentUpon>processDropSemesterHead.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5852,12 +6027,26 @@
     <Compile Include="PageEmployee\processDropSemesterHead.aspx.designer.cs">
       <DependentUpon>processDropSemesterHead.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\2Position\processPullCourseDean2.aspx.cs">
+      <DependentUpon>processPullCourseDean2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processPullCourseDean2.aspx.designer.cs">
+      <DependentUpon>processPullCourseDean2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\processPullCourseDean.aspx.cs">
       <DependentUpon>processPullCourseDean.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageEmployee\processPullCourseDean.aspx.designer.cs">
       <DependentUpon>processPullCourseDean.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processPullCourseHead2.aspx.cs">
+      <DependentUpon>processPullCourseHead2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processPullCourseHead2.aspx.designer.cs">
+      <DependentUpon>processPullCourseHead2.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\processPullCourseHead.aspx.cs">
       <DependentUpon>processPullCourseHead.aspx</DependentUpon>
@@ -5880,6 +6069,41 @@
     <Compile Include="PageEmployee\ProcessRequest.aspx.designer.cs">
       <DependentUpon>ProcessRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\2Position\ProcessRequest2.aspx.cs">
+      <DependentUpon>ProcessRequest2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\ProcessRequest2.aspx.designer.cs">
+      <DependentUpon>ProcessRequest2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\ProcessRequestAcademic.aspx.cs">
+      <DependentUpon>ProcessRequestAcademic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\ProcessRequestAcademic.aspx.designer.cs">
+      <DependentUpon>ProcessRequestAcademic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\processRequestAcademic1.aspx.cs">
+      <DependentUpon>processRequestAcademic1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\processRequestAcademic1.aspx.designer.cs">
+      <DependentUpon>processRequestAcademic1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\ProcessRequestReg.aspx.cs">
+      <DependentUpon>ProcessRequestReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\ProcessRequestReg.aspx.designer.cs">
+      <DependentUpon>ProcessRequestReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processShowStatusDean2.aspx.cs">
+      <DependentUpon>processShowStatusDean2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processShowStatusDean2.aspx.designer.cs">
+      <DependentUpon>processShowStatusDean2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\processShowStatusDean.aspx.cs">
       <DependentUpon>processShowStatusDean.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5887,12 +6111,26 @@
     <Compile Include="PageEmployee\processShowStatusDean.aspx.designer.cs">
       <DependentUpon>processShowStatusDean.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\2Position\processShowStatusHead2.aspx.cs">
+      <DependentUpon>processShowStatusHead2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\processShowStatusHead2.aspx.designer.cs">
+      <DependentUpon>processShowStatusHead2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\processShowStatusHead.aspx.cs">
       <DependentUpon>processShowStatusHead.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageEmployee\processShowStatusHead.aspx.designer.cs">
       <DependentUpon>processShowStatusHead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\Reg.Master.cs">
+      <DependentUpon>Reg.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Reg.Master.designer.cs">
+      <DependentUpon>Reg.Master</DependentUpon>
     </Compile>
     <Compile Include="PageStudents\AbsenceExamAll.aspx.cs">
       <DependentUpon>AbsenceExamAll.aspx</DependentUpon>
@@ -5942,12 +6180,33 @@
     <Compile Include="PageStudents\AltSubject.aspx.designer.cs">
       <DependentUpon>AltSubject.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageStudents\DealySemesterUpdate.aspx.cs">
+      <DependentUpon>DealySemesterUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\DealySemesterUpdate.aspx.designer.cs">
+      <DependentUpon>DealySemesterUpdate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageStudents\DelaySemester.aspx.cs">
       <DependentUpon>DelaySemester.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageStudents\DelaySemester.aspx.designer.cs">
       <DependentUpon>DelaySemester.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudents\DelaySemesterAll.aspx.cs">
+      <DependentUpon>DelaySemesterAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\DelaySemesterAll.aspx.designer.cs">
+      <DependentUpon>DelaySemesterAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudents\DelaySemesterDisplay.aspx.cs">
+      <DependentUpon>DelaySemesterDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\DelaySemesterDisplay.aspx.designer.cs">
+      <DependentUpon>DelaySemesterDisplay.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageStudents\Dropsemester.aspx.cs">
       <DependentUpon>Dropsemester.aspx</DependentUpon>
@@ -6042,6 +6301,27 @@
     <Compile Include="PageStudents\ShowStates.aspx.designer.cs">
       <DependentUpon>ShowStates.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageStudents\ShowstatusDiaplay.aspx.cs">
+      <DependentUpon>ShowstatusDiaplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\ShowstatusDiaplay.aspx.designer.cs">
+      <DependentUpon>ShowstatusDiaplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudents\ShowStatusDispalyAll.aspx.cs">
+      <DependentUpon>ShowStatusDispalyAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\ShowStatusDispalyAll.aspx.designer.cs">
+      <DependentUpon>ShowStatusDispalyAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudents\ShowStatusUpdate.aspx.cs">
+      <DependentUpon>ShowStatusUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\ShowStatusUpdate.aspx.designer.cs">
+      <DependentUpon>ShowStatusUpdate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ClassDB\PullCourseClass.cs" />
     <Compile Include="ClassDB\RegistredCourses.cs" />
@@ -6067,37 +6347,6 @@
     <Content Include="PageStudents\css\plugins\summernote\font\summernote.eot" />
     <Content Include="PageStudents\css\plugins\summernote\font\summernote.ttf" />
     <Content Include="PageStudents\css\plugins\summernote\font\summernote.woff" />
-    <Content Include="PageStudents\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="PageStudents\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="PageStudents\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="PageStudents\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="PageStudents\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="PageStudents\font-awesome\less\animated.less" />
-    <Content Include="PageStudents\font-awesome\less\bordered-pulled.less" />
-    <Content Include="PageStudents\font-awesome\less\core.less" />
-    <Content Include="PageStudents\font-awesome\less\fixed-width.less" />
-    <Content Include="PageStudents\font-awesome\less\font-awesome.less" />
-    <Content Include="PageStudents\font-awesome\less\icons.less" />
-    <Content Include="PageStudents\font-awesome\less\larger.less" />
-    <Content Include="PageStudents\font-awesome\less\list.less" />
-    <Content Include="PageStudents\font-awesome\less\mixins.less" />
-    <Content Include="PageStudents\font-awesome\less\path.less" />
-    <Content Include="PageStudents\font-awesome\less\rotated-flipped.less" />
-    <Content Include="PageStudents\font-awesome\less\stacked.less" />
-    <Content Include="PageStudents\font-awesome\less\variables.less" />
-    <Content Include="PageStudents\font-awesome\scss\font-awesome.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_animated.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_core.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_icons.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_larger.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_list.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_mixins.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_path.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_stacked.scss" />
-    <Content Include="PageStudents\font-awesome\scss\_variables.scss" />
     <Content Include="PageStudents\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="PageStudents\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="PageStudents\fonts\glyphicons-halflings-regular.woff" />
@@ -6175,6 +6424,9 @@
     <Content Include="PageEmployee\css\plugins\summernote\font\summernote.eot" />
     <Content Include="PageEmployee\css\plugins\summernote\font\summernote.ttf" />
     <Content Include="PageEmployee\css\plugins\summernote\font\summernote.woff" />
+    <Content Include="PageEmployee\Reg.Master" />
+    <Content Include="PageEmployee\Academic\Acadimic.Master" />
+    <Content Include="PageEmployee\2Position\employee2.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"   MasterPageFile="~/PageEmployee/employee.Master" CodeBehind="processAltSubjectReg.aspx.cs" Inherits="WebApplication1.PageEmployee.processAltSubjectReg" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"    MasterPageFile="~/PageEmployee/Reg.Master"  CodeBehind="processAltSubjectReg.aspx.cs" Inherits="WebApplication1.PageEmployee.processAltSubjectReg" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
      <div class=" w3-cell-row ">
@@ -94,7 +94,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right  w3-responsive" style="direction:rtl; margin-right:3%;" >
  <table class=" w3-responsive float-right w3-table w3-striped w3-border" style="direction:rtl;float:right;   font-family:'Amiri';">
-    <tr class="bg-primary  w3-center w3-margin" style="font-size:x-large;">
+    <tr class="w3-green  w3-center w3-margin" style="font-size:x-large;">
       <th class="w3-center">الرقم</th>
        
       <th  class="w3-center" style=" float: none; 
@@ -111,8 +111,7 @@
     </tr>
     <tr style="font-size:large;">
 
-      <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"  ControlToValidate="txtNumberCourse1"
-  ForeColor="Red"></asp:RequiredFieldValidator>1- </td>
+      <td>1- </td>
       <td><span>
           <asp:DropDownList ID="ddlCourse1" runat="server" CssClass="form-control  w3-margin-right bg-white " width="200px"  AutoPostBack="true" Enabled="False">
           </asp:DropDownList>
@@ -148,7 +147,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right  w3-responsive" style="direction:rtl; margin-right:3%;" >
  <table class=" w3-responsive float-right w3-table w3-striped w3-border" style="direction:rtl;float:right;   font-family:'Amiri';">
-    <tr class="bg-primary  w3-center w3-margin" style="font-size:x-large;">
+    <tr class="w3-green  w3-center w3-margin" style="font-size:x-large;">
       <th class="w3-center">الرقم</th>
        
       <th  class="w3-center" style=" float: none; 
@@ -162,8 +161,7 @@
     </tr>
     <tr style="font-size:large;">
 
-      <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*"  ControlToValidate="txtAlternativeNum1C1"
-  ForeColor="Red"></asp:RequiredFieldValidator>1- </td>
+      <td>1- </td>
       <td><span>
 
           <asp:DropDownList ID="ddlAlternativeCourse1" runat="server"  CssClass="form-control  w3-margin-right  bg-white" width="250px" Enabled="False"  AutoPostBack="true">
@@ -189,7 +187,6 @@
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" >
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="rq4" ControlToValidate="txtReason" ErrorMessage="*"></asp:RequiredFieldValidator>
 
       <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;">وذلك للأسباب التالية:</label>
       
@@ -249,7 +246,6 @@
 
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator1" ControlToValidate="rbtAceptHead" ErrorMessage="*"></asp:RequiredFieldValidator>
 
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
      
@@ -352,7 +348,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSaveReg" runat="server" Text="حفظ" class="btn btn-lg btn-primary" align="center" OnClick="btnSaveReg_Click"  />
+          <asp:Button ID="btnSaveReg" runat="server" Text="حفظ" class="btn btn-lg btn-danger" align="center" OnClick="btnSaveReg_Click"  />
       
        
       </div>

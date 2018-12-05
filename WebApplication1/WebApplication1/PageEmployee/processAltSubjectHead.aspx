@@ -94,7 +94,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right  w3-responsive" style="direction:rtl; margin-right:3%;" >
  <table class=" w3-responsive float-right w3-table w3-striped w3-border" style="direction:rtl;float:right;   font-family:'Amiri';">
-    <tr class="bg-primary  w3-center w3-margin" style="font-size:x-large;">
+    <tr class="w3-green   w3-center w3-margin" style="font-size:x-large;">
       <th class="w3-center">الرقم</th>
        
       <th  class="w3-center" style=" float: none; 
@@ -147,7 +147,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right  w3-responsive" style="direction:rtl; margin-right:3%;" >
  <table class=" w3-responsive float-right w3-table w3-striped w3-border" style="direction:rtl;float:right;   font-family:'Amiri';">
-    <tr class="bg-primary  w3-center w3-margin" style="font-size:x-large;">
+    <tr class="w3-green bg-primary  w3-center w3-margin" style="font-size:x-large;">
       <th class="w3-center">الرقم</th>
        
       <th  class="w3-center" style=" float: none; 
@@ -305,11 +305,11 @@
           </div>
   </div> 
 
-    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    <div class=" w3-white w3-center navbar navbar-expand-lg w3-margin-bottom  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSaveHead" runat="server" Text="حفظ" class="btn btn-lg btn-primary" align="center" OnClick="btnSaveHead_Click"  />
+          <asp:Button ID="btnSaveHead" runat="server" Text="حفظ" class="btn btn-lg btn-danger" align="center" OnClick="btnSaveHead_Click"  />
       
        
       </div>

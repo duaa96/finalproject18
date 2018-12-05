@@ -49,15 +49,6 @@ namespace WebApplication1.PageStudents {
         protected global::System.Web.UI.WebControls.Label labCollage;
         
         /// <summary>
-        /// RequiredFieldValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
-        
-        /// <summary>
         /// txtNumHours control.
         /// </summary>
         /// <remarks>
@@ -74,15 +65,6 @@ namespace WebApplication1.PageStudents {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvCourses;
-        
-        /// <summary>
-        /// rq4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rq4;
         
         /// <summary>
         /// txtReasons control.
@@ -103,40 +85,40 @@ namespace WebApplication1.PageStudents {
         protected global::System.Web.UI.WebControls.Label labDate;
         
         /// <summary>
-        /// txtAcademicAdvisor control.
+        /// txtDescriptionAcadimic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAcademicAdvisor;
+        protected global::System.Web.UI.WebControls.TextBox txtDescriptionAcadimic;
         
         /// <summary>
-        /// rbtAcademicAdvisorAccept control.
+        /// rbtAcceptAcadimic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtAcademicAdvisorAccept;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtAcceptAcadimic;
         
         /// <summary>
-        /// txtHeadDescription control.
+        /// txtDescriptionHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHeadDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtDescriptionHead;
         
         /// <summary>
-        /// rbtHeadAccept control.
+        /// rbtAceptHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtHeadAccept;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtAceptHead;
         
         /// <summary>
         /// txtDescriptionDean control.
@@ -148,31 +130,58 @@ namespace WebApplication1.PageStudents {
         protected global::System.Web.UI.WebControls.TextBox txtDescriptionDean;
         
         /// <summary>
-        /// rbtAcceptDean control.
+        /// rbtDeanAccept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtAcceptDean;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtDeanAccept;
         
         /// <summary>
-        /// txtDeputyAcademicDesc control.
+        /// txtDescriptinDep control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeputyAcademicDesc;
+        protected global::System.Web.UI.WebControls.TextBox txtDescriptinDep;
         
         /// <summary>
-        /// rbtDeputyAcademicAccept control.
+        /// rbtDepAcept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtDeputyAcademicAccept;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtDepAcept;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// txtDescriptionReg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescriptionReg;
+        
+        /// <summary>
+        /// RequiredFieldValidator10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
         
         /// <summary>
         /// rbtAcceptRegistration control.

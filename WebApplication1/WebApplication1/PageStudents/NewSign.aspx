@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/PageStudents/student.Master" CodeBehind="NewSign.aspx.cs" Inherits="WebApplication1.PageStudents.NewSign" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-64" style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
@@ -58,10 +58,10 @@
    
     
   <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+    margin: 0 auto; margin-right:7%; margin-left:3%; padding-bottom:5%;padding-top:5%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSave" runat="server" Text="تجديد التوقيع" class="btn btn-lg btn-primary" align="center" OnClick="btnSave_Click" />
+          <asp:Button ID="btnSave" runat="server" Text="تجديد التوقيع" class="btn btn-lg btn-danger" align="center" OnClick="btnSave_Click" />
      
       
        

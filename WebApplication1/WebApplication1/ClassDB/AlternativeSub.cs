@@ -15,7 +15,7 @@ namespace WebApplication1
 
         public int AddAlternativeSubject(int StudentID,string Date, string Year,string Semester, int Subject1ID, string Subject2Type, int NewSubject, string Description, int AcademicAdvisorAccept, int HeadAccept, int DeanAccept, int RegestrationAccept, int ApplicationID)
         {
-            string Query = "INSERT INTO AlternativeSubject( StudentID ,Year,Semester, Subject1ID , Subject2Type ,NewSubject ,Description , AcademicAdvisorAccept ,  HeadAccept , DeanAccept,RegestrationAccept, ApplicationID )VALUES(@StudentID  , @Year,@Semester, @Subject1ID , @Subject2Type , @NewSubject ,  @Description ,  @AcademicAdvisorAccept ,  @HeadAccept, @DeanAccept,@RegestrationAccept, @ApplicationID ) ";
+            string Query = "INSERT INTO AlternativeSubject( StudentID ,Date,Year,Semester, Subject1ID , Subject2Type ,NewSubject ,Description , AcademicAdvisorAccept ,  HeadAccept , DeanAccept,RegestrationAccept, ApplicationID )VALUES(@StudentID ,@Date , @Year,@Semester, @Subject1ID , @Subject2Type , @NewSubject ,  @Description ,  @AcademicAdvisorAccept ,  @HeadAccept, @DeanAccept,@RegestrationAccept, @ApplicationID ) ";
             SqlConnection Connection = new SqlConnection(Connectionstring);
             Connection.Open();
             SqlCommand Command = new SqlCommand(Query, Connection);
@@ -139,30 +139,18 @@ namespace WebApplication1
             return x;
         }
 
-        public int NotAcceptRegAltiSubj(int ID)
-        {
-            string Query = "Update  AlternativeSubject set RegestrationAccept =2 where ID = @ID ";
-            SqlConnection Connection = new SqlConnection(Connectionstring);
-            Connection.Open();
-            SqlCommand Command = new SqlCommand(Query, Connection);
-
-            Command.CommandType = CommandType.Text;
-            Command.Parameters.AddWithValue("@ID", ID);
-            int x = Command.ExecuteNonQuery();
-            Connection.Close();
-            return x;
-        }
+       
 
 
 
 
         ///  AcademicAdvisor get data Application
-        public DataTable dtNotAcceptAliSubAcademicAdvisorApplication()
+        public DataTable dtNotAcceptAliSubAcademicAdvisorApplication(int ID)
         {
             SqlConnection Connection = new SqlConnection(Connectionstring);
             Connection.Open();
             DataTable dt = new DataTable();
-            SqlDataAdapter DA = new SqlDataAdapter("select * from AlternativeSubject,Subjects where AlternativeSubject.Subject1ID =Subjects.SubjectID  and (AcademicAdvisorAccept=0 OR AcademicAdvisorAccept IS null)", Connection);
+            SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,AlternativeSubject.Date as DateRequest ,AlternativeSubject.ID  as IDFORM from Students,Section,AlternativeSubject where  Students.ID = AlternativeSubject.StudentID and  Students.SectionID = Section.ID and Students.AcademicAdvisorID="+ ID+" and (AlternativeSubject.AcademicAdvisorAccept = 0 OR AlternativeSubject.AcademicAdvisorAccept IS null)", Connection);
             DA.Fill(dt);
             Connection.Close();
             return dt;

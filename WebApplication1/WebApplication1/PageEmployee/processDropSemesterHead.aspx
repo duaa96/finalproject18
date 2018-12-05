@@ -15,7 +15,7 @@
 
     <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " stle=" float: none;
+        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
             <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات الطالب </h2>
             
@@ -66,9 +66,7 @@
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right col-5" style="direction:rtl; margin-right:3%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">عدد الساعات المسجلة:<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*"  ControlToValidate="txtNumHours"
-  ForeColor="Red"></asp:RequiredFieldValidator>
-          </label>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">عدد الساعات المسجلة:</label>
           
           &nbsp;<asp:TextBox ID="txtNumHours" runat="server" CssClass="form-control bg-white" style="float:right; font-family:'Amiri';" TextMode="Number" Enabled="False"></asp:TextBox>
             
@@ -94,35 +92,29 @@
     </div>
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-      <div class="form-group float-right row w3-responsive" style="direction:rtl; margin-right:3%;" >
-       <asp:GridView ID="gvCourses" class="w3-table w3-striped w3-border w3-center" style="direction:rtl;float:right;   font-family:'Amiri'; text-align:center;" runat="server" AutoGenerateColumns="False" DataKeyNames="SubjectID" width="1000px" CellPadding="4" ForeColor="Black" GridLines="None" Font-Names="Agency FB">
-                                    <AlternatingRowStyle BackColor="White" />
+      <div class="form-group float-right row w3-responsive" style=" margin-right:3%;" >
+       <asp:GridView ID="gvCourses" class="w3-table w3-border w3-center"   style=" font-family:'Amiri';"   runat="server" AutoGenerateColumns="False" DataKeyNames="SubjectID" width="900px" CellPadding="3"  BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                                     <Columns >
-                                        <asp:BoundField  DataField="SubjectName" HeaderText="اسم المساق" SortExpression="SubjectName" />
-                                        <asp:BoundField DataField="SubjectID" HeaderText="رقم المساق" SortExpression="SubjectID" />
+                                        <asp:BoundField DataField="SubjectID" ItemStyle-CssClass="w3-center"  HeaderStyle-CssClass="w3-center" HeaderText="رقم المساق" SortExpression="SubjectID" />
+
+                                        <asp:BoundField  DataField="SubjectName" ItemStyle-CssClass="w3-center"  HeaderStyle-CssClass="w3-center" HeaderText="اسم المساق" SortExpression="SubjectName" />
                                         
 
-                                        <asp:TemplateField ShowHeader="False">
-                                            <EditItemTemplate>
-                                            </EditItemTemplate>
-                                            <ItemStyle Width="24px" />
-                                           
-                                        </asp:TemplateField>
+                                        
                                            
                                     </Columns>
-                                    <EditRowStyle BackColor="#2461BF" />
                                     <EmptyDataTemplate>
                                         <asp:Label ID="lblNoUser" runat="server" Font-Bold="True" ForeColor="Red">لا يوجد مواد مسجلة للطالب  </asp:Label>
                                     </EmptyDataTemplate>
-                                    <FooterStyle BackColor="#1A7BB9" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#1A7BB9" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                    <RowStyle BackColor="#EFF3FB" />
-                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                    <HeaderStyle BackColor="#4CAF50" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                                    <RowStyle ForeColor="#000066" />
+                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#dc3545" />
+                                    <SortedAscendingHeaderStyle BackColor="#dc3545" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#dc3545" />
                                 </asp:GridView>
       
      </div>  
@@ -134,7 +126,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" >
 
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;">أرغب بسحب الفصل و ذلك للأسباب التالية:<asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="rq4" ControlToValidate="txtReasons" ErrorMessage="*"></asp:RequiredFieldValidator>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;">أرغب بسحب الفصل و ذلك للأسباب التالية:
 
           </label>
       
@@ -264,12 +256,34 @@
 
           </div>
       </div> 
+      <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+      <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" >
+      
+     </div>  
+          <div class="col-1">
 
-    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
+          </div>
+      
+   <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.4%; " >
+
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">كلمة المرور للتوقيع:
+         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator1" ControlToValidate="txtPassSign" ErrorMessage="*"></asp:RequiredFieldValidator>
+
+      </label>
+          <asp:TextBox ID="txtPassSign"  TextMode="Password"  runat="server" CssClass="form-control w3-margin-right" style="float:right; font-family:'Amiri'; " Width="40%"></asp:TextBox>
+      
+     </div>
+        
+           <div class="col-1">
+
+          </div>
+  </div>
+    <div class=" w3-white w3-center navbar navbar-expand-lg w3-margin-bottom " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSaveHead" runat="server" Text="حفظ" class="btn btn-lg btn-primary" align="center"  />
+          <asp:Button ID="btnSaveHead" runat="server" Text="حفظ" class="btn btn-lg btn-danger" align="center" OnClick="btnSaveHead_Click"  />
       
        
       </div>

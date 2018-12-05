@@ -94,6 +94,35 @@ public class Studnets
         return dr;
 
     }
+    public DataTable dtSearchStudentall(int ID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select *,College.Name as CollageName , Section.Name as SectionName , Students.StudentName as StudentName , Students.UniversityID as UniversityID,Students.mager as Mager from Students,College,Section where Section.ID = Students.SectionID and College.ID=  Section.CollegeID    and Students.ID =" + ID + "", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+    public DataRow drSearchStudentaLL(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtSearchStudentall(ID);
+        if (dt != null)
+        {
+
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
 
 
     public DataTable dtSearchStudentEmail(int ID)

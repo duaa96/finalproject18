@@ -101,6 +101,25 @@ namespace WebApplication1.PageStudents
             fillGv();
 
         }
+        protected void gvAbsenseExam_Data(Object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.Cells[2].Text == "1")
+                {
+                    e.Row.Cells[2].Text = "موافق";
+                }
+                else if (e.Row.Cells[2].Text == "2")
+                {
+                    e.Row.Cells[2].Text = " غير موافق";
+                }
+                else if (e.Row.Cells[2].Text == "0"|| e.Row.Cells[2].Text is null)
+                {
+                    e.Row.Cells[2].Text = "لم يتم النظر فيه بعد";
+                }
+
+            }
+        }
 
     }
 }

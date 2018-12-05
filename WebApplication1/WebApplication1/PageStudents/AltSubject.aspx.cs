@@ -58,7 +58,7 @@ namespace WebApplication1
                 labSection.Text = Stu["SectionName"].ToString();
                 labMager.Text = Stu["Mager"].ToString();
             }
-            labDate.Text = DateTime.Today.ToString();
+            labDate.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace WebApplication1
             int ID = Convert.ToInt32(Session["ID"].ToString());
             string Path = "";
 
-            string Data = txtNumberCourse1.Text.ToString()+ txtAlternativeNum1C1.Text.ToString()+ txtReason.Text.ToString()+
+            string Data = txtNumberCourse1.Text.ToString()+ txtAlternativeNum1C1.Text.ToString()+
             labHoursCourse1.Text.ToString() + labHoursAlternative.Text.ToString();
             if (fuSignature.HasFile)
             {
@@ -106,8 +106,8 @@ namespace WebApplication1
                 DataRow T = timee.drSearchYearANdSemester();
                 string semester = T["NowSemester"].ToString();
                 string Year = T["NowYear"].ToString();
-                string Date = labDate.Text.ToString();
-                if (obj.AddAlternativeSubject(ID, Date, Year, semester, CourseNum1, TypeCouseNum1, AlternativeCourseNum1, Reason, 0, 0, 0, 0, 3) == 1)
+                string Date1 = labDate.Text.ToString();
+                if (obj.AddAlternativeSubject(ID, Date1, Year, semester, CourseNum1, TypeCouseNum1, AlternativeCourseNum1, Reason, 0, 0, 0, 0, 3) == 1)
                 {
                     ddlCourse1.SelectedIndex = -1;
                     ddlAlternativeCourse1.SelectedIndex = -1;
@@ -118,14 +118,15 @@ namespace WebApplication1
                     labTypeCourse1.Text = "";
                     labHoursCourse1.Text = "";
                     labHoursAlternative.Text = "";
-
+                    SentMail s = new SentMail();
+                    s.sendemailAcadimic(ID);
 
                 }
                 errorLabel.Visible = false;
             }
             else
             {
-                errorLabel.Text = "التوقيع المدخل خاطئ";
+                errorLabel.Text = "التوقيع المدخل خاطئ أو كلمة المرور";
                 errorLabel.Visible = true;
             }
 

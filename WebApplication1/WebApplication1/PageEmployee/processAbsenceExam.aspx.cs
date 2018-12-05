@@ -51,7 +51,7 @@ namespace WebApplication1.PageEmployee
                 txtCourseNum2.Text = dr["Subject2"].ToString();
                 txtCourseNum3.Text = dr["Subject3"].ToString();
                 txtCourseNum4.Text = dr["Subject4"].ToString();
-                labDateDean.Text = DateTime.Today.ToString();
+                labDateDean.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 LinkButton1.Text = dr["Attachment1"].ToString();
                 LinkButton2.Text = dr["Attachment2"].ToString();
                 string Year = dr["Year"].ToString();

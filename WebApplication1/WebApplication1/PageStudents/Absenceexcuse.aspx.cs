@@ -33,7 +33,7 @@ namespace WebApplication1
         public void fillDataForm(int ID)
 
         {
-            labDate.Text = DateTime.Today.ToString();
+            labDate.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
 
             Studnets objStu = new Studnets();
             DataRow Stu = objStu.drSearchStudent(ID);
@@ -120,7 +120,7 @@ namespace WebApplication1
                 string semester = T["NowSemester"].ToString();
                 string Year = T["NowYear"].ToString();
                
-                if (obj11.AddAbsenceExam(ID, date, Year, semester, CourseNum1, ExamCourse1Date, CourseNum2, ExamCourse2Date, CourseNum3, ExamCourse3Date, CourseNum4, ExamCourse4Date, 0, "", Reason, strReasonFile, strReasonFile2,0,"", 1) == 1)
+                if (obj11.AddAbsenceExam(ID, date, Year, semester, CourseNum1, ExamCourse1Date, CourseNum2, ExamCourse2Date, CourseNum3, ExamCourse3Date, CourseNum4, ExamCourse4Date, Reason, strReasonFile, strReasonFile2,0,"", 1) == 1)
                 {
                     txtReason.Text = "";
                     txtCourseNum1.Text = "";
@@ -133,7 +133,8 @@ namespace WebApplication1
                     labTeacher3.Text = "";
                     labTeacher4.Text = "";
 
-
+                    SentMail s = new SentMail();
+                    s.sendemailDean(ID);
                 }
                 errorLabel.Visible = false;
 
@@ -145,7 +146,7 @@ namespace WebApplication1
 
             else
             {
-                errorLabel.Text = "التوقيع المدخل خاطئ";
+                errorLabel.Text = "التوقيع المدخل خاطئ أو كلمة المرور";
                 errorLabel.Visible = true;
             }
 
@@ -173,7 +174,11 @@ namespace WebApplication1
 
             int ID = Convert.ToInt32(Session["ID"].ToString());
             RegistredCourses obj = new RegistredCourses();
-            DataTable tbl1 = obj.dtSearchRegisterSubject(ID);
+            NowTimeUniversity timee = new NowTimeUniversity();
+            DataRow T = timee.drSearchYearANdSemester();
+            string year = T["NowYear"].ToString();
+            string Semester = T["NowSemester"].ToString();
+            DataTable tbl1 = obj.dtSearchRegisterSubject(ID, year, Semester);
             ddlCourse1.DataSource = tbl1;
             ddlCourse1.DataTextField = "SubjectName";
             ddlCourse1.DataValueField = "SubjectID";

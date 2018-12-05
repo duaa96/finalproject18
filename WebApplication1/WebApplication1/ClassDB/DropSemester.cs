@@ -42,9 +42,9 @@ public class DropSemester
         Connection.Close();
         return x;
     }
-    public int  UpdateDropSemester(int ID, int StudentID, string Description,int NumofHourReg, string Date, string AcademicAdvisor_Descr, int AcademicAdvisorAccept, string HeadDescription, int HeadAccept, string DeanDescription, int DeanAccept, string DeputyAcademic_Descr, int DeputyAcademicAccept, int RegestrationAccept, string RegestrationDescr, int ApplicationID)
+    public int  UpdateDropSemester(int ID, int StudentID,string Year, string Semester, string Description,int NumofHourReg, string Date, string AcademicAdvisor_Descr, int AcademicAdvisorAccept, string HeadDescription, int HeadAccept, string DeanDescription, int DeanAccept, string DeputyAcademic_Descr, int DeputyAcademicAccept, int RegestrationAccept, string RegestrationDescr, int ApplicationID)
     {
-        string Query = "Update  DropSemester set  StudentID =@StudentID,Description=@Description,NumofHourReg=@NumofHourReg, Date=@Date,AcademicAdvisor_Descr=@AcademicAdvisor_Descr,AcademicAdvisorAccept=@AcademicAdvisorAccept,HeadDescription=@HeadDescription,HeadAccept=@HeadAccept,DeanDescription=@DeanDescription,DeanAccept=@DeanAccept, DeputyAcademic_Descr=@DeputyAcademic_Descr,DeputyAcademicAccept=@DeputyAcademicAccept,RegestrationAccept=@RegestrationAccept,RegestrationDescr=@RegestrationDescr,ApplicationID=@ApplicationID where ID = @ID ";
+        string Query = "Update  DropSemester set  StudentID =@StudentID,Year=@Year,Semester=@Semester,Description=@Description,NumofHourReg=@NumofHourReg, Date=@Date,AcademicAdvisor_Descr=@AcademicAdvisor_Descr,AcademicAdvisorAccept=@AcademicAdvisorAccept,HeadDescription=@HeadDescription,HeadAccept=@HeadAccept,DeanDescription=@DeanDescription,DeanAccept=@DeanAccept, DeputyAcademic_Descr=@DeputyAcademic_Descr,DeputyAcademicAccept=@DeputyAcademicAccept,RegestrationAccept=@RegestrationAccept,RegestrationDescr=@RegestrationDescr,ApplicationID=@ApplicationID where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         SqlCommand Command = new SqlCommand(Query, Connection);
@@ -52,6 +52,8 @@ public class DropSemester
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
         Command.Parameters.AddWithValue("@StudentID", StudentID);//This is Parameter
+        Command.Parameters.AddWithValue("@Year", Year);//This is Parameter
+        Command.Parameters.AddWithValue("@Semester", Semester);//This is Parameter
         Command.Parameters.AddWithValue("@Description", Description);//This is Parameter
         Command.Parameters.AddWithValue("@NumofHourReg", NumofHourReg);//This is Parameter
         Command.Parameters.AddWithValue("@Date", Date);//This is Parameter
@@ -100,9 +102,9 @@ public class DropSemester
     }
 
 
-    public int AcceptHeadDropSemester(int ID)
+    public int AcceptHeadDropSemester(int ID,int HeadAccept, string HeadDescription)
     {
-        string Query = "Update  DropSemester set HeadAccept =1 where ID = @ID ";
+        string Query = "Update  DropSemester set HeadAccept =@HeadAccept,HeadDescription=@HeadDescription where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -110,24 +112,14 @@ public class DropSemester
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@HeadAccept", HeadAccept);
+        Command.Parameters.AddWithValue("@HeadDescription", HeadDescription);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
     }
 
-    public int NotAcceptHeadDropSemester(int ID)
-    {
-        string Query = "Update  DropSemester set HeadAccept =2 where ID = @ID ";
-        SqlConnection Connection = new SqlConnection(Connectionstring);
-        Connection.Open();
-        SqlCommand Command = new SqlCommand(Query, Connection);
-
-        Command.CommandType = CommandType.Text;
-        Command.Parameters.AddWithValue("@ID", ID);
-        int x = Command.ExecuteNonQuery();
-        Connection.Close();
-        return x;
-    }
+   
 
     //Regestration GetData Application 
     public DataTable dtNotAcceptDropSemesterRegApplication()
@@ -142,9 +134,9 @@ public class DropSemester
     }
 
 
-    public int AcceptRegDropSemester(int ID)
+    public int AcceptRegDropSemester(int ID,int RegestrationAccept, string RegestrationDescr)
     {
-        string Query = "Update  DropSemester set RegestrationDescr =1 where ID = @ID ";
+        string Query = "Update  DropSemester set RegestrationAccept =@RegestrationAccept,RegestrationDescr=@RegestrationDescr where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -152,24 +144,14 @@ public class DropSemester
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@RegestrationAccept", RegestrationAccept);
+        Command.Parameters.AddWithValue("@RegestrationDescr", RegestrationDescr);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
     }
 
-    public int NotAcceptRegDropSemester(int ID)
-    {
-        string Query = "Update  DropSemester set RegestrationDescr =2 where ID = @ID ";
-        SqlConnection Connection = new SqlConnection(Connectionstring);
-        Connection.Open();
-        SqlCommand Command = new SqlCommand(Query, Connection);
-
-        Command.CommandType = CommandType.Text;
-        Command.Parameters.AddWithValue("@ID", ID);
-        int x = Command.ExecuteNonQuery();
-        Connection.Close();
-        return x;
-    }
+   
 
 
 
@@ -186,9 +168,9 @@ public class DropSemester
     }
 
 
-    public int AcceptDeputyAcademicDropSemester(int ID)
+    public int AcceptDeputyAcademicDropSemester(int ID,int DeputyAcademicAccept, string DeputyAcademic_Descr)
     {
-        string Query = "Update  DropSemester set DeputyAcademicAccept =1 where ID = @ID ";
+        string Query = "Update  DropSemester set DeputyAcademicAccept =@DeputyAcademicAccept,DeputyAcademic_Descr=@DeputyAcademic_Descr where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -196,44 +178,34 @@ public class DropSemester
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@DeputyAcademicAccept", DeputyAcademicAccept);
+        Command.Parameters.AddWithValue("@DeputyAcademic_Descr", DeputyAcademic_Descr);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
     }
 
-    public int NotAcceptDeputyAcademicDropSemester(int ID)
-    {
-        string Query = "Update  DropSemester set DeputyAcademicAccept =2 where ID = @ID ";
-        SqlConnection Connection = new SqlConnection(Connectionstring);
-        Connection.Open();
-        SqlCommand Command = new SqlCommand(Query, Connection);
-
-        Command.CommandType = CommandType.Text;
-        Command.Parameters.AddWithValue("@ID", ID);
-        int x = Command.ExecuteNonQuery();
-        Connection.Close();
-        return x;
-    }
+    
 
 
 
 
     //AcademicAdvisorAccept GetData Application 
-    public DataTable dtNotAcceptDropSemesterAcademicAdvisorApplication()
+    public DataTable dtNotAcceptDropSemesterAcademicAdvisorApplication(int ID)
     {
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select * from DropSemester where  (AcademicAdvisorAccept = 0 OR AcademicAdvisorAccept IS null)", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.ID=DropSemester.StudentID and Students.SectionID = Section.ID and Students.AcademicAdvisorID=" + ID+ " and (DropSemester.AcademicAdvisorAccept = 0 OR DropSemester.AcademicAdvisorAccept IS null)", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
     }
 
 
-    public int AcceptAcademicAdvisorDropSemester(int ID)
+    public int AcceptAcademicAdvisorDropSemester(int ID,int AcademicAdvisorAccept,string AcademicAdvisor_Descr)
     {
-        string Query = "Update  DropSemester set AcademicAdvisorAccept =1 where ID = @ID ";
+        string Query = "Update  DropSemester set AcademicAdvisorAccept =@AcademicAdvisorAccept,AcademicAdvisor_Descr=@AcademicAdvisor_Descr where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -241,24 +213,14 @@ public class DropSemester
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@AcademicAdvisorAccept", AcademicAdvisorAccept);
+        Command.Parameters.AddWithValue("@AcademicAdvisor_Descr", AcademicAdvisor_Descr);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
     }
 
-    public int NotAcceptAcademicAdvisorDropSemester(int ID)
-    {
-        string Query = "Update  DropSemester set AcademicAdvisorAccept =2 where ID = @ID ";
-        SqlConnection Connection = new SqlConnection(Connectionstring);
-        Connection.Open();
-        SqlCommand Command = new SqlCommand(Query, Connection);
-
-        Command.CommandType = CommandType.Text;
-        Command.Parameters.AddWithValue("@ID", ID);
-        int x = Command.ExecuteNonQuery();
-        Connection.Close();
-        return x;
-    }
+   
 
 
 
@@ -274,9 +236,9 @@ public class DropSemester
         return dt;
     }
 
-    public int AcceptDeanDropSemester(int ID)
+    public int AcceptDeanDropSemester(int ID,int DeanAccept, string DeanDescription)
     {
-        string Query = "Update  DropSemester set DeanAccept =1 where ID = @ID ";
+        string Query = "Update  DropSemester set DeanAccept =@DeanAccept,DeanDescription=@DeanDescription where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -284,24 +246,14 @@ public class DropSemester
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@DeanAccept", DeanAccept);
+        Command.Parameters.AddWithValue("@DeanDescription", DeanDescription);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
     }
 
-    public int NotAcceptDeanDropSemester(int ID)
-    {
-        string Query = "Update  DropSemester set DeanAccept =2 where ID = @ID ";
-        SqlConnection Connection = new SqlConnection(Connectionstring);
-        Connection.Open();
-        SqlCommand Command = new SqlCommand(Query, Connection);
-
-        Command.CommandType = CommandType.Text;
-        Command.Parameters.AddWithValue("@ID", ID);
-        int x = Command.ExecuteNonQuery();
-        Connection.Close();
-        return x;
-    }
+   
 
     public DataTable dtViewStudents(int ID)
     {

@@ -6,11 +6,10 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; margin-top:10%; ">
       <div class="form-group float-right row w3-responsive" style="direction:rtl; margin-right:3%; width:100%;" >
                <asp:Label ID="errorLabel" runat="server" style="float:right;  float:none; margin:0 auto;  font-family:'Amiri'; font-size:large;" Visible="False" ForeColor="#FF3300"></asp:Label>
-    <asp:GridView ID="gvDropSemester"    style="width:1100px; margin-top" runat="server"   OnRowDeleting="gvPullCoursedelete_RowDeleting" AutoGenerateColumns="False" DataKeyNames="ID" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gvPullCourseView_RowCommand">
+    <asp:GridView ID="gvDropSemester"    style="width:1100px; " runat="server"   OnRowDeleting="gvDropSemesterdelete_RowDeleting" AutoGenerateColumns="False" DataKeyNames="ID" CellPadding="3" OnRowCommand="gvDropSemesterView_RowCommand" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" OnRowDataBound="gvDropSemester_Data">
 
 
 
-        <AlternatingRowStyle BackColor="White" ForeColor="#284775" /> 
         <Columns >
             <asp:BoundField  DataField="ID" HeaderText="رقم الطلب" SortExpression="ID" />
             <asp:BoundField DataField="Date" HeaderText="تاريخ تقديم الطلب" SortExpression="Date" />
@@ -37,27 +36,21 @@
                          <asp:Button ID="btnedit2" runat="server" Text="حذف" CommandName="delete" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'/>
                    </ItemTemplate>          
             </asp:TemplateField>
-            <asp:TemplateField ShowHeader="False">
-                <EditItemTemplate>
-                </EditItemTemplate>
-                 <ItemStyle Width="24px" />
-                                           
-            </asp:TemplateField>
+            
             </Columns>
        
-        <EditRowStyle BackColor="#999999" />
          <EmptyDataTemplate>
                <asp:Label ID="lblNoUser" runat="server" Font-Bold="True" ForeColor="Red">لا يوجد طلبات مقدمة </asp:Label>
         </EmptyDataTemplate>
-        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#F7F6F3" ForeColor="#333333"  />
-        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#E9E7E2" />
-        <SortedAscendingHeaderStyle BackColor="#506C8C" />
-        <SortedDescendingCellStyle BackColor="#FFFDF8" />
-        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        <FooterStyle BackColor="White" ForeColor="#000066" />
+        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+        <RowStyle ForeColor="#000066"  />
+        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#00547E" />
     </asp:GridView>
           <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
     </div>

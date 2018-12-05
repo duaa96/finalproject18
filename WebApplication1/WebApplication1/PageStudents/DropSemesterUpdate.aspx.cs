@@ -26,35 +26,48 @@ namespace WebApplication1.PageStudents
         {
 
 
-            Studnets objStu = new Studnets();
-            DataRow Stu = objStu.drSearchStudent(ID);
-            if (Stu != null)
-            {
-                labCollage.Text = Stu["CollageName"].ToString();
-                labNameStudent.Text = Stu["StudentName"].ToString();
-                labNumStudent.Text = Stu["UniversityID"].ToString();
-                labSection.Text = Stu["SectionName"].ToString();
-                
-            }
 
             DropSemester obj = new DropSemester();
             int id = Convert.ToInt32(Request.QueryString["id"]);
             DataRow dr = obj.drgetform(id);
+
             if (dr != null)
             {
+                int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+                Studnets objStu = new Studnets();
+                DataRow Stu = objStu.drSearchStudent(STUid);
+                if (Stu != null)
+                {
+                    labNameStudent.Text = Stu["StudentName"].ToString();
+                    labNumStudent.Text = Stu["UniversityID"].ToString();
+                    labSection.Text = Stu["SectionName"].ToString();
+                    labCollage.Text = Stu["CollageName"].ToString();
+
+                }
+             
+                labDate.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 txtNumHours.Text = dr["NumofHourReg"].ToString();
                 txtReasons.Text = dr["Description"].ToString();
+                string semester = dr["Semester"].ToString();
+                string year = dr["Year"].ToString();
+              
+                RegistredCourses objj = new RegistredCourses();
+                DataTable tbl1 = objj.dtSearchRegisterSubjectStu(ID, semester, year);
+                gvCourses.DataSource = tbl1;
+                gvCourses.DataBind();
             }
-            labDate.Text = DateTime.Today.ToString();
+
         }
-
-
         private void fillddl()
         {
 
             int ID = Convert.ToInt32(Session["ID"].ToString());
             RegistredCourses obj = new RegistredCourses();
-            DataTable tbl1 = obj.dtSearchRegisterSubject(ID);
+            NowTimeUniversity timee = new NowTimeUniversity();
+            DataRow T = timee.drSearchYearANdSemester();
+            string year = T["NowYear"].ToString();
+            string Semester = T["NowSemester"].ToString();
+            DataTable tbl1 = obj.dtSearchRegisterSubject(ID, year, Semester);
             gvCourses.DataSource = tbl1;
             gvCourses.DataBind();
 
@@ -90,8 +103,11 @@ namespace WebApplication1.PageStudents
                 DropSemester objsem = new DropSemester();
                 int NumOFHour = Convert.ToInt32(txtNumHours.Text.ToString());
                 int roww = Convert.ToInt32(Request.QueryString["id"]);
-
-                if (objsem.UpdateDropSemester(roww, ID, Reason, NumOFHour, date1, "", 0, "", 0, "", 0, "", 0, 0,"", 2) == 1)
+                NowTimeUniversity timee = new NowTimeUniversity();
+                DataRow T = timee.drSearchYearANdSemester();
+                string year = T["NowYear"].ToString();
+                string Semester = T["NowSemester"].ToString();
+                if (objsem.UpdateDropSemester(roww, ID, year, Semester, Reason, NumOFHour, date1, "", 0, "", 0, "", 0, "", 0, 0,"", 2) == 1)
                 {
                     Response.Redirect("DropSemesterDisplay.aspx");
                 }
@@ -103,9 +119,6 @@ namespace WebApplication1.PageStudents
                 errorLabel.Visible = true;
             }
         }
-        protected void gvCourses_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

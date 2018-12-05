@@ -49,15 +49,6 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.Label labCollage;
         
         /// <summary>
-        /// RequiredFieldValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
-        
-        /// <summary>
         /// txtNumHours control.
         /// </summary>
         /// <remarks>
@@ -74,15 +65,6 @@ namespace WebApplication1.PageEmployee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvCourses;
-        
-        /// <summary>
-        /// rq4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rq4;
         
         /// <summary>
         /// txtReasons control.
@@ -220,13 +202,31 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.FileUpload fuSignatureDean;
         
         /// <summary>
-        /// errorReg control.
+        /// errorDean control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorReg;
+        protected global::System.Web.UI.WebControls.Label errorDean;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// txtPassSign control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPassSign;
         
         /// <summary>
         /// btnSaveDean control.

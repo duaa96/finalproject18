@@ -41,6 +41,7 @@ namespace WebApplication1.PageEmployee
                     labMager.Text = Stu["mager"].ToString();
 
                 }
+                labDateDean.Text= DateTime.UtcNow.ToString("yyyy-MM-dd");
                 txtStatus.Text = dr["Description"].ToString();
                 labDate.Text = dr["Date"].ToString();
                 txtDescriptionHead.Text = dr["HeadDescription"].ToString();
@@ -49,6 +50,45 @@ namespace WebApplication1.PageEmployee
                     rbtAceptHead.SelectedValue = "1";
                 else if (HeadAccept == "2")
                     rbtAceptHead.SelectedValue = "2";
+            }
+        }
+
+        protected void btnSaveDean_Click(object sender, EventArgs e)
+        {
+            bool Result = false;
+            int ID = Convert.ToInt32(Session["ID"].ToString());
+            string Path = "";
+            string Data = labDate.Text.ToString() + labStudentNumber.Text.ToString()+rbtAceptHead.SelectedValue.ToString()+rbtAcceptDean.SelectedValue.ToString();
+            if (fuSignatureDean.HasFile)
+            {
+                string Private = fuSignatureDean.FileName.ToString();
+                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
+                string Pasword = txtPassSign.Text.ToString();
+                fuSignatureDean.SaveAs(Server.MapPath("Test") + "/" + fuSignatureDean.FileName);
+                SignatureEmployee newSig = new SignatureEmployee();
+                string strencrypt = newSig.encrypet(Data, Path, Pasword);
+                Result = newSig.Decreypt(strencrypt, ID);
+
+            }
+
+            if (Result == true)
+            {
+                ShowStatusClass obj = new ShowStatusClass();
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                int AcceptDean = Convert.ToInt32(rbtAcceptDean.SelectedValue.ToString());
+                string DeanDec = txtDescriptionDean.Text.ToString();
+                if (obj.AcceptDeanShowStatus(id, AcceptDean, DeanDec) == 1)
+                {
+                    Response.Redirect("ProcessRequest.aspx");
+                }
+
+                errorDean.Visible = false;
+
+            }
+            else
+            {
+                errorDean.Text = "التوقيع المدخل خاطئ او كلمة المرور";
+                errorDean.Visible = true;
             }
         }
     }

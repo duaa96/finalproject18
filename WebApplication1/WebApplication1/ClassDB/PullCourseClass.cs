@@ -11,7 +11,7 @@ public class PullCourseClass
 
     public int AddPullCourse(int StudentID,string Year,string Semester ,int Subject1ID, int Subject2ID, int Subject3ID, string Date, string Description, string Course1time,string Course2time,string Course3time,int NumHourRegester, int NumAfterPull, string HeadDescription, string HeadDate, int HeadAccept, string DeanDescription, string DeanDate, int DeanAccept, int RegestrationAccept, int ApplicationID)
     {
-        string Query = "INSERT INTO PullCourse(StudentID, Year, Semester,Subject1ID,Subject2ID,Subject3ID,Date ,Description,Course1time,Course2time,Course3time,NumHourRegester,NumAfterPull, HeadDescription, HeadDate,HeadAccept,DeanDescription,DeanDate, DeanAccept, RegestrationAccept, ApplicationID)VALUES(@StudentID, @Year, @Semester,@Subject1ID,@Subject2ID,@Subject3ID,@Date ,@Description,@Course1time,@Course2time,@Course2time,@NumHourRegester,@NumAfterPull,@HeadDescription,@HeadDate,@HeadAccept,@DeanDescription,@DeanDate,@DeanAccept,@RegestrationAccept,@ApplicationID) ";
+        string Query = "INSERT INTO PullCourse(StudentID, Year, Semester,Subject1ID,Subject2ID,Subject3ID,Date ,Description,Course1time,Course2time,Course3time,NumHourRegester,NumAfterPull, HeadDescription, HeadDate,HeadAccept,DeanDescription,DeanDate, DeanAccept, RegestrationAccept, ApplicationID)VALUES(@StudentID, @Year, @Semester,@Subject1ID,@Subject2ID,@Subject3ID,@Date ,@Description,@Course1time,@Course2time,@Course3time,@NumHourRegester,@NumAfterPull,@HeadDescription,@HeadDate,@HeadAccept,@DeanDescription,@DeanDate,@DeanAccept,@RegestrationAccept,@ApplicationID) ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         SqlCommand Command = new SqlCommand(Query, Connection);
@@ -95,7 +95,7 @@ public class PullCourseClass
 
     public int DeletePullCourseSelected(int ID)
     {
-        string Query = "delete from PullCourse where RegestrationAccept=0 and ID = "+ID;
+        string Query = "delete from PullCourse where RegestrationAccept=0 and ID = " + ID;
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         SqlCommand Command = new SqlCommand(Query, Connection);
@@ -131,9 +131,9 @@ public class PullCourseClass
         Connection.Close();
         return dt;
     }
-    public int AcceptHeadPullCourse(int ID)
+    public int AcceptHeadPullCourse(int ID, int HeadAccept , string HeadDescription)
     {
-        string Query = "Update  PullCourse set HeadAccept =1 where ID = @ID ";
+        string Query = "Update  PullCourse set HeadAccept =@HeadAccept,HeadDescription=@HeadDescription where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -141,6 +141,8 @@ public class PullCourseClass
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@HeadAccept", HeadAccept);
+        Command.Parameters.AddWithValue("@HeadDescription", HeadDescription);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
@@ -172,9 +174,9 @@ public class PullCourseClass
         return dt;
     }
 
-    public int AcceptRegPullCourse(int ID)
+    public int AcceptRegPullCourse(int ID,int RegestrationAccept)
     {
-        string Query = "Update  PullCourse set RegestrationAccept =1 where ID = @ID ";
+        string Query = "Update  PullCourse set RegestrationAccept =@RegestrationAccept where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -182,24 +184,12 @@ public class PullCourseClass
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@RegestrationAccept", RegestrationAccept);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
     }
 
-    public int NotAcceptRegPullCourse(int ID)
-    {
-        string Query = "Update  PullCourse set RegestrationAccept =2 where ID = @ID ";
-        SqlConnection Connection = new SqlConnection(Connectionstring);
-        Connection.Open();
-        SqlCommand Command = new SqlCommand(Query, Connection);
-
-        Command.CommandType = CommandType.Text;
-        Command.Parameters.AddWithValue("@ID", ID);
-        int x = Command.ExecuteNonQuery();
-        Connection.Close();
-        return x;
-    }
 
 
     // Dean getData Application
@@ -216,9 +206,9 @@ public class PullCourseClass
 
 
     }
-    public int AcceptDeanPullCourse(int ID)
+    public int AcceptDeanPullCourse(int ID,int DeanAccept, string DeanDescription)
     {
-        string Query = "Update  PullCourse set DeanAccept =1 where ID = @ID ";
+        string Query = "Update  PullCourse set DeanAccept =@DeanAccept,DeanDescription=@DeanDescription where ID = @ID ";
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
 
@@ -226,25 +216,14 @@ public class PullCourseClass
 
         Command.CommandType = CommandType.Text;
         Command.Parameters.AddWithValue("@ID", ID);
+        Command.Parameters.AddWithValue("@DeanAccept", DeanAccept);
+        Command.Parameters.AddWithValue("@DeanDescription", DeanDescription);
         int x = Command.ExecuteNonQuery();
         Connection.Close();
         return x;
     }
 
-    public int NotAcceptDeanPullCourse(int ID)
-    {
-        string Query = "Update  PullCourse set DeanAccept =2 where ID = @ID ";
-        SqlConnection Connection = new SqlConnection(Connectionstring);
-        Connection.Open();
-        SqlCommand Command = new SqlCommand(Query, Connection);
-
-        Command.CommandType = CommandType.Text;
-        Command.Parameters.AddWithValue("@ID", ID);
-        int x = Command.ExecuteNonQuery();
-        Connection.Close();
-        return x;
-    }
-
+   
 
     public DataTable dteditform(int ID)
     {

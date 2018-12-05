@@ -67,12 +67,12 @@ public class RegistredCourses
         Command.ExecuteNonQuery();
         Connection.Close();
     }
-    public DataTable dtSearchRegisterSubject(int StudentsID)
+    public DataTable dtSearchRegisterSubject(int StudentsID,string Year,string Semester)
     {
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select*  from RegistredCourses,Subjects WHERE Subjects.SubjectID  = RegistredCourses.SubjectID AND StudentsID =" + StudentsID + "", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select*  from RegistredCourses,Subjects WHERE Subjects.SubjectID  = RegistredCourses.SubjectID AND StudentsID ="+ StudentsID+" and RegistredCourses.Year="+Year +" and RegistredCourses.Semester=N"+"'"+Semester+"'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -80,22 +80,7 @@ public class RegistredCourses
     }
 
 
-    public DataRow drSearchRegisterSubject(int ID)
-    {
-        DataRow dr;
-        DataTable dt = dtSearchRegisterSubject(ID);
-        if (dt != null)
-        {
-
-            dr = dt.Rows[0];
-        }
-        else
-        {
-            dr = null;
-        }
-        return dr;
-
-    }
+   
     public DataTable dtSearchRegisterSubjectTeacher(int StudentsID, int SubjectID)
     {
         SqlConnection Connection = new SqlConnection(Connectionstring);
@@ -171,7 +156,7 @@ public class RegistredCourses
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select *  from RegistredCourses,Subjects WHERE Subjects.SubjectID  = RegistredCourses.SubjectID  and Year =" + yearr+" and Semester ="+"N"+ "'"+semester+"'" +"  AND StudentsID=" + StudentsID + "", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select *  from RegistredCourses,Subjects WHERE Subjects.SubjectID  = RegistredCourses.SubjectID  and Year ="+yearr+" and Semester =N"+"'"+semester+"'"+" AND StudentsID="+StudentsID, Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;

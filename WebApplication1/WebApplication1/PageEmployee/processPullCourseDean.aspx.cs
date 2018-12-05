@@ -44,7 +44,7 @@ namespace WebApplication1.PageEmployee
                     labCollage.Text = Stu["CollageName"].ToString();
 
                 }
-
+                labDateDean.Text= DateTime.UtcNow.ToString("yyyy-MM-dd");
                 labDate.Text = dr["Date"].ToString();
                 txtTimeCourse1.Text = dr["Course1time"].ToString();
                 txtTimeCourse2.Text = dr["Course2time"].ToString();
@@ -103,7 +103,51 @@ namespace WebApplication1.PageEmployee
 
             }
         }
+
+        protected void btnSaveDean_Click(object sender, EventArgs e)
+        {
+            bool Result = false;
+            int ID = Convert.ToInt32(Session["ID"].ToString());
+            string Path = "";
+            string Data = txtNumCourse1.Text.ToString() + txtNumCourse2.Text.ToString() + txtNumCourse3.Text.ToString() +
+             txtNmberHours.Text.ToString() + txtNumHourAfter.Text.ToString() + DateTime.Today.ToString()+rbtAceptHead.SelectedValue.ToString()+rbtAcceptDean.SelectedValue.ToString();
+            if (fuSignatureDean.HasFile)
+            {
+                string Private = fuSignatureDean.FileName.ToString();
+                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
+                string Pasword = txtPassSign.Text.ToString();
+                fuSignatureDean.SaveAs(Server.MapPath("Test") + "/" + fuSignatureDean.FileName);
+                SignatureEmployee newSig = new SignatureEmployee();
+                string strencrypt = newSig.encrypet(Data, Path, Pasword);
+                Result = newSig.Decreypt(strencrypt, ID);
+
+            }
+
+            if (Result == true)
+            {
+                PullCourseClass obj = new PullCourseClass();
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                int AcceptDean = Convert.ToInt32(rbtAcceptDean.SelectedValue.ToString());
+                string DeanDec = txtDescriptionDean.Text.ToString();
+                if (obj.AcceptDeanPullCourse(id, AcceptDean, DeanDec) == 1)
+                {
+
+                    
+                    SentMail s = new SentMail();
+                    s.sendemailReg();
+                    Response.Redirect("ProcessRequest.aspx");
+                }
+
+                errorDean.Visible = false;
+
+            }
+            else
+            {
+                errorDean.Text = "التوقيع المدخل خاطئ او كلمة المرور";
+                errorDean.Visible = true;
+            }
         }
+    }
 
 
 }

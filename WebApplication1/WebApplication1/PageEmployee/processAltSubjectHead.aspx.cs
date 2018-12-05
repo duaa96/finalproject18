@@ -42,7 +42,7 @@ namespace WebApplication1.PageEmployee
 
                 }
                 labDateS.Text = dr["Date"].ToString();
-                labDateHead.Text = DateTime.Today.ToString();
+                labDateHead.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 txtNumberCourse1.Text = dr["Subject1ID"].ToString();
                 labTypeCourse1.Text = dr["Subject2Type"].ToString();
                 txtReason.Text = dr["Description"].ToString();
@@ -104,6 +104,11 @@ namespace WebApplication1.PageEmployee
                 int AcceptHead = Convert.ToInt32(rbtAceptHead.SelectedValue.ToString());
                 if (obj.AcceptHeadAltiSubj(id, AcceptHead) == 1)
                 {
+                    DataRow dr = obj.drgetform(id);
+                    int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+
+                    SentMail s = new SentMail();
+                    s.sendemailDean(STUid);
                     Response.Redirect("ProcessRequest.aspx");
                 }
 

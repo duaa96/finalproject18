@@ -149,4 +149,191 @@ public class Employee
         return dr;
 
     }
+
+    public DataTable dtSearchEmployeeHead(int sectionID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select email from Employees,EmployeePosition where Employees.SectionID=" + sectionID + " and Employees.ID=EmployeePosition.EmployeeID and EmployeePosition.Position=3 ", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+    public DataRow drSearchEmployeeHead(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtSearchEmployeeHead(ID);
+        if (dt != null)
+        {
+
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+
+    }
+    public DataTable dtSearchEmployeeColloge(int sectionID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select DISTINCT  CollegeID  from Section,College where Section.ID="+sectionID+" and College.ID=Section.CollegeID  ", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+    public DataRow drSearchEmployeeColloge(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtSearchEmployeeColloge(ID);
+        if (dt != null)
+        {
+
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+
+    public DataTable dtSearchEmployeeDean(int CollegeID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select EmployeePosition.EmployeeID From EmployeePosition WHERE EmployeeID IN(select DISTINCT Employees.ID from Employees,Section,College where Employees.SectionID=Section.ID and Section.CollegeID="+CollegeID+" ) and EmployeePosition.Position=2", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+
+
+    public DataRow drSearchEmployeeDean(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtSearchEmployeeDean(ID);
+        if (dt != null)
+        {
+
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+
+    public DataTable dtSearchEmployeeINfo(int EmpID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select * from Employees where Employees.ID="+EmpID, Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+
+
+    public DataRow drSearchEmployeeINfo(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtSearchEmployeeINfo(ID);
+        if (dt != null)
+        {
+
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+
+    public DataTable dtSearchEmployeeDep()
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select EmployeePosition.EmployeeID from EmployeePosition where EmployeePosition.Position=1", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+
+
+    public DataRow drSearchEmployeeDep()
+    {
+        DataRow dr;
+        DataTable dt = dtSearchEmployeeDep();
+        if (dt != null)
+        {
+
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
+    public DataTable dtSearchEmployeeReg()
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select EmployeePosition.EmployeeID from EmployeePosition where EmployeePosition.Position=5", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
+
+
+
+    public DataRow drSearchEmployeeReg()
+    {
+        DataRow dr;
+        DataTable dt = dtSearchEmployeeReg();
+        if (dt != null)
+        {
+
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
 }

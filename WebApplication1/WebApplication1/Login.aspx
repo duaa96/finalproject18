@@ -27,7 +27,7 @@
                     <form class="m-t" role="form" action="index.html">
                          <img src="img/logo.png" width="200 px" align="center"/>
                         <div>
-                            <p style="color:#0077C0">
+                            <p style="color:#28a745">
                                 <b>
                           تسجيل الدخول
                                     </b>
@@ -58,7 +58,7 @@
                                </table>
 
                            </div>
-                        <asp:Button ID="btnLogin" runat="server" class="btn btn-primary block full-width m-b" Text="تسجيل الدخول" OnClick="btnLogin_Click1" />
+                        <asp:Button ID="btnLogin" runat="server" class="btn btn-danger block full-width m-b" Text="تسجيل الدخول" OnClick="btnLogin_Click1" />
                         <div class="form-group">
                             <asp:Label ID="lbWrong" runat="server" Visible="False" Font-Bold="True" ForeColor="#CC0000"></asp:Label>  
 

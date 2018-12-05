@@ -34,7 +34,7 @@ namespace WebApplication1
                 labSection.Text = Stu["SectionName"].ToString();
                 labMager.Text = Stu["Mager"].ToString();
             }
-            labDate.Text = DateTime.Today.ToString();
+            labDate.Text = DateTime.UtcNow.ToString("yyyy-MM-dd");
 
         }
 
@@ -68,13 +68,15 @@ namespace WebApplication1
                 if ( obj.AddShowStatus(ID, Year, semester, Datenow, Reason, "", 0, "", "", 0, "", 4)==1)
             {
                 txtStatus.Text = "";
+                    SentMail s = new SentMail();
+                    s.sendemailHead(ID);
             }
                 errorLabel.Visible = false;
 
             }
             else
             {
-                errorLabel.Text = "التوقيع المدخل خاطئ";
+                errorLabel.Text = " التوقيع المدخل خاطئ أو كلمة المرور";
                 errorLabel.Visible = true;
             }
 
