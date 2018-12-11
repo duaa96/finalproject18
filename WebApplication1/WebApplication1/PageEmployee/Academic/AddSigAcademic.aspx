@@ -38,7 +38,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%;padding-bottom:10%; padding-top:5%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-             <asp:Button ID="Button2" runat="server" OnClick="btnSave_Click" Text="إنشاء توقيع " class="btn btn-danger btn-lg w3-margin-top" align="center" style="float: none; margin: 0 auto;" />
+             <asp:Button ID="Button2" runat="server" OnClick="btnSave_Click" Text="إنشاء توقيع " class="btn w3-green btn-lg w3-margin-top" align="center" style="float: none; margin: 0 auto;" />
      
       
        

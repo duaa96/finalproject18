@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using WebApplication1;
+
 public class PullCourseClass
 {
     private string Connectionstring = ConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
@@ -111,10 +113,14 @@ public class PullCourseClass
     /// Head getData Application
     public DataTable dtViewStudents( int ID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select * from PullCourse where StudentID= "+ID, Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select * from PullCourse where Year=" + Year + " and Semester=N" + "'" +semester + "'" +" and StudentID = "+ID, Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -289,10 +295,14 @@ public class PullCourseClass
 
     public DataTable dtNotAcceptDeanPullCourseApplication(int CollegeID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,PullCourse.Date as DateRequest ,PullCourse.ID  as IDFORM from Students,Section,PullCourse where Students.SectionID=Section.ID and Section.CollegeID=" + CollegeID + " and Students.ID=PullCourse.StudentID and(( PullCourse.HeadAccept<>0 and PullCourse.HeadAccept IS not null) and (PullCourse.DeanAccept = 0 OR PullCourse.DeanAccept IS null))", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,PullCourse.Date as DateRequest ,PullCourse.ID  as IDFORM from Students,Section,PullCourse where Students.SectionID=Section.ID and Section.CollegeID=" + CollegeID + " and Students.ID=PullCourse.StudentID and(( PullCourse.HeadAccept<>0 and PullCourse.HeadAccept IS not null) and (PullCourse.DeanAccept = 0 OR PullCourse.DeanAccept IS null))and PullCourse.Year=" + Year + " and PullCourse.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -300,10 +310,14 @@ public class PullCourseClass
 
     public DataTable dtNotAcceptHeadPullCourseApplication(int SectionID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,PullCourse.Date as DateRequest ,PullCourse.ID  as IDFORM from Students,Section,PullCourse where Students.SectionID=Section.ID and Students.SectionID="+SectionID+" and Students.ID=PullCourse.StudentID and( PullCourse.HeadAccept=0 OR PullCourse.HeadAccept IS null) ", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,PullCourse.Date as DateRequest ,PullCourse.ID  as IDFORM from Students,Section,PullCourse where Students.SectionID=Section.ID and Students.SectionID="+SectionID+ " and Students.ID=PullCourse.StudentID and( PullCourse.HeadAccept=0 OR PullCourse.HeadAccept IS null) and PullCourse.Year=" + Year + " and PullCourse.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -311,10 +325,14 @@ public class PullCourseClass
 
     public DataTable dtNotAcceptRegPullCourseApplication()
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,PullCourse.Date as DateRequest ,PullCourse.ID  as IDFORM from Students,Section,PullCourse where Students.SectionID=Section.ID and Students.ID=PullCourse.StudentID and(( PullCourse.DeanAccept<>0 and PullCourse.DeanAccept IS not null) and (PullCourse.RegestrationAccept = 0 OR PullCourse.RegestrationAccept IS null)) ", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,PullCourse.Date as DateRequest ,PullCourse.ID  as IDFORM from Students,Section,PullCourse where Students.SectionID=Section.ID and Students.ID=PullCourse.StudentID and(( PullCourse.DeanAccept<>0 and PullCourse.DeanAccept IS not null) and (PullCourse.RegestrationAccept = 0 OR PullCourse.RegestrationAccept IS null))and PullCourse.Year=" + Year + " and PullCourse.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;

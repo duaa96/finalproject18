@@ -15,7 +15,7 @@
 
     <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " stle=" float: none;
+        <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
             <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات الطالب </h2>
             
@@ -179,7 +179,11 @@
          <td>  
           <asp:Label ID="labHoursAlternative" CssClass="form-control w3-margin-right " width="200px" runat="server" Height="35px" Text=""></asp:Label>
 
+       
+          
+
      </td>
+      
     </tr>
 
   </table>
@@ -270,7 +274,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSave" runat="server" Text="حفظ" OnClick="btnSave_Click" class="btn btn-lg btn-danger" align="center" />
+          <asp:Button ID="btnSave" runat="server" Text="حفظ" OnClick="btnSave_Click" class="btn btn-lg w3-green " align="center" Width="100" />
       
        
       </div>

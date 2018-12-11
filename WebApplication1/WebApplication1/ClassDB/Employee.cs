@@ -125,7 +125,7 @@ public class Employee
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select Email from Employees Where Employees.ID =" + ID + "", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select Email,Signature from Employees Where Employees.ID =" + ID + "", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;

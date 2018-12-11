@@ -95,6 +95,8 @@ namespace WebApplication1.PageEmployee
                 College col = new College();
                 DataRow college = col.drSearchColloge(sec);
                 int Collegeid = Convert.ToInt32(college["CollegeID"].ToString());
+               
+
                 if (ddlRequest.SelectedIndex != 0 && ddlRequest.SelectedIndex != -1)
                 {
                     if (Convert.ToInt32(ddlRequest.SelectedValue.ToString()) == 1)

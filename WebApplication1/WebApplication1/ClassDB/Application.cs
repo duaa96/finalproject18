@@ -55,15 +55,32 @@ public class Application
         Connection.Close();
     }
 
-    public DataTable dtSearchApplication(DateTime Date1)
+    public DataTable dtSearchApplication(DateTime Date1, int ID )
     {
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select * from Application where  ExpireDate >='" + Date1 + "'", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select * from Application where ApplicationID=" + ID+" and ExpireDate >='" + Date1 + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
+
+    }
+    public DataRow drSearchApplication(DateTime Date1,int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtSearchApplication( Date1,ID);
+        if (dt.Rows.Count > 0)
+        {
+            dr = dt.Rows[0];
+
+
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
 
     }
 

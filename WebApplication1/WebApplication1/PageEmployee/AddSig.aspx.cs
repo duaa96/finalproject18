@@ -13,14 +13,24 @@ namespace WebApplication1.PageEmployee
         protected void Page_Load(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(Session["ID"].ToString());
-            fillData();
+            Employee loginEmp = new Employee();
+            DataRow loginE = loginEmp.drSearchEmployeeEmail(ID);
+            string sig = loginE["Signature"].ToString();
+            if (sig == null || sig==String.Empty)
+                fillData();
+            else
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('لديك توقيع سابق اذااردت تغيره انتقل الى تجديد التوقيع');window.location ='HomeEmployee.aspx';", true);
+            }
+
         }
         private void fillData()
         {
             int ID = Convert.ToInt32(Session["ID"].ToString());
-            Employee loginStudent = new Employee();
-            DataRow loginS = loginStudent.drSearchEmployeeEmail(ID);
-            labEmail.Text = loginS["Email"].ToString();
+            Employee loginEmp = new Employee();
+            DataRow loginE = loginEmp.drSearchEmployeeEmail(ID);
+            labEmail.Text = loginE["Email"].ToString();
         }
 
 

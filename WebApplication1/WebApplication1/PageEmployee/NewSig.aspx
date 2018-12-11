@@ -33,33 +33,14 @@
      </div>  
           </div>
 
-    <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
-        <div class="form-group float-right col-6" style="direction:rtl; padding-right:13%; " >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">التوقيع القديم :</label>
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator2" ControlToValidate="fuSignature" ErrorMessage="*"></asp:RequiredFieldValidator>
-
-      <asp:FileUpload ID="fuSignature" runat="server" width="60%"/>
-       <asp:Label ID="errorLab" runat="server" style="float:right;  font-family:'Amiri'; font-size:large;" Visible="False" ForeColor="#FF3300"></asp:Label>
-     </div>  
-           
-      <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.5%; padding-right:4%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">كلمة المرور للتوقيع:</label>
-          <asp:TextBox ID="txtPassSign"  TextMode="Password"  runat="server" CssClass="form-control w3-margin-right" style="float:right; font-family:'Amiri'; " Width="55%"></asp:TextBox>
-      
-     </div>  
-          <div class="col-1">
-
-          </div>
-           
-      </div>
+    
      
     
   <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; padding-bottom:5%; padding-top:5%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSave" runat="server" Text="تجديد التوقيع" class="btn btn-lg btn-danger" align="center" OnClick="btnSave_Click" />
+          <asp:Button ID="btnSave" runat="server" Text="تجديد التوقيع" class="btn btn-lg w3-green " align="center" Width="100"  OnClick="btnSave_Click" />
      
       
        

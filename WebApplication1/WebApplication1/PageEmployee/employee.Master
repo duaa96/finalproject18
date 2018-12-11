@@ -42,7 +42,7 @@
                                 </a>
                                       <ul id="dropdown-container3" class="dropdown-container nav nav-second-level collapse">
                                         <li><a href="AddSig.aspx">انشاء توقيع</a></li>
-                                        <li><a href="NewSig.aspx">تجديد توقيع</a></li>
+                                        <li><a href="NSig.aspx">تجديد توقيع</a></li>
                                       </ul>
                         </li>
                       </ul>   
@@ -52,7 +52,7 @@
     </div>
 
     <div  class="w3-main" style="margin-right:200px;  width:initial;">
-<div class="w3-green" >
+<div class="bg-danger" >
      <button id="open2" class="w3-button w3-xlarge w3-right w3-hide-large"  onclick="w3_close()" style="display:none;" >&#9776;</button>
   <button id="open" class="w3-button  w3-xlarge w3-right w3-hide-large" onclick="w3_open()"  >&#9776;</button>
     <div class="w3-container w3-responsive">
@@ -65,7 +65,7 @@
                
               <li class="dropdown ">
                   <a class="count-info" >
-                     <img src="img/red.png" width="50">
+                     <img src="img/green.png"  width="70" style="margin-top:1%;">
                   </a>
                </li>
                 

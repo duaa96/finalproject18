@@ -16,8 +16,20 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           int  ID = Convert.ToInt32(Session["ID"].ToString());
-            fillData();
+            if (!IsPostBack)
+            {
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                Studnets loginStudent = new Studnets();
+                DataRow loginS = loginStudent.drSearchStudentEmail(ID);
+                string sig = loginS["Signature"].ToString();
+                if (sig == null || sig == String.Empty)
+                    fillData();
+                else
+                {
+                    
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),"alert","alert('لديك توقيع سابق اذااردت تغيره انتقل الى تجديد التوقيع');window.location ='HomeStudent.aspx';",true);
+                }
+            }
         }
 
         private void fillData()

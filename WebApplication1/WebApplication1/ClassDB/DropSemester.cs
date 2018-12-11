@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using WebApplication1;
+
 public class DropSemester
 {
     private string Connectionstring = ConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
@@ -193,10 +195,14 @@ public class DropSemester
     //AcademicAdvisorAccept GetData Application 
     public DataTable dtNotAcceptDropSemesterAcademicAdvisorApplication(int ID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.ID=DropSemester.StudentID and Students.SectionID = Section.ID and Students.AcademicAdvisorID=" + ID+ " and (DropSemester.AcademicAdvisorAccept = 0 OR DropSemester.AcademicAdvisorAccept IS null)", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.ID=DropSemester.StudentID and Students.SectionID = Section.ID and Students.AcademicAdvisorID=" + ID+ " and (DropSemester.AcademicAdvisorAccept = 0 OR DropSemester.AcademicAdvisorAccept IS null)and DropSemester.Year=" + Year + " and DropSemester.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -257,10 +263,14 @@ public class DropSemester
 
     public DataTable dtViewStudents(int ID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select * from DropSemester where StudentID= " + ID, Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select * from DropSemester where Year=" + Year + " and Semester=N" + "'" + semester + "'" +" and  StudentID = " + ID, Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -349,10 +359,14 @@ public class DropSemester
 
     public DataTable dtNotAcceptDeanDropSemesterApplication(int CollegeID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID and Section.CollegeID="+ CollegeID + " and Students.ID=DropSemester.StudentID and ((DropSemester.HeadAccept <> 0 and DropSemester.HeadAccept IS NOT null) and (DropSemester.DeanAccept = 0 OR DropSemester.DeanAccept IS null))", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID and Section.CollegeID="+ CollegeID + " and Students.ID=DropSemester.StudentID and ((DropSemester.HeadAccept <> 0 and DropSemester.HeadAccept IS NOT null) and (DropSemester.DeanAccept = 0 OR DropSemester.DeanAccept IS null))and DropSemester.Year=" + Year + " and DropSemester.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -360,10 +374,14 @@ public class DropSemester
 
     public DataTable dtNotAcceptHeadDropSemesterApplication(int SectionID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID and Students.SectionID=" + SectionID + " and Students.ID=DropSemester.StudentID and ((DropSemester.AcademicAdvisorAccept <> 0 and DropSemester.AcademicAdvisorAccept IS NOT null) and (DropSemester.HeadAccept = 0 OR DropSemester.HeadAccept IS null))", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID and Students.SectionID=" + SectionID + " and Students.ID=DropSemester.StudentID and ((DropSemester.AcademicAdvisorAccept <> 0 and DropSemester.AcademicAdvisorAccept IS NOT null) and (DropSemester.HeadAccept = 0 OR DropSemester.HeadAccept IS null))and DropSemester.Year=" + Year + " and DropSemester.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -371,10 +389,14 @@ public class DropSemester
 
     public DataTable dtNotAcceptRegDropSemesterApplication()
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID  and Students.ID=DropSemester.StudentID and ((DropSemester.DeputyAcademicAccept <> 0 and DropSemester.DeputyAcademicAccept IS NOT null) and (DropSemester.RegestrationAccept = 0 OR DropSemester.RegestrationAccept IS null))", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID  and Students.ID=DropSemester.StudentID and ((DropSemester.DeputyAcademicAccept <> 0 and DropSemester.DeputyAcademicAccept IS NOT null) and (DropSemester.RegestrationAccept = 0 OR DropSemester.RegestrationAccept IS null))and DropSemester.Year=" + Year + " and DropSemester.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -382,10 +404,14 @@ public class DropSemester
 
     public DataTable dtNotAcceptDeputyAcademicAcceptDropSemesterApplication()
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID  and Students.ID=DropSemester.StudentID and ((DropSemester.DeanAccept <> 0 and DropSemester.DeanAccept IS NOT null) and (DropSemester.DeputyAcademicAccept = 0 OR DropSemester.DeputyAcademicAccept IS null))", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID  and Students.ID=DropSemester.StudentID and ((DropSemester.DeanAccept <> 0 and DropSemester.DeanAccept IS NOT null) and (DropSemester.DeputyAcademicAccept = 0 OR DropSemester.DeputyAcademicAccept IS null))and DropSemester.Year=" + Year + " and DropSemester.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;

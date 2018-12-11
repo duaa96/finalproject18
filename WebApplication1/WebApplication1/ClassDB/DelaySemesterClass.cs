@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using WebApplication1;
+
 public class DelaySemesterClass
 {
     private string Connectionstring = ConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
@@ -97,10 +99,14 @@ public class DelaySemesterClass
 
     public DataTable dtNotAcceptDeanDelaySemesterApplication(int CollegeID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DelaySemester.Date as DateRequest ,DelaySemester.ID  as IDFORM from Students,Section,DelaySemester where Students.SectionID=Section.ID and Section.CollegeID="+ CollegeID + " and Students.ID=DelaySemester.StudentID and ((DelaySemester.RegestrationAccept <> 0 and DelaySemester.RegestrationAccept IS NOT null) and (DelaySemester.DeanAccept = 0 OR DelaySemester.DeanAccept IS null))", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DelaySemester.Date as DateRequest ,DelaySemester.ID  as IDFORM from Students,Section,DelaySemester where Students.SectionID=Section.ID and Section.CollegeID="+ CollegeID + " and Students.ID=DelaySemester.StudentID and ((DelaySemester.RegestrationAccept <> 0 and DelaySemester.RegestrationAccept IS NOT null) and (DelaySemester.DeanAccept = 0 OR DelaySemester.DeanAccept IS null))and DelaySemester.NowYear=" + Year + " and DelaySemester.NowSemester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -108,10 +114,14 @@ public class DelaySemesterClass
 
     public DataTable dtNotAcceptRegestDelaySemesterApplication()
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DelaySemester.Date as DateRequest ,DelaySemester.ID  as IDFORM from Students,Section,DelaySemester where Students.SectionID=Section.ID  and Students.ID=DelaySemester.StudentID and (DelaySemester.RegestrationAccept = 0 OR DelaySemester.RegestrationAccept IS null)", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DelaySemester.Date as DateRequest ,DelaySemester.ID  as IDFORM from Students,Section,DelaySemester where Students.SectionID=Section.ID  and Students.ID=DelaySemester.StudentID and (DelaySemester.RegestrationAccept = 0 OR DelaySemester.RegestrationAccept IS null) and DelaySemester.NowYear=" + Year + " and DelaySemester.NowSemester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -180,10 +190,14 @@ public class DelaySemesterClass
 
     public DataTable dtgetformStudents(int ID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select * from DelaySemester where StudentID=" + ID, Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select * from DelaySemester where NowYear=" + Year + " and NowSemester=N" + "'" + semester + "'" +" and StudentID =" + ID, Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;

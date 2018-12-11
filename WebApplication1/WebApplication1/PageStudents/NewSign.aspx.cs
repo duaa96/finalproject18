@@ -12,54 +12,36 @@ namespace WebApplication1.PageStudents
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int ID = Convert.ToInt32(Session["ID"].ToString());
+            int id = Convert.ToInt32(Request.QueryString["id"]);
+
             fillData();
         }
 
         private void fillData()
         {
-            int ID = Convert.ToInt32(Session["ID"].ToString());
+            int ID = Convert.ToInt32(Request.QueryString["id"]);
             Studnets loginStudent = new Studnets();
             DataRow loginS = loginStudent.drSearchStudentEmail(ID);
             labEmail.Text = loginS["Email"].ToString();
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            int ID = Convert.ToInt32(Request.QueryString["id"]);
 
-            bool Result = false;
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            string Path = "";
-            string Data = labEmail.Text.ToString();
-            if (fuSignature.HasFile)
-            {
-                string Private = fuSignature.FileName.ToString();
-                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
-                string Pasword = txtPassSign.Text.ToString();
-                fuSignature.SaveAs(Server.MapPath("Test") + "/" + fuSignature.FileName);
-                SignatureStudents newSig = new SignatureStudents();
-                string strencrypt = newSig.encrypet(Data, Path, Pasword);
-                Result = newSig.Decreypt(strencrypt, ID);
 
-            }
-            if (Result == true)
-            {
-                string password = txtPassword.Text.ToString();
-                string Email = labEmail.Text.ToString();
-                SignatureStudents objj = new SignatureStudents();
-                objj.CreateSignature(password, Email, ID);
-                string pathPub = System.Web.HttpContext.Current.Server.MapPath("../PageStudents/Sig") + "/" + ID + ".asc";
+            string password = txtPassword.Text.ToString();
+            string Email = labEmail.Text.ToString();
+            SignatureStudents objj = new SignatureStudents();
+            objj.CreateSignature(password, Email, ID);
+            string pathPub = System.Web.HttpContext.Current.Server.MapPath("../PageStudents/Sig") + "/" + ID + ".asc";
 
-                string PrivateKey = "Sig/" + ID + "pr" + ".asc";
-                GetKey objKey = new GetKey();
-                objKey.AddKeyStudent(pathPub, ID);
-                downloadfile(PrivateKey);
-                errorLab.Visible = false;
-            }
-            else
-            {
-                errorLab.Text = "التوقيع المدخل خاطئ";
-                errorLab.Visible = true;
-            }
+            string PrivateKey = "Sig/" + ID + "pr" + ".asc";
+            GetKey objKey = new GetKey();
+            objKey.AddKeyStudent(pathPub, ID);
+            downloadfile(PrivateKey);
+             
+           
+         
         }
 
         public void downloadfile(string filePath)

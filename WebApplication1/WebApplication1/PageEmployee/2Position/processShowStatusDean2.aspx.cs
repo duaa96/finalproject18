@@ -79,6 +79,10 @@ namespace WebApplication1.PageEmployee
                 string DeanDec = txtDescriptionDean.Text.ToString();
                 if (obj.AcceptDeanShowStatus(id, AcceptDean, DeanDec) == 1)
                 {
+                    DataRow dr = obj.drgetform(id);
+                    int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+                    SentMail s = new SentMail();
+                    s.sendemailStudent(STUid);
                     Response.Redirect("ProcessRequest.aspx");
                 }
 

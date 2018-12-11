@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using WebApplication1;
 
 public class AbsenceExam
 {
@@ -129,10 +130,15 @@ public class AbsenceExam
 
     public DataTable dtViewStudents(int ID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
+
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select * from AbsenceExam where StudentID= " + ID, Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select * from AbsenceExam where Year="+Year+ " and Semester=N"+"'"+semester+"'" + " and StudentID= " + ID, Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -216,10 +222,14 @@ public class AbsenceExam
 
     public DataTable dtNotAcceptDeanAbsenceExamApplication(int CollegeID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,AbsenceExam.Date as DateRequest ,AbsenceExam.ID  as IDFORM from Students,Section,AbsenceExam where Students.SectionID=Section.ID and Section.CollegeID="+ CollegeID+ " and Students.ID=AbsenceExam.StudentID and (AbsenceExam.DeanAccept = 0 OR AbsenceExam.DeanAccept IS null)", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,AbsenceExam.Date as DateRequest ,AbsenceExam.ID  as IDFORM from Students,Section,AbsenceExam where Students.SectionID=Section.ID and Section.CollegeID="+ CollegeID+ " and Students.ID=AbsenceExam.StudentID and (AbsenceExam.DeanAccept = 0 OR AbsenceExam.DeanAccept IS null)and AbsenceExam.Year=" + Year + " and AbsenceExam.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;

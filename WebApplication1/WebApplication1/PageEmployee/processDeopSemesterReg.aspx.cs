@@ -107,6 +107,10 @@ namespace WebApplication1.PageEmployee
                 string RegDec = txtDescriptionReg.Text.ToString();
                 if (obj.AcceptRegDropSemester(id, AcceptReg, RegDec) == 1)
                 {
+                    DataRow dr = obj.drgetform(id);
+                    int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+                    SentMail s = new SentMail();
+                    s.sendemailStudent(STUid);
                     Response.Redirect("ProcessRequest.aspx");
                 }
 

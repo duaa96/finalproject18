@@ -15,12 +15,13 @@ namespace WebApplication1.PageStudents
         {
             if (!IsPostBack)
             {
+                int ID = Convert.ToInt32(Session["ID"].ToString());
 
                 fillGv();
             }
             else
             {
-                errorLabel.Visible = false;
+                
             }
         }
 

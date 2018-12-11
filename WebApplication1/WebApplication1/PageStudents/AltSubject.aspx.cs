@@ -17,8 +17,19 @@ namespace WebApplication1
             if (!IsPostBack)
             {
                 int ID = Convert.ToInt32(Session["ID"].ToString());
-                fillDataForm(ID);
-                fillddl();
+                Application validatinTime = new Application();
+                DataRow dr = validatinTime.drSearchApplication(DateTime.Today, 3);
+                if (dr != null)
+                {
+                    fillDataForm(ID);
+                    fillddl();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('هذا النموذج غير متاح حاليا');window.location ='HomeStudent.aspx';", true);
+
+                }
+                
             }
 
         }

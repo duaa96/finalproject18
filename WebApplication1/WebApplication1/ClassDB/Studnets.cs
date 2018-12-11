@@ -130,7 +130,7 @@ public class Studnets
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select Password , Email from Students Where Students.ID =" + ID + "", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select Password , Email,Signature from Students Where Students.ID =" + ID + "", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;

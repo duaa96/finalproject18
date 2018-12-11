@@ -45,12 +45,12 @@
             <asp:TemplateField ShowHeader="False">
                    
                    <ItemTemplate>
-                       <asp:Button ID="btnedit1" runat="server" Text="تعديل" class="btn btn-danger" CommandName="edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'/>
+                       <asp:Button ID="btnedit1" runat="server" Text="تعديل" class="btn btn-warning" CommandName="edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'/>
                    </ItemTemplate>          
             </asp:TemplateField>
            <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
-                       <asp:Button ID="btnsave" runat="server" Text="حفظ التغيرات" class="btn btn-danger" CommandName="save" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'/>
+                       <asp:Button ID="btnsave" runat="server" Text="حفظ التغيرات" class="btn w3-green" CommandName="save" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'/>
                    </ItemTemplate>          
             </asp:TemplateField>
             
@@ -109,7 +109,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSaveDean"  runat="server" Text="حفظ" class="btn btn-lg btn-danger" align="center" OnClick="btnSaveDean_Click"   />
+          <asp:Button ID="btnSaveDean"  runat="server" Text="حفظ" class="btn btn-lg w3-green " align="center" Width="100" OnClick="btnSaveDean_Click"   />
      <div id="snackbar">
             <asp:Label runat="server" ID="Snack" />
         </div>

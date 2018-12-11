@@ -8,6 +8,13 @@ using System.Data;
 using System.IO;
 using DidiSoft.Pgp;
 using WebApplication1.PageStudents;
+using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
+using System.Drawing;
+using PdfSharp.Drawing;
+
+using System.Diagnostics;
 
 namespace WebApplication1
 {
@@ -20,9 +27,18 @@ namespace WebApplication1
             if (!IsPostBack)
             {
                 int ID = Convert.ToInt32(Session["ID"].ToString());
+                Application validatinTime = new Application();
+                DataRow dr =validatinTime.drSearchApplication(DateTime.Today,1);
+                if (dr != null)
+                {
+                    fillDataForm(ID);
+                    fillddl();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('هذا النموذج غير متاح حاليا');window.location ='HomeStudent.aspx';", true);
 
-                fillDataForm(ID);
-                fillddl();
+                }
             }
 
             else
@@ -135,6 +151,7 @@ namespace WebApplication1
 
                     SentMail s = new SentMail();
                     s.sendemailDean(ID);
+                    
                 }
                 errorLabel.Visible = false;
 
@@ -198,13 +215,13 @@ namespace WebApplication1
             ddlCourse4.DataTextField = "SubjectName";
             ddlCourse4.DataValueField = "SubjectID";
             ddlCourse4.DataBind();
-            ddlCourse1.Items.Insert(0, new ListItem("<اختر مادة>", "0"));
-            ddlCourse2.Items.Insert(0, new ListItem("<اختر مادة>", "0"));
-            ddlCourse3.Items.Insert(0, new ListItem("<اختر مادة>", "0"));
-            ddlCourse4.Items.Insert(0, new ListItem("<اختر مادة>", "0"));
+            ddlCourse1.Items.Insert(0, new System.Web.UI.WebControls.ListItem("<اختر مادة>", "0"));
+            ddlCourse2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("<اختر مادة>", "0"));
+            ddlCourse3.Items.Insert(0, new System.Web.UI.WebControls.ListItem("<اختر مادة>", "0"));
+            ddlCourse4.Items.Insert(0, new System.Web.UI.WebControls.ListItem("<اختر مادة>", "0"));
 
         }
-
+        
 
         protected void ddlCourse1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -292,5 +309,8 @@ namespace WebApplication1
             else
                 ddlCourse4.SelectedIndex = -1;
         }
+
+
+       
     }
 }

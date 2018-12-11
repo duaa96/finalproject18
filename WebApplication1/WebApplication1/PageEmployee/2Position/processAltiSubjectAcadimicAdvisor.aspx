@@ -284,7 +284,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
-          <asp:Button ID="btnSaveAcadimic" runat="server" Text="حفظ" class="btn btn-lg btn-danger" align="center" OnClick="btnSaveAcadimic_Click"  />
+          <asp:Button ID="btnSaveAcadimic" runat="server" Text="حفظ" class="btn btn-lg w3-green " align="center" Width="100" OnClick="btnSaveAcadimic_Click"  />
       
        
       </div>

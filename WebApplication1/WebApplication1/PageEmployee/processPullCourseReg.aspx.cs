@@ -134,6 +134,10 @@ namespace WebApplication1.PageEmployee
                
                 if (obj.AcceptRegPullCourse(id, AcceptReg) == 1)
                 {
+                    DataRow dr = obj.drgetform(id);
+                    int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+                    SentMail s = new SentMail();
+                    s.sendemailStudent(STUid);
                     Response.Redirect("ProcessRequest.aspx");
                 }
 

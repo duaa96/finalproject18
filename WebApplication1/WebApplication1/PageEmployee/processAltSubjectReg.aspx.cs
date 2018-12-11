@@ -112,6 +112,10 @@ namespace WebApplication1.PageEmployee
                 int Acceptreg = Convert.ToInt32(rbtRegAccept.SelectedValue.ToString());
                 if (obj.AcceptRegAltiSubj(id, Acceptreg) == 1)
                 {
+                    DataRow dr = obj.drgetform(id);
+                    int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+                    SentMail s = new SentMail();
+                    s.sendemailStudent(STUid);
                     Response.Redirect("ProcessRequest.aspx");
                 }
 

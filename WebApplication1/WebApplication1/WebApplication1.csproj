@@ -46,7 +46,22 @@
     <Reference Include="DidiSoft.Pgp">
       <HintPath>..\..\..\..\..\..\Program Files\OpenPGP Library for .NET 1.8.4\Bin\NET45\DidiSoft.Pgp.dll</HintPath>
     </Reference>
+    <Reference Include="IronPdf">
+      <HintPath>..\..\..\..\Downloads\IronPdf (1)\bin\IronPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="Select.HtmlToPdf, Version=18.4.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.HtmlToPdf.18.4.0\lib\net40\Select.HtmlToPdf.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -1508,7 +1523,9 @@
     <Content Include="js\plugins\video\responsible-video.js" />
     <Content Include="js\plugins\wow\wow.min.js" />
     <Content Include="PageEmployee\2Position\AddSig2.aspx" />
+    <Content Include="PageEmployee\2Position\NSig2.aspx" />
     <Content Include="PageEmployee\Academic\AddSigAcademic.aspx" />
+    <Content Include="PageEmployee\Academic\NSigAcademic.aspx" />
     <Content Include="PageEmployee\AddSig.aspx" />
     <Content Include="PageEmployee\AddSigReg.aspx" />
     <Content Include="PageEmployee\css\Amiri.css" />
@@ -3340,6 +3357,7 @@
     <Content Include="PageEmployee\img\gallery\8s.jpg" />
     <Content Include="PageEmployee\img\gallery\9.jpg" />
     <Content Include="PageEmployee\img\gallery\9s.jpg" />
+    <Content Include="PageEmployee\img\green.png" />
     <Content Include="PageEmployee\img\headphones.jpg" />
     <Content Include="PageEmployee\img\high.png" />
     <Content Include="PageEmployee\img\html_logo.png" />
@@ -3394,6 +3412,8 @@
     <Content Include="PageEmployee\NewSig.aspx" />
     <Content Include="PageEmployee\NewSigReg.aspx" />
     <Content Include="PageEmployee\2Position\processAbsenceExam2.aspx" />
+    <Content Include="PageEmployee\NSigReg.aspx" />
+    <Content Include="PageEmployee\NSig.aspx" />
     <Content Include="PageEmployee\processAbsenceExam.aspx" />
     <Content Include="PageEmployee\Academic\processAltiSubAcadimic.aspx" />
     <Content Include="PageEmployee\2Position\processAltiSubjectAcadimicAdvisor.aspx" />
@@ -3432,6 +3452,9 @@
     <Content Include="PageStudents\Absenceexcuse.aspx" />
     <Content Include="PageStudents\AbsenceExcuseDisplay.aspx" />
     <Content Include="PageStudents\AddSign.aspx" />
+    <Content Include="PageStudents\AltiSubjectAll.aspx" />
+    <Content Include="PageStudents\AltiSubjectDisplay.aspx" />
+    <Content Include="PageStudents\AltiSubjectUpdate.aspx" />
     <Content Include="PageStudents\AltSubject.aspx" />
     <Content Include="PageStudents\css\Amiri.css" />
     <Content Include="PageStudents\css\bootstrap.css" />
@@ -4429,6 +4452,7 @@
     <Content Include="PageStudents\css\plugins\switchery\switchery.css" />
     <Content Include="PageStudents\css\plugins\toastr\toastr.min.css" />
     <Content Include="PageStudents\css\plugins\touchspin\jquery.bootstrap-touchspin.min.css" />
+    <Content Include="PageStudents\css\popup.css" />
     <Content Include="PageStudents\css\w3.css" />
     <Content Include="PageStudents\css\w3pro.css" />
     <Content Include="PageStudents\DealySemesterUpdate.aspx" />
@@ -4451,6 +4475,7 @@
     <Content Include="PageStudents\img\a8.jpg" />
     <Content Include="PageStudents\img\angular_logo.png" />
     <Content Include="PageStudents\img\attachment.png" />
+    <Content Include="PageStudents\img\close_dialog.gif" />
     <Content Include="PageStudents\img\dashbard4_1.jpg" />
     <Content Include="PageStudents\img\dashbard4_2.jpg" />
     <Content Include="PageStudents\img\delete.gif" />
@@ -5268,6 +5293,7 @@
     <Content Include="PageStudents\img\gallery\8s.jpg" />
     <Content Include="PageStudents\img\gallery\9.jpg" />
     <Content Include="PageStudents\img\gallery\9s.jpg" />
+    <Content Include="PageStudents\img\green.png" />
     <Content Include="PageStudents\img\headphones.jpg" />
     <Content Include="PageStudents\img\high.png" />
     <Content Include="PageStudents\img\html_logo.png" />
@@ -5755,6 +5781,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="PageStudents\NewSign.aspx" />
+    <Content Include="PageStudents\NSig.aspx" />
     <Content Include="PageStudents\PullCourse.aspx" />
     <Content Include="PageStudents\PullCourseDispalyAll.aspx" />
     <Content Include="PageStudents\PullCourseDisplay.aspx" />
@@ -5775,6 +5802,13 @@
     <Compile Include="ClassDB\ShowStatusClass.cs" />
     <Compile Include="ClassDB\SignatureEmployee.cs" />
     <Compile Include="ClassDB\Subjects.cs" />
+    <Compile Include="PageEmployee\2Position\NSig2.aspx.cs">
+      <DependentUpon>NSig2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\NSig2.aspx.designer.cs">
+      <DependentUpon>NSig2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\Academic\Acadimic.Master.cs">
       <DependentUpon>Acadimic.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5795,6 +5829,13 @@
     </Compile>
     <Compile Include="PageEmployee\Academic\AddSigAcademic.aspx.designer.cs">
       <DependentUpon>AddSigAcademic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\NSigAcademic.aspx.cs">
+      <DependentUpon>NSigAcademic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\NSigAcademic.aspx.designer.cs">
+      <DependentUpon>NSigAcademic.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\AddSig.aspx.cs">
       <DependentUpon>AddSig.aspx</DependentUpon>
@@ -5893,6 +5934,20 @@
     </Compile>
     <Compile Include="PageEmployee\2Position\processAbsenceExam2.aspx.designer.cs">
       <DependentUpon>processAbsenceExam2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\NSigReg.aspx.cs">
+      <DependentUpon>NSigReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\NSigReg.aspx.designer.cs">
+      <DependentUpon>NSigReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\NSig.aspx.cs">
+      <DependentUpon>NSig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\NSig.aspx.designer.cs">
+      <DependentUpon>NSig.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\processAbsenceExam.aspx.cs">
       <DependentUpon>processAbsenceExam.aspx</DependentUpon>
@@ -6173,6 +6228,27 @@
     <Compile Include="ClassDB\DropSemester.cs" />
     <Compile Include="ClassDB\Employee.cs" />
     <Compile Include="ClassDB\GetKey.cs" />
+    <Compile Include="PageStudents\AltiSubjectAll.aspx.cs">
+      <DependentUpon>AltiSubjectAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\AltiSubjectAll.aspx.designer.cs">
+      <DependentUpon>AltiSubjectAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudents\AltiSubjectDisplay.aspx.cs">
+      <DependentUpon>AltiSubjectDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\AltiSubjectDisplay.aspx.designer.cs">
+      <DependentUpon>AltiSubjectDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudents\AltiSubjectUpdate.aspx.cs">
+      <DependentUpon>AltiSubjectUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\AltiSubjectUpdate.aspx.designer.cs">
+      <DependentUpon>AltiSubjectUpdate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageStudents\AltSubject.aspx.cs">
       <DependentUpon>AltSubject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6265,6 +6341,13 @@
     </Compile>
     <Compile Include="PageStudents\NewSign.aspx.designer.cs">
       <DependentUpon>NewSign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudents\NSig.aspx.cs">
+      <DependentUpon>NSig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\NSig.aspx.designer.cs">
+      <DependentUpon>NSig.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageStudents\PullCourse.aspx.cs">
       <DependentUpon>PullCourse.aspx</DependentUpon>

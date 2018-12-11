@@ -17,7 +17,7 @@
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.5%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;">اختر الطلب </label>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">اختر الطلب </label>
           <asp:DropDownList ID="ddlRequest" runat="server" CssClass="form-control" style="float:right; font-family:'Amiri';" OnSelectedIndexChanged="ddlRequest_SelectedIndexChanged"  AutoPostBack="true" ></asp:DropDownList>
       
      </div>  
@@ -29,7 +29,7 @@
 
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%;  ">
-      <div class="form-group float-right row w3-responsive" style="direction:rtl; margin-right:3%; width:100%;" >
+      <div class="form-group float-right row w3-responsive" style="direction:rtl; margin-right:3%; width:100%;height:450px;" >
                <asp:Label ID="errorLabel" runat="server" style="float:right;  float:none; margin:0 auto;  font-family:'Amiri'; font-size:large;" Visible="False" ForeColor="#FF3300"></asp:Label>
     <asp:GridView ID="gvRequest"    style="width:1100px; padding-top:5%; " runat="server"    AutoGenerateColumns="False" DataKeyNames="IDFORM" CellPadding="3" OnRowCommand="gvRequest_RowCommand" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
 

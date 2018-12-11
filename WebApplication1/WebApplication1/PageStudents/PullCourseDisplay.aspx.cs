@@ -41,18 +41,24 @@ namespace WebApplication1.PageStudents
 
         protected void gvPullCourse_Data(Object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            for (int i = 2; i < 5; i++)
             {
-                if (e.Row.Cells[2].Text == "1")
+                if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    e.Row.Cells[2].Text = "موافق";
-                }
-                else
-                {
-                    e.Row.Cells[2].Text = " غير موافق";
-                }
+                    if (e.Row.Cells[i].Text == "1")
+                    {
+                        e.Row.Cells[i].Text = "موافق";
+                    }
+                    else if (e.Row.Cells[i].Text == "2")
+                    {
+                        e.Row.Cells[i].Text = " غير موافق";
+                    }
+                    else if (e.Row.Cells[i].Text == "0" || e.Row.Cells[i].Text is null)
+                    {
+                        e.Row.Cells[i].Text = "لم يتم النظر فيه بعد";
+                    }
 
-               
+                }
             }
         }
 

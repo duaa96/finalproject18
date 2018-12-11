@@ -12,12 +12,14 @@ namespace WebApplication1.PageEmployee
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int ID = Convert.ToInt32(Session["ID"].ToString());
+            int ID = Convert.ToInt32(Request.QueryString["id"]);
+
             fillData();
         }
         private void fillData()
         {
-            int ID = Convert.ToInt32(Session["ID"].ToString());
+            int ID = Convert.ToInt32(Request.QueryString["id"]);
+
             Employee loginStudent = new Employee();
             DataRow loginS = loginStudent.drSearchEmployeeEmail(ID);
             labEmail.Text = loginS["Email"].ToString();
@@ -25,24 +27,11 @@ namespace WebApplication1.PageEmployee
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
-            bool Result = false;
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            string Path = "";
-            string Data = labEmail.Text.ToString();
-            if (fuSignature.HasFile)
-            {
-                string Private = fuSignature.FileName.ToString();
-                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
-                string Pasword = txtPassSign.Text.ToString();
-                fuSignature.SaveAs(Server.MapPath("Test") + "/" + fuSignature.FileName);
-                SignatureEmployee newSig = new SignatureEmployee();
-                string strencrypt = newSig.encrypet(Data, Path, Pasword);
-                Result = newSig.Decreypt(strencrypt, ID);
+            int ID = Convert.ToInt32(Request.QueryString["id"]);
 
-            }
-            if (Result == true)
-            {
-                string password = txtPassword.Text.ToString();
+
+
+            string password = txtPassword.Text.ToString();
                 string Email = labEmail.Text.ToString();
                 SignatureEmployee objj = new SignatureEmployee();
                 objj.CreateSignature(password, Email, ID);
@@ -52,13 +41,8 @@ namespace WebApplication1.PageEmployee
                 GetKey objKey = new GetKey();
                 objKey.AddKeyEmployee(pathPub, ID);
                 downloadfile(PrivateKey);
-                errorLab.Visible = false;
-            }
-            else
-            {
-                errorLab.Text = "التوقيع المدخل خاطئ";
-                errorLab.Visible = true;
-            }
+           
+           
         }
 
         public void downloadfile(string filePath)

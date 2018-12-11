@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using WebApplication1;
+
 public class ShowStatusClass
 {
     private string Connectionstring = ConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
@@ -123,10 +125,14 @@ public class ShowStatusClass
     //Dean GetData Application
     public DataTable dtNotAcceptDeanShowStatusApplication( int CollegeID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,ShowStatus.Date as DateRequest ,ShowStatus.ID  as IDFORM from Students,Section,ShowStatus where Students.SectionID=Section.ID and Section.CollegeID="+ CollegeID + " and Students.ID=ShowStatus.StudentID and(( ShowStatus.HeadAccept<>0 and ShowStatus.HeadAccept IS not null) and (ShowStatus.DeanAccept = 0 OR ShowStatus.DeanAccept IS null))", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,ShowStatus.Date as DateRequest ,ShowStatus.ID  as IDFORM from Students,Section,ShowStatus where Students.SectionID=Section.ID and Section.CollegeID="+ CollegeID + " and Students.ID=ShowStatus.StudentID and(( ShowStatus.HeadAccept<>0 and ShowStatus.HeadAccept IS not null) and (ShowStatus.DeanAccept = 0 OR ShowStatus.DeanAccept IS null)) and ShowStatus.Year="+Year +" and semester=N"+"'"+semester+"'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -166,10 +172,14 @@ public class ShowStatusClass
 
     public DataTable dtNotAcceptHeadShowStatusApplication(int SectionID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString();
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,ShowStatus.Date as DateRequest ,ShowStatus.ID  as IDFORM from Students,Section,ShowStatus where Students.SectionID="+SectionID+ " and Section.ID=Students.SectionID and Students.ID=ShowStatus.StudentID and(ShowStatus.HeadAccept = 0 OR ShowStatus.HeadAccept IS null)", Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,ShowStatus.Date as DateRequest ,ShowStatus.ID  as IDFORM from Students,Section,ShowStatus where Students.SectionID="+SectionID+ " and Section.ID=Students.SectionID and Students.ID=ShowStatus.StudentID and(ShowStatus.HeadAccept = 0 OR ShowStatus.HeadAccept IS null)and ShowStatus.Year=" + Year + " and semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
@@ -207,10 +217,15 @@ public class ShowStatusClass
     }
     public DataTable dtgetformStudents(int ID)
     {
+        NowTimeUniversity timee = new NowTimeUniversity();
+        DataRow T = timee.drSearchYearANdSemester();
+        string semester = T["NowSemester"].ToString();
+        string Year = T["NowYear"].ToString(); 
+
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
-        SqlDataAdapter DA = new SqlDataAdapter("select * from ShowStatus where StudentID=" + ID, Connection);
+        SqlDataAdapter DA = new SqlDataAdapter("select * from ShowStatus where Year=" + Year + " and semester=N" + "'" + semester + "'"+" and StudentID =" + ID, Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
