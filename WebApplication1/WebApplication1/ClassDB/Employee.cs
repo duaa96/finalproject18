@@ -120,6 +120,7 @@ public class Employee
         return dr;
 
     }
+
     public DataTable dtSearchEmployeeEmail(int ID)
     {
         SqlConnection Connection = new SqlConnection(Connectionstring);
@@ -255,6 +256,18 @@ public class Employee
     }
 
 
+    public DataTable dtSearchEmployeeINfoAll(int EmpID)
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select College.Name as CollageName , Section.Name as SectionName , Employees.EmployeeName as EmpName , Employees.EmployeeID as EmployeeID,Employees.mager as Mager from Employees,College,Section where Section.ID = Employees.SectionID and College.ID=  Section.CollegeID and Employees.ID =" + EmpID, Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
+
 
 
     public DataRow drSearchEmployeeINfo(int ID)
@@ -273,7 +286,22 @@ public class Employee
         return dr;
 
     }
+    public DataRow drSearchEmployeeINfoAll(int ID)
+    {
+        DataRow dr;
+        DataTable dt = dtSearchEmployeeINfoAll(ID);
+        if (dt.Rows.Count > 0)
+        {
 
+            dr = dt.Rows[0];
+        }
+        else
+        {
+            dr = null;
+        }
+        return dr;
+
+    }
     public DataTable dtSearchEmployeeDep()
     {
         SqlConnection Connection = new SqlConnection(Connectionstring);

@@ -41,7 +41,7 @@
                                 </a>
                                       <ul id="dropdown-container3" class="dropdown-container nav nav-second-level collapse">
                                         <li><a href="AddSigAcademic.aspx">انشاء توقيع</a></li>
-                                        <li><a href="NewSigAcademic.aspx">تجديد توقيع</a></li>
+                                        <li><a href="NSigAcademic.aspx">تجديد توقيع</a></li>
                                       </ul>
                         </li>
                       </ul>   
@@ -63,7 +63,7 @@
                      </li>
                
               <li class="dropdown ">
-                  <a class="count-info" >
+                  <a class="count-info"  href="InfoUserAcademic.aspx" >
                       <img src="../img/green.png" width="70" style="margin-top:1%;">
                   </a>
                </li>

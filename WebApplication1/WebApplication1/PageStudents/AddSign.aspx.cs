@@ -27,7 +27,7 @@ namespace WebApplication1
                 else
                 {
                     
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),"alert","alert('لديك توقيع سابق اذااردت تغيره انتقل الى تجديد التوقيع');window.location ='HomeStudent.aspx';",true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),"alert","alert('لديك توقيع سابق اذا اردت تغيره انتقل الى صفحة تجديد التوقيع');window.location ='HomeStudent.aspx';",true);
                 }
             }
         }

@@ -245,6 +245,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
       <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات عميد الكلية:
+          
          <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator8" ControlToValidate="txtDescriptionDean" ErrorMessage="*"></asp:RequiredFieldValidator>
       
        

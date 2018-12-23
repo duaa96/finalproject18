@@ -411,11 +411,22 @@ public class DropSemester
         SqlConnection Connection = new SqlConnection(Connectionstring);
         Connection.Open();
         DataTable dt = new DataTable();
+
         SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where Students.SectionID=Section.ID  and Students.ID=DropSemester.StudentID and ((DropSemester.DeanAccept <> 0 and DropSemester.DeanAccept IS NOT null) and (DropSemester.DeputyAcademicAccept = 0 OR DropSemester.DeputyAcademicAccept IS null))and DropSemester.Year=" + Year + " and DropSemester.Semester=N" + "'" + semester + "'", Connection);
         DA.Fill(dt);
         Connection.Close();
         return dt;
     }
-    
+    public DataTable dtGetAll()
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select  Students.UniversityID as UniversityID , Students.StudentName as StudentName,Section.Name as SectionName ,DropSemester.Date as DateRequest ,DropSemester.ID  as IDFORM from Students,Section,DropSemester where  Students.ID=DropSemester.StudentID and Students.SectionID=Section.ID and (DropSemester.RegestrationAccept <> 0 AND DropSemester.RegestrationAccept IS NOT null)", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
     }
+}
 

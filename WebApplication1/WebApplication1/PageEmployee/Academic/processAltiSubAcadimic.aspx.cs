@@ -79,9 +79,9 @@ namespace WebApplication1.PageEmployee
             if (fuSignatureAcadimic.HasFile)
             {
                 string Private = fuSignatureAcadimic.FileName.ToString();
-                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
+                Path = System.Web.HttpContext.Current.Server.MapPath("../Test") + "/" + Private;
                 string Pasword = txtPassSign.Text.ToString();
-                fuSignatureAcadimic.SaveAs(Server.MapPath("Test") + "/" + fuSignatureAcadimic.FileName);
+                fuSignatureAcadimic.SaveAs(Server.MapPath("../Test") + "/" + fuSignatureAcadimic.FileName);
                 SignatureEmployee newSig = new SignatureEmployee();
                 string strencrypt = newSig.encrypet(Data, Path, Pasword);
                 Result = newSig.Decreypt(strencrypt, ID);
@@ -100,7 +100,7 @@ namespace WebApplication1.PageEmployee
 
                     SentMail s = new SentMail();
                     s.sendemailHead(STUid);
-                    Response.Redirect("ProcessRequest.aspx");
+                    Response.Redirect("processRequestAcademic1.aspx");
                 }
 
                 errorAcadimic.Visible = false;

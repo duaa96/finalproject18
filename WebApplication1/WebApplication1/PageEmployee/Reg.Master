@@ -36,8 +36,12 @@
                             <a href="ProcessRequestReg.aspx" class="dropdown-btn active "><i class="	fa fa-magic	"></i> <span class="nav-label w3-margin-right" style="font-size:18px;">معالجة الطلبات</span></a>
                         </li>
                       <li>
-                            <a href="ManageRequest.aspx" class="dropdown-btn active "><i class="	fa fa-magic	"></i> <span class="nav-label w3-margin-right" style="font-size:18px;">ادارة الطلبات </span></a>
+                            <a href="ManageRequest.aspx" class="dropdown-btn active "><i class="	fa fa-calendar"></i> <span class="nav-label w3-margin-right" style="font-size:18px;">ادارة الطلبات </span></a>
                         </li>
+                    <li>
+                            <a href="ViewForms.aspx" class="dropdown-btn active "><i class="	fa fa-files-o"></i> <span class="nav-label w3-margin-right" style="font-size:18px;">معاينة الطلبات </span></a>
+                        </li>
+                  
                     <li>
                                 <a href="#" onclick=dwl2(); class="dropdown-btn nav-label w3-margin-right  " style="font-size:18px;"><i class="fa fa-caret-down"></i>ادارة التوقيع الخاص بي
                                 
@@ -66,7 +70,7 @@
                      </li>
                
               <li class="dropdown ">
-                  <a class="count-info ">
+                  <a class="count-info " href="InfoUser.aspx" >
                        <img src="img/green.png" width="70" style="margin-top:1%;">
                   </a>
                </li>

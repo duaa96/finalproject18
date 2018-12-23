@@ -157,11 +157,11 @@
        </div>   
         </div>
     
-       <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+       <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none; direction:rtl;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
-            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات المرشد الأكاديمي: </h2>
+            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات المرشد الأكاديمي </h2>
             
         </div>
        
@@ -195,11 +195,11 @@
           </asp:RadioButtonList>
       </div>
     </div>
-      <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+      <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none; direction:rtl;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
-            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات رئيس القسم : </h2>
+            <h2  style="float: none; align-items:center; margin: 0 auto; font-family:'Amiri'">معلومات رئيس القسم  </h2>
             
         </div>
        
@@ -233,7 +233,7 @@
           </asp:RadioButtonList>
       </div>
     </div>
-    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none; direction:rtl;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
@@ -271,7 +271,7 @@
           </asp:RadioButtonList>
       </div>
     </div>
-    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+    <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none; direction:rtl;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
@@ -311,7 +311,7 @@
       </div>
     </div>
    
- <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
+ <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none; direction:rtl;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
@@ -322,10 +322,7 @@
      <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
-      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات دائرة القبول و التسجيل:<asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator1" ControlToValidate="txtDescriptionReg" ErrorMessage="*"></asp:RequiredFieldValidator></label>
-      
-       
-      </div>
+      <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات دائرة القبول و التسجيل:</label></div>
     </div>
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
@@ -339,7 +336,6 @@
     </div>
 <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-bottom " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator10" ControlToValidate="rbtAcceptRegistration" ErrorMessage="*"></asp:RequiredFieldValidator>
 
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
      

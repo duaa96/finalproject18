@@ -87,7 +87,7 @@ namespace WebApplication1
 
         public void CreateSignature(string privateKeyPassword, string userId, int ID)
         {
-            string path = System.Web.HttpContext.Current.Server.MapPath("../PageEmployee/Sig") + "/" + "key.store";
+            string path = System.Web.HttpContext.Current.Server.MapPath("~/PageEmployee/Sig") + "/" + "key.store";
             KeyStore ks = new KeyStore(@path, "changeit");
 
             // userId = "rsa_demo@didisoft.com";
@@ -132,8 +132,8 @@ namespace WebApplication1
             // export public key having the specified userId
             // all public sub keys are exported too
 
-            string pathPub = System.Web.HttpContext.Current.Server.MapPath("../PageEmployee/Sig") + "/" + ID + ".asc";
-            string pathPri = System.Web.HttpContext.Current.Server.MapPath("../PageEmployee/Sig") + "/" + ID + "pr.asc";
+            string pathPub = System.Web.HttpContext.Current.Server.MapPath("~/PageEmployee/Sig") + "/" + ID + ".asc";
+            string pathPri = System.Web.HttpContext.Current.Server.MapPath("~/PageEmployee/Sig") + "/" + ID + "pr.asc";
             ks.ExportPublicKey(@pathPub, userId, asciiArmored);
 
             // export secret key having the specified userId, this is usually our own key
@@ -144,6 +144,64 @@ namespace WebApplication1
             // the file is in ASCII armored format by default
             // ks.ExportKeyRing(@"DataFiles\keypair.asc", "support@didisoft.com");
         }
+        public void CreateSignature2(string privateKeyPassword, string userId, int ID)
+        {
+            string path = System.Web.HttpContext.Current.Server.MapPath("Sig") + "/" + "key.store";
+            KeyStore ks = new KeyStore(@path, "changeit");
 
+            // userId = "rsa_demo@didisoft.com";
+            // privateKeyPassword = "private key password";
+
+            HashAlgorithm[] hashing = { HashAlgorithm.SHA1,
+                                        HashAlgorithm.MD5,
+                                        HashAlgorithm.SHA256,
+                                        HashAlgorithm.SHA384,
+                                        HashAlgorithm.SHA512};
+
+            CompressionAlgorithm[] compression =
+                                    { CompressionAlgorithm.ZIP,
+                                      CompressionAlgorithm.ZLIB,
+                                      CompressionAlgorithm.UNCOMPRESSED};
+
+            CypherAlgorithm[] cypher = { CypherAlgorithm.CAST5,
+                                         CypherAlgorithm.AES_128,
+                                         CypherAlgorithm.AES_192,
+                                         CypherAlgorithm.AES_256,
+                                         CypherAlgorithm.BLOWFISH};
+
+            ks.GenerateKeyPair(2048,
+                                userId,
+                                KeyAlgorithm.RSA,
+                                privateKeyPassword,
+                                compression,
+                                hashing,
+                                cypher);
+            ExportDemo2(path, userId, ID);
+        }
+        public void ExportDemo2(string path, string userId, int ID)
+        {
+
+
+            // initialize the KeyStore
+            KeyStore ks = new KeyStore(@path, "changeit");
+
+            // should the exported files be ASCII or binary
+            bool asciiArmored = true;
+
+            // export public key having the specified userId
+            // all public sub keys are exported too
+
+            string pathPub = System.Web.HttpContext.Current.Server.MapPath("Sig") + "/" + ID + ".asc";
+            string pathPri = System.Web.HttpContext.Current.Server.MapPath("Sig") + "/" + ID + "pr.asc";
+            ks.ExportPublicKey(@pathPub, userId, asciiArmored);
+
+            // export secret key having the specified userId, this is usually our own key
+            // all secret sub keys are exported too
+            ks.ExportPrivateKey(@pathPri, userId, asciiArmored);
+
+            // export both public and secret key with all sub keys in one file
+            // the file is in ASCII armored format by default
+            // ks.ExportKeyRing(@"DataFiles\keypair.asc", "support@didisoft.com");
+        }
     }
 }

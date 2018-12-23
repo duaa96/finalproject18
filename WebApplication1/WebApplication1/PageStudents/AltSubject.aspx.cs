@@ -131,6 +131,7 @@ namespace WebApplication1
                     labHoursAlternative.Text = "";
                     SentMail s = new SentMail();
                     s.sendemailAcadimic(ID);
+                    Response.Redirect("HomeStudent.aspx");
 
                 }
                 errorLabel.Visible = false;

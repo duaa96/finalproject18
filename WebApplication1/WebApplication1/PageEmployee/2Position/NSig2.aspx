@@ -1,6 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="employee2.Master" CodeBehind="NSig2.aspx.cs" Inherits="WebApplication1.PageEmployee.NSig2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+         <div class=" w3-cell-row  " runat="server" id="error" style="display:none;">
+        <div class=" w3-center navbar navbar-expand-lg w3-margin-top  w3-green" style=" float: none;
+    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+            <asp:Label ID="labError" runat="server" style="float: none;
+    margin: 0 auto; font-family:'Amiri'" Text="يرجى مراجعة البريد الالكتروني الخاص بك" Font-Size="large" ForeColor="white" Visible="false"></asp:Label>   
+
+        </div>
+    </div>
     <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-64" style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;

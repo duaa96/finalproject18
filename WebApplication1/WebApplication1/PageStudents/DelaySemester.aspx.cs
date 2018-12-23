@@ -92,6 +92,8 @@ namespace WebApplication1
                     txtYear.Text = "";
                     SentMail s = new SentMail();
                     s.sendemailReg();
+                    Response.Redirect("HomeStudent.aspx");
+
                 }
                 errorLabel.Visible = false;
 

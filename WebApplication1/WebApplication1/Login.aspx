@@ -17,7 +17,8 @@
     <link href="css/style.css" rel="stylesheet">
 
 </head>
-<body style=" background-image: url('img/bb.jpg'); width="1700px;" >
+<body style=" background-image: url('img/bb.jpg'); width:1600px;   background-repeat: no-repeat;
+  background-size: cover;" >
        <form id="frm1" runat="server">
         <div class="middle-box text-center loginscreen animated fadeInDown">
         <div class="row">
@@ -44,10 +45,10 @@
                                <tr>
                                 <td> <label>  </label> </td>
                                 <td>  </td>
-                                <td>  <asp:RadioButton ID="rdbStudent" runat="server"  Text=" طالب" GroupName="login"/> 
+                                <td>  <asp:RadioButton ID="rdbStudent" runat="server"  Text=" طالب" GroupName="login" style="color:black;font-weight:bold;"/> 
                                     <br/>
 
-                                    <asp:RadioButton ID="rdbEmployee" runat="server"  Text ="موظف" GroupName="login"  />
+                                    <asp:RadioButton ID="rdbEmployee" runat="server"  Text ="موظف" GroupName="login" style="color:black;font-weight:bold;"  />
                                 </td>
                                  <td> </td>
                                  </tr>
@@ -58,7 +59,7 @@
                                </table>
 
                            </div>
-                        <asp:Button ID="btnLogin" runat="server" class="btn btn-danger block full-width m-b" Text="تسجيل الدخول" OnClick="btnLogin_Click1" />
+                        <asp:Button ID="btnLogin" runat="server" class="btn btn-lg block full-width m-b" Text="تسجيل الدخول" OnClick="btnLogin_Click1" Style="background-color:#28a745;color:black; font-weight:bold;"/>
                         <div class="form-group">
                             <asp:Label ID="lbWrong" runat="server" Visible="False" Font-Bold="True" ForeColor="#CC0000"></asp:Label>  
 

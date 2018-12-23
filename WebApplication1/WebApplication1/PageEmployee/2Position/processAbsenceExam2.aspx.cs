@@ -104,7 +104,7 @@ namespace WebApplication1.PageEmployee
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             string filePath = LinkButton1.Text.ToString();
-            filePath = "../uploadFiles/" + filePath;
+            filePath = "../../uploadFiles/" + filePath;
             Response.ContentType = ContentType;
             Response.AppendHeader("Content-Disposition", "attachment; filename=" + (filePath));
             Response.WriteFile(filePath);
@@ -114,7 +114,7 @@ namespace WebApplication1.PageEmployee
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             string filePath = LinkButton2.Text.ToString();
-            filePath = "../uploadFiles/" + filePath;
+            filePath = "../../uploadFiles/" + filePath;
             Response.ContentType = ContentType;
             Response.AppendHeader("Content-Disposition", "attachment; filename=" + (filePath));
             Response.WriteFile(filePath);
@@ -123,48 +123,50 @@ namespace WebApplication1.PageEmployee
 
         protected void btnSaveDean_Click(object sender, EventArgs e)
         {
-            bool Result=false;
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            string Path = "";
-            string Data = labNumberStudent.Text.ToString() + txtCourseNum1.Text.ToString() + txtCourseNum2.Text.ToString() +
-                 txtCourseNum3.Text.ToString() + txtCourseNum4.Text.ToString() + txtDateCourse1.Text.ToString() + txtDateCourse2.Text.ToString() + txtDateCourse3.Text.ToString()
-             + txtDateCourse4.Text.ToString()+labDateDean.Text.ToString()+rbtAcceptDean.SelectedValue.ToString();
-            if (fuSignatureDean.HasFile)
+            if (fuSignatureDean.HasFile && rbtAcceptDean.SelectedValue != null && txtDescriptionDean.Text != String.Empty)
             {
-                string Private = fuSignatureDean.FileName.ToString();
-                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
-                string Pasword = txtPassSign.Text.ToString();
-                fuSignatureDean.SaveAs(Server.MapPath("Test") + "/" + fuSignatureDean.FileName);
-                SignatureEmployee newSig = new SignatureEmployee();
-                string strencrypt = newSig.encrypet(Data, Path, Pasword);
-                Result = newSig.Decreypt(strencrypt, ID);
-
-            }
-
-            if (Result == true)
-            {
-                AbsenceExam obj = new AbsenceExam();
-                int id = Convert.ToInt32(Request.QueryString["id"]);
-                string descrptionDean = txtDescriptionDean.Text.ToString();
-                int AcceptDean =Convert.ToInt32(rbtAcceptDean.SelectedValue.ToString());
-                if(obj.AcceptAbsenceExam(id, AcceptDean, descrptionDean) == 1)
+                bool Result = false;
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                string Path = "";
+                string Data = labNumberStudent.Text.ToString() + txtCourseNum1.Text.ToString() + txtCourseNum2.Text.ToString() +
+                     txtCourseNum3.Text.ToString() + txtCourseNum4.Text.ToString() + txtDateCourse1.Text.ToString() + txtDateCourse2.Text.ToString() + txtDateCourse3.Text.ToString()
+                 + txtDateCourse4.Text.ToString() + labDateDean.Text.ToString() + rbtAcceptDean.SelectedValue.ToString();
+                if (fuSignatureDean.HasFile)
                 {
-                    DataRow dr = obj.drgetform(id);
-                    int STUid = Convert.ToInt32(dr["StudentID"].ToString());
-                    SentMail s = new SentMail();
-                    s.sendemailStudent(STUid);
-                    Response.Redirect("ProcessRequest2.aspx");
+                    string Private = fuSignatureDean.FileName.ToString();
+                    Path = System.Web.HttpContext.Current.Server.MapPath("../Test") + "/" + Private;
+                    string Pasword = txtPassSign.Text.ToString();
+                    fuSignatureDean.SaveAs(Server.MapPath("../Test") + "/" + fuSignatureDean.FileName);
+                    SignatureEmployee newSig = new SignatureEmployee();
+                    string strencrypt = newSig.encrypet(Data, Path, Pasword);
+                    Result = newSig.Decreypt(strencrypt, ID);
+
                 }
 
-                errorLabel.Visible = false;
+                if (Result == true)
+                {
+                    AbsenceExam obj = new AbsenceExam();
+                    int id = Convert.ToInt32(Request.QueryString["id"]);
+                    string descrptionDean = txtDescriptionDean.Text.ToString();
+                    int AcceptDean = Convert.ToInt32(rbtAcceptDean.SelectedValue.ToString());
+                    if (obj.AcceptAbsenceExam(id, AcceptDean, descrptionDean) == 1)
+                    {
+                        DataRow dr = obj.drgetform(id);
+                        int STUid = Convert.ToInt32(dr["StudentID"].ToString());
+                        SentMail s = new SentMail();
+                        s.sendemailStudent(STUid);
+                        Response.Redirect("ProcessRequest2.aspx");
+                    }
 
-            }
-            else
-            {
-                errorLabel.Text = "التوقيع المدخل خاطئ او كلمة المرور";
-                errorLabel.Visible = true;
-            }
+                    errorLabel.Visible = false;
 
+                }
+                else
+                {
+                    errorLabel.Text = "التوقيع المدخل خاطئ او كلمة المرور";
+                    errorLabel.Visible = true;
+                }
+            }
         }
     }
 }

@@ -56,7 +56,9 @@ namespace WebApplication1.PageStudents
                 txtDescriptionAcadimic.Text = dr["AcademicAdvisor_Descr"].ToString();
                 txtDescriptionHead.Text = dr["HeadDescription"].ToString();
                 txtDescriptionDean.Text = dr["DeanDescription"].ToString();
+                txtDescriptinDep.Text = dr["DeputyAcademic_Descr"].ToString();
                 txtDescriptionReg.Text = dr["RegestrationDescr"].ToString();
+
                 string Acadimic = dr["AcademicAdvisorAccept"].ToString();
 
                 if (Acadimic == "1")
@@ -79,10 +81,15 @@ namespace WebApplication1.PageStudents
                     rbtDepAcept.SelectedValue = "1";
                 else if (DepAcept == "2")
                     rbtDepAcept.SelectedValue = "2";
-                string RegAccept = dr["RegestrationAccept"].ToString();
-                if (RegAccept == "1")
+                string dep = dr["DeputyAcademicAccept"].ToString();
+                if (dep == "1")
+                    rbtDepAcept.SelectedValue = "1";
+                else if (dep == "2")
+                    rbtDepAcept.SelectedValue = "2";
+                string reg = dr["RegestrationAccept"].ToString();
+                if (reg == "1")
                     rbtAcceptRegistration.SelectedValue = "1";
-                else if (RegAccept == "2")
+                else if (reg == "2")
                     rbtAcceptRegistration.SelectedValue = "2";
             }
         }

@@ -241,15 +241,16 @@
           </div>
   </div>
       <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
-    margin: 0 auto; margin-right:7%; margin-left:3%; ">
+    margin: 0 auto; margin-right:7%; margin-left:3%;margin-bottom:4%; ">
       <div class=" w3-row form-group float-right " style="direction:rtl; float: none;
     margin: 0 auto; " >
           <asp:Button ID="btnSave" runat="server" Text="حفظ" OnClick="btnSave_Click" class="btn btn-lg w3-green " align="center" Width="100" />
       
        
       </div>
-    </div>
 
+    </div>
+    
     <script src="js/jquery-2.1.1.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -272,7 +273,13 @@
 
 
 
-
+    <script>
+function myFunction() {
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+</script>
 
 
 

@@ -214,7 +214,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
       <div class=" w3-row form-group float-right col-12" style="direction:rtl; margin-right:0.5%;" >
       <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:x-large;"> ملاحظات عميد الكلية: 
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator5" ControlToValidate="txtDescriptionDean" ErrorMessage="*"></asp:RequiredFieldValidator>
+         <asp:Label ID="Label1" runat="server" Text="*" ForeColor="Red"></asp:Label>
           </label>
       
        
@@ -230,7 +230,7 @@
   </div>
     <div class=" w3-white w3-center navbar navbar-expand-lg  " style=" float: none; direction:rtl; 
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator4" ControlToValidate="rbtAcceptDean" ErrorMessage="*"></asp:RequiredFieldValidator>
+         <asp:Label ID="Label2" runat="server" Text="*" ForeColor="Red"></asp:Label>
 
       <div class=" w3-row form-group float-right " style="direction:rtl; margin-right:0.5%; margin-left:3%; width:950px;" >
      
@@ -254,7 +254,7 @@
           </div>
            <div class="form-group float-right col-5" style="direction:rtl; " >
       <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">التوقيع:</label>
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator3" ControlToValidate="fuSignatureDean" ErrorMessage="*"></asp:RequiredFieldValidator>
+         <asp:Label ID="Label3" runat="server" Text="*" ForeColor="Red"></asp:Label>
 
       <asp:FileUpload ID="fuSignatureDean" runat="server" />
        <asp:Label ID="errorLabel" runat="server" style="float:right;  font-family:'Amiri'; font-size:large;" Visible="False" ForeColor="#FF3300"></asp:Label>
@@ -275,7 +275,7 @@
    <div class="form-group float-right col-5" style="direction:rtl; margin-right:0.4%; " >
 
       <label for="exampleInpuStudentsNum"  style="float:right;  font-family:'Amiri'; font-size:large;">كلمة المرور للتوقيع:
-         <asp:RequiredFieldValidator runat="server" ForeColor="Red" ID="RequiredFieldValidator6" ControlToValidate="txtPassSign" ErrorMessage="*"></asp:RequiredFieldValidator>
+         <asp:Label ID="Label4" runat="server" Text="*" ForeColor="Red"></asp:Label>
 
       </label>
           <asp:TextBox ID="txtPassSign"  TextMode="Password"  runat="server" CssClass="form-control w3-margin-right" style="float:right; font-family:'Amiri'; " Width="40%"></asp:TextBox>

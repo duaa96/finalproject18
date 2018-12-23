@@ -72,45 +72,50 @@ namespace WebApplication1.PageEmployee
         protected void btnSaveDean_Click(object sender, EventArgs e)
         {
 
-            bool Result = false;
-            int ID = Convert.ToInt32(Session["ID"].ToString());
-            string Path = "";
-            string Data = DateTime.Today.ToString() + txtNumHours.Text.ToString() + labDate.Text.ToString() + rbtAceptHead.SelectedValue.ToString() + rbtAcceptAcadimic.SelectedValue.ToString();
-            if (fuSignatureDean.HasFile)
-            {
-                string Private = fuSignatureDean.FileName.ToString();
-                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
-                string Pasword = txtPassSign.Text.ToString();
-                fuSignatureDean.SaveAs(Server.MapPath("Test") + "/" + fuSignatureDean.FileName);
-                SignatureEmployee newSig = new SignatureEmployee();
-                string strencrypt = newSig.encrypet(Data, Path, Pasword);
-                Result = newSig.Decreypt(strencrypt, ID);
+            
 
-            }
-
-            if (Result == true)
-            {
-                DropSemester obj = new DropSemester();
-                int id = Convert.ToInt32(Request.QueryString["id"]);
-                int AcceptDean= Convert.ToInt32(rbtDeanAccept.SelectedValue.ToString());
-                string DeanDec = txtDescriptionDean.Text.ToString();
-                if (obj.AcceptDeanDropSemester(id, AcceptDean, DeanDec) == 1)
+                bool Result = false;
+                int ID = Convert.ToInt32(Session["ID"].ToString());
+                string Path = "";
+                string Data = DateTime.Today.ToString() + txtNumHours.Text.ToString() + labDate.Text.ToString() + rbtAceptHead.SelectedValue.ToString() + rbtAcceptAcadimic.SelectedValue.ToString();
+                if (fuSignatureDean.HasFile)
                 {
-                    
+                    string Private = fuSignatureDean.FileName.ToString();
+                    Path = System.Web.HttpContext.Current.Server.MapPath("../Test") + "/" + Private;
+                    string Pasword = txtPassSign.Text.ToString();
+                    fuSignatureDean.SaveAs(Server.MapPath("../Test") + "/" + fuSignatureDean.FileName);
+                    SignatureEmployee newSig = new SignatureEmployee();
+                    string strencrypt = newSig.encrypet(Data, Path, Pasword);
+                    Result = newSig.Decreypt(strencrypt, ID);
 
-                    SentMail s = new SentMail();
-                    s.sendemailDep();
-                    Response.Redirect("ProcessRequest.aspx");
                 }
 
-                errorDean.Visible = false;
+                if (Result == true)
+                {
 
-            }
-            else
-            {
-                errorDean.Text = "التوقيع المدخل خاطئ او كلمة المرور";
-                errorDean.Visible = true;
-            }
+                    DropSemester obj = new DropSemester();
+                    int id = Convert.ToInt32(Request.QueryString["id"]);
+                    int AcceptDean = Convert.ToInt32(rbtDeanAccept.SelectedValue.ToString());
+                    string DeanDec = txtDescriptionDean.Text.ToString();
+
+                    if (obj.AcceptDeanDropSemester(id, AcceptDean, DeanDec) == 1)
+                    {
+
+
+                        SentMail s = new SentMail();
+                        s.sendemailDep();
+                        Response.Redirect("ProcessRequest2.aspx");
+                    }
+
+                    errorDean.Visible = false;
+
+                }
+                else
+                {
+                    errorDean.Text = "التوقيع المدخل خاطئ او كلمة المرور";
+                    errorDean.Visible = true;
+                }
+            
         }
     }
 }

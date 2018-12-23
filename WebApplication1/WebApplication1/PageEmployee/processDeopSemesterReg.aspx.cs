@@ -54,7 +54,7 @@ namespace WebApplication1.PageEmployee
                 txtDescriptionAcadimic.Text = dr["AcademicAdvisor_Descr"].ToString();
                 txtDescriptionHead.Text = dr["HeadDescription"].ToString();
                 txtDescriptionDean.Text = dr["DeanDescription"].ToString();
-                txtDescriptionReg.Text = dr["RegestrationDescr"].ToString();
+                txtDescriptinDep.Text = dr["DeputyAcademic_Descr"].ToString();
                 string Acadimic = dr["AcademicAdvisorAccept"].ToString();
 
                 if (Acadimic == "1")
@@ -72,11 +72,11 @@ namespace WebApplication1.PageEmployee
                     rbtDeanAccept.SelectedValue = "1";
                 else if (DeanAcept == "2")
                     rbtDeanAccept.SelectedValue = "2";
-                string RegAcept = dr["DeanAccept"].ToString();
-                if (RegAcept == "1")
-                    rbtAcceptRegistration.SelectedValue = "1";
-                else if (RegAcept == "2")
-                    rbtAcceptRegistration.SelectedValue = "2";
+                string Dep = dr["DeputyAcademicAccept"].ToString();
+                if (Dep == "1")
+                    rbtDepAcept.SelectedValue = "1";
+                else if (Dep == "2")
+                    rbtDepAcept.SelectedValue = "2";
             }
         }
 
@@ -111,7 +111,7 @@ namespace WebApplication1.PageEmployee
                     int STUid = Convert.ToInt32(dr["StudentID"].ToString());
                     SentMail s = new SentMail();
                     s.sendemailStudent(STUid);
-                    Response.Redirect("ProcessRequest.aspx");
+                    Response.Redirect("ProcessRequestReg.aspx");
                 }
 
                 errorReg.Visible = false;

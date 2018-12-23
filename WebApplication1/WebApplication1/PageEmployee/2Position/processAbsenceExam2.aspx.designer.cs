@@ -229,13 +229,13 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.Label labDate;
         
         /// <summary>
-        /// RequiredFieldValidator5 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// txtDescriptionDean control.
@@ -247,13 +247,13 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.TextBox txtDescriptionDean;
         
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// rbtAcceptDean control.
@@ -274,13 +274,13 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.Label labDateDean;
         
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
         /// fuSignatureDean control.
@@ -301,13 +301,13 @@ namespace WebApplication1.PageEmployee {
         protected global::System.Web.UI.WebControls.Label errorLabel;
         
         /// <summary>
-        /// RequiredFieldValidator6 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
         /// txtPassSign control.

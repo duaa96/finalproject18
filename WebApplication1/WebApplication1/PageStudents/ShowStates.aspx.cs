@@ -82,7 +82,9 @@ namespace WebApplication1
                 txtStatus.Text = "";
                     SentMail s = new SentMail();
                     s.sendemailHead(ID);
-            }
+                    Response.Redirect("HomeStudent.aspx");
+
+                }
                 errorLabel.Visible = false;
 
             }

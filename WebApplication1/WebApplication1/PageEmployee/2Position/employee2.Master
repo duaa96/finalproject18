@@ -68,7 +68,7 @@
                      </li>
                
               <li class="dropdown ">
-                  <a class="count-info" >
+                  <a class="count-info" href="InfoUser2.aspx" >
                       <img src="../img/green.png" width="70" style="margin-top:1%;">
                   </a>
                </li>

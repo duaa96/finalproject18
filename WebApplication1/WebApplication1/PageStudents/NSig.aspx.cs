@@ -12,8 +12,19 @@ namespace WebApplication1.PageStudents
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           // error.Style.Add("display", "block");
             int ID = Convert.ToInt32(Session["ID"].ToString());
-            fillData();
+            Studnets loginStudent = new Studnets();
+            DataRow loginS = loginStudent.drSearchStudentEmail(ID);
+            string sig = loginS["Signature"].ToString();
+            if (sig != null && sig != String.Empty)
+                fillData();
+            else
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('ليس لديك توقيع سابق انتقل لصفحة انشاء توقيع');window.location ='HomeStudent.aspx';", true);
+            }
+            
         }
         private void fillData()
         {
@@ -31,6 +42,8 @@ namespace WebApplication1.PageStudents
             string email = loginS["Email"].ToString();
             SentMail S = new SentMail();
             S.sendemailNewSignature(email, ID);
+            labError.Visible = true;
+            error.Style.Add("display", "block");
         }
     }
 }

@@ -13,7 +13,16 @@ namespace WebApplication1.PageEmployee
         protected void Page_Load(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(Session["ID"].ToString());
-            fillData();
+            Employee loginEmp = new Employee();
+            DataRow loginE = loginEmp.drSearchEmployeeEmail(ID);
+            string sig = loginE["Signature"].ToString();
+            if (sig != null && sig != String.Empty)
+                fillData();
+            else
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('ليس لديك توقيع سابق انتقل لصفحة انشاء توقيع ');window.location ='HomeEmployee2.aspx';", true);
+            }
         }
         private void fillData()
         {
@@ -31,6 +40,8 @@ namespace WebApplication1.PageEmployee
             string email = loginS["Email"].ToString();
             SentMail S = new SentMail();
             S.sendemailNewSignatureEmp2(email, ID);
+            labError.Visible = true;
+            error.Style.Add("display", "block");
         }
     }
 }

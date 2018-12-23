@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-     <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-64 " style=" float: none;
+     <div class=" w3-white w3-center navbar navbar-expand-lg  w3-margin-top  w3-padding-24 " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto; margin-right:7%; margin-left:3%; ">
@@ -11,7 +11,7 @@
         </div>
        
     </div>
-    <div class=" w3-white  navbar navbar-expand-lg  w3-padding-64 " style=" float: none;
+    <div class=" w3-white  navbar navbar-expand-lg   " style=" float: none;
     margin: 0 auto; margin-right:7%; margin-left:3%; ">
         <div class="w3-cell-row w3-white w3-center navbar navbar-expand-lg  " style=" float: none;
                                                 margin: 0 auto;  margin-left:3%; margin-right:3%; ">
@@ -24,7 +24,7 @@
     margin: 0 auto; margin-right:7%; margin-left:3%;  ">
       <div class="form-group float-right row w3-responsive" style="direction:rtl; margin-right:3%; width:100%;" >
             
-            <asp:GridView ID="gvRequest" style="width:1100px; padding-top:5%; " runat="server"    AutoGenerateColumns="False" OnRowEditing="gvRequest_RowEditing" OnRowDataBound="gvRequest_Data" OnRowCommand="gvRequest_RowCommand"  DataKeyNames="ApplicationID" CellPadding="3"  BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" >
+            <asp:GridView ID="gvRequest" style="width:1100px; padding-top:3%; " runat="server"    AutoGenerateColumns="False" OnRowEditing="gvRequest_RowEditing" OnRowDataBound="gvRequest_Data" OnRowCommand="gvRequest_RowCommand"  DataKeyNames="ApplicationID" CellPadding="3"  BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" >
 
 
 
@@ -90,7 +90,7 @@
 
       <asp:Label ID="labSemester"  style="font-family:'Amiri'; font-size:large;" runat="server" CssClass="float-left" Width="153px" >الفصل الدراسي الحالي :
       </asp:Label>
-          <asp:DropDownList ID="ddlSemester" runat="server" CssClass="form-control" style="float:right;  font-family:'Amiri'; font-size:large;">
+          <asp:DropDownList ID="ddlSemester" runat="server" CssClass="form-control" style="float:right;  font-family:'Amiri'; font-size:medium;">
               <asp:ListItem Value="0">اختر الفصل</asp:ListItem>
               <asp:ListItem Value="1">الاول</asp:ListItem>
               <asp:ListItem Value="2">الثاني</asp:ListItem>

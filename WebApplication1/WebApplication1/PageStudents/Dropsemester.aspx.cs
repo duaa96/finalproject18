@@ -119,6 +119,8 @@ namespace WebApplication1
                     txtReasons.Text = "";
                     SentMail s = new SentMail();
                     s.sendemailAcadimic(ID);
+                    Response.Redirect("HomeStudent.aspx");
+
                 }
                 errorLabel.Visible = false;
             }

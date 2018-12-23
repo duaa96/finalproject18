@@ -65,9 +65,9 @@ namespace WebApplication1.PageEmployee
             if (fuSignatureDean.HasFile)
             {
                 string Private = fuSignatureDean.FileName.ToString();
-                Path = System.Web.HttpContext.Current.Server.MapPath("Test") + "/" + Private;
+                Path = System.Web.HttpContext.Current.Server.MapPath("../Test") + "/" + Private;
                 string Pasword = txtPassSign.Text.ToString();
-                fuSignatureDean.SaveAs(Server.MapPath("Test") + "/" + fuSignatureDean.FileName);
+                fuSignatureDean.SaveAs(Server.MapPath("../Test") + "/" + fuSignatureDean.FileName);
                 SignatureEmployee newSig = new SignatureEmployee();
                 string strencrypt = newSig.encrypet(Data, Path, Pasword);
                 Result = newSig.Decreypt(strencrypt, ID);
@@ -82,7 +82,7 @@ namespace WebApplication1.PageEmployee
                 string DeanDescription = txtDescriptionDean.Text.ToString();
                 if (obj.AcceptDeanDelaySemester(id, AcceptDean, DeanDescription) == 1)
                 {
-                    Response.Redirect("ProcessRequest.aspx");
+                    Response.Redirect("ProcessRequest2.aspx");
                 }
 
                 errorDean.Visible = false;

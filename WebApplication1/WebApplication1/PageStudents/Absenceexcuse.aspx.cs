@@ -7,14 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.IO;
 using DidiSoft.Pgp;
-using WebApplication1.PageStudents;
-using iTextSharp.text;
-using iTextSharp.text.html.simpleparser;
-using iTextSharp.text.pdf;
-using System.Drawing;
-using PdfSharp.Drawing;
 
-using System.Diagnostics;
 
 namespace WebApplication1
 {
@@ -151,7 +144,8 @@ namespace WebApplication1
 
                     SentMail s = new SentMail();
                     s.sendemailDean(ID);
-                    
+                        Response.Redirect("HomeStudent.aspx");
+
                 }
                 errorLabel.Visible = false;
 

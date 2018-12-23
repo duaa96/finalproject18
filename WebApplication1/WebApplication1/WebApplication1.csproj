@@ -1523,8 +1523,10 @@
     <Content Include="js\plugins\video\responsible-video.js" />
     <Content Include="js\plugins\wow\wow.min.js" />
     <Content Include="PageEmployee\2Position\AddSig2.aspx" />
+    <Content Include="PageEmployee\2Position\InfoUser2.aspx" />
     <Content Include="PageEmployee\2Position\NSig2.aspx" />
     <Content Include="PageEmployee\Academic\AddSigAcademic.aspx" />
+    <Content Include="PageEmployee\Academic\InfoUserAcademic.aspx" />
     <Content Include="PageEmployee\Academic\NSigAcademic.aspx" />
     <Content Include="PageEmployee\AddSig.aspx" />
     <Content Include="PageEmployee\AddSigReg.aspx" />
@@ -3408,12 +3410,15 @@
     <Content Include="PageEmployee\img\zender_logo.png" />
     <Content Include="PageEmployee\2Position\NewSig2.aspx" />
     <Content Include="PageEmployee\Academic\NewSigAcademic.aspx" />
+    <Content Include="PageEmployee\InfoUser1.aspx" />
+    <Content Include="PageEmployee\InfoUser.aspx" />
     <Content Include="PageEmployee\ManageRequest.aspx" />
     <Content Include="PageEmployee\NewSig.aspx" />
     <Content Include="PageEmployee\NewSigReg.aspx" />
     <Content Include="PageEmployee\2Position\processAbsenceExam2.aspx" />
     <Content Include="PageEmployee\NSigReg.aspx" />
     <Content Include="PageEmployee\NSig.aspx" />
+    <Content Include="PageEmployee\PdfForm\DropSemesterpdf.aspx" />
     <Content Include="PageEmployee\processAbsenceExam.aspx" />
     <Content Include="PageEmployee\Academic\processAltiSubAcadimic.aspx" />
     <Content Include="PageEmployee\2Position\processAltiSubjectAcadimicAdvisor.aspx" />
@@ -3447,6 +3452,7 @@
     <Content Include="PageEmployee\processShowStatusDean.aspx" />
     <Content Include="PageEmployee\2Position\processShowStatusHead2.aspx" />
     <Content Include="PageEmployee\processShowStatusHead.aspx" />
+    <Content Include="PageEmployee\ViewForms.aspx" />
     <Content Include="PageStudents\AbsenceExamAll.aspx" />
     <Content Include="PageStudents\AbsenceExamUpdate.aspx" />
     <Content Include="PageStudents\Absenceexcuse.aspx" />
@@ -3456,6 +3462,7 @@
     <Content Include="PageStudents\AltiSubjectDisplay.aspx" />
     <Content Include="PageStudents\AltiSubjectUpdate.aspx" />
     <Content Include="PageStudents\AltSubject.aspx" />
+    <Content Include="PageStudents\bootstrap.min.js" />
     <Content Include="PageStudents\css\Amiri.css" />
     <Content Include="PageStudents\css\bootstrap.css" />
     <Content Include="PageStudents\css\bootstrap.min.css" />
@@ -5341,6 +5348,7 @@
     <Content Include="PageStudents\img\starter_logo.jpg" />
     <Content Include="PageStudents\img\user.png" />
     <Content Include="PageStudents\img\zender_logo.png" />
+    <Content Include="PageStudents\InfoUser.aspx" />
     <Content Include="PageStudents\js\bootstrap.js" />
     <Content Include="PageStudents\js\bootstrap.min.js" />
     <Content Include="PageStudents\js\demo\chartjs-demo.js" />
@@ -5802,6 +5810,13 @@
     <Compile Include="ClassDB\ShowStatusClass.cs" />
     <Compile Include="ClassDB\SignatureEmployee.cs" />
     <Compile Include="ClassDB\Subjects.cs" />
+    <Compile Include="PageEmployee\2Position\InfoUser2.aspx.cs">
+      <DependentUpon>InfoUser2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\2Position\InfoUser2.aspx.designer.cs">
+      <DependentUpon>InfoUser2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\2Position\NSig2.aspx.cs">
       <DependentUpon>NSig2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5829,6 +5844,13 @@
     </Compile>
     <Compile Include="PageEmployee\Academic\AddSigAcademic.aspx.designer.cs">
       <DependentUpon>AddSigAcademic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\InfoUserAcademic.aspx.cs">
+      <DependentUpon>InfoUserAcademic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\Academic\InfoUserAcademic.aspx.designer.cs">
+      <DependentUpon>InfoUserAcademic.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\Academic\NSigAcademic.aspx.cs">
       <DependentUpon>NSigAcademic.aspx</DependentUpon>
@@ -5907,6 +5929,20 @@
     <Compile Include="PageEmployee\Academic\NewSigAcademic.aspx.designer.cs">
       <DependentUpon>NewSigAcademic.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\InfoUser1.aspx.cs">
+      <DependentUpon>InfoUser1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\InfoUser1.aspx.designer.cs">
+      <DependentUpon>InfoUser1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\InfoUser.aspx.cs">
+      <DependentUpon>InfoUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\InfoUser.aspx.designer.cs">
+      <DependentUpon>InfoUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee\ManageRequest.aspx.cs">
       <DependentUpon>ManageRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5948,6 +5984,13 @@
     </Compile>
     <Compile Include="PageEmployee\NSig.aspx.designer.cs">
       <DependentUpon>NSig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployee\PdfForm\DropSemesterpdf.aspx.cs">
+      <DependentUpon>DropSemesterpdf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\PdfForm\DropSemesterpdf.aspx.designer.cs">
+      <DependentUpon>DropSemesterpdf.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployee\processAbsenceExam.aspx.cs">
       <DependentUpon>processAbsenceExam.aspx</DependentUpon>
@@ -6187,6 +6230,13 @@
     <Compile Include="PageEmployee\Reg.Master.designer.cs">
       <DependentUpon>Reg.Master</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployee\ViewForms.aspx.cs">
+      <DependentUpon>ViewForms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployee\ViewForms.aspx.designer.cs">
+      <DependentUpon>ViewForms.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageStudents\AbsenceExamAll.aspx.cs">
       <DependentUpon>AbsenceExamAll.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6335,6 +6385,13 @@
     </Compile>
     <Compile Include="ClassDB\Position.cs" />
     <Compile Include="ClassDB\SignatureStudents.cs" />
+    <Compile Include="PageStudents\InfoUser.aspx.cs">
+      <DependentUpon>InfoUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageStudents\InfoUser.aspx.designer.cs">
+      <DependentUpon>InfoUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageStudents\NewSign.aspx.cs">
       <DependentUpon>NewSign.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6512,6 +6569,7 @@
     <Content Include="PageEmployee\2Position\employee2.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -6524,6 +6582,9 @@
     <Folder Include="PageStudents\Test\" />
     <Folder Include="UploadFiles\" />
     <Folder Include="uploadsign\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

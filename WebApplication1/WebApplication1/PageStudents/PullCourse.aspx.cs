@@ -286,7 +286,7 @@ namespace WebApplication1
             string Course3time = txtTimeCourse3.Text.ToString();
            int NumHourREG=Convert.ToInt32(txtNmberHours.Text.ToString());
              int NumHourAFpull=Convert.ToInt32(txtNumHourAfter.Text.ToString());
-                string DateNow = DateTime.Today.ToString();
+                string DateNow = labDate.Text.ToString();
                 NowTimeUniversity timee = new NowTimeUniversity();
                 DataRow T = timee.drSearchYearANdSemester();
                 string semester = T["NowSemester"].ToString();
@@ -315,6 +315,7 @@ namespace WebApplication1
                         error.Style.Add("display", "none");
                         SentMail s = new SentMail();
                         s.sendemailHead(ID);
+                        Response.Redirect("HomeStudent.aspx");
 
                     }
                 }

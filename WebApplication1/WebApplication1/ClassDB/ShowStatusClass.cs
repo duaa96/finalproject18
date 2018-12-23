@@ -282,4 +282,15 @@ public class ShowStatusClass
         return dr;
 
     }
+    public DataTable dtGetAll()
+    {
+        SqlConnection Connection = new SqlConnection(Connectionstring);
+        Connection.Open();
+        DataTable dt = new DataTable();
+        SqlDataAdapter DA = new SqlDataAdapter("select * from ShowStatus where DeanAccept IS NOT null && DeanAccept<>0", Connection);
+        DA.Fill(dt);
+        Connection.Close();
+        return dt;
+
+    }
 }

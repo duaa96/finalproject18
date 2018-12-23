@@ -35,9 +35,9 @@ namespace WebApplication1.PageEmployee
                 string Email = labEmail.Text.ToString();
                 SignatureEmployee objj = new SignatureEmployee();
                 objj.CreateSignature(password, Email, ID);
-                string pathPub = System.Web.HttpContext.Current.Server.MapPath("../PageEmployee/Sig") + "/" + ID + ".asc";
+                string pathPub = System.Web.HttpContext.Current.Server.MapPath("~/PageEmployee/Sig") + "/" + ID + ".asc";
 
-                string PrivateKey = "Sig/" + ID + "pr" + ".asc";
+                string PrivateKey = "../Sig/" + ID + "pr" + ".asc";
                 GetKey objKey = new GetKey();
                 objKey.AddKeyEmployee(pathPub, ID);
                 downloadfile(PrivateKey);
@@ -51,9 +51,9 @@ namespace WebApplication1.PageEmployee
             Response.TransmitFile(Server.MapPath(filePath));
             // System.IO.File.Delete("C:/Users/Dua'a-Orcas/Desktop/WebApplication1/WebApplication1/WebApplication1/" + filePath);
             Response.Flush();
-            string pri = System.Web.HttpContext.Current.Server.MapPath("../PageEmployee/") + filePath;
-            string pathkey = System.Web.HttpContext.Current.Server.MapPath("../PageEmployee/") + "Sig/key.store";
-            string pathkeybak = System.Web.HttpContext.Current.Server.MapPath("../PageEmployee/") + "Sig/key.store.bak";
+            string pri = System.Web.HttpContext.Current.Server.MapPath("~/PageEmployee") + filePath;
+            string pathkey = System.Web.HttpContext.Current.Server.MapPath("~/PageEmployee/") + "Sig/key.store";
+            string pathkeybak = System.Web.HttpContext.Current.Server.MapPath("~/PageEmployee/") + "Sig/key.store.bak";
 
             System.IO.File.Delete(pri);
             System.IO.File.Delete(pathkey);
